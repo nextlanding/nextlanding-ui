@@ -18,7 +18,8 @@
     "angular-sanitize": "1.0.7",
     "angular-resource": "1.0.7",
     "angular-cookies": "1.0.7",
-    "angular-mocks": "1.0.7"
+    "angular-mocks": "1.0.7",
+    "foundation": "git://github.com/zurb/foundation"
   },
   "overrides": {
     "bootstrap-less": {
