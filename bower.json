@@ -25,8 +25,9 @@
     },
     "foundation":{
       "main": [
-        "js/foundation.min.js",
-        "css/foundation.css"
+        "js/foundation/index.js",
+        "scss/normalize.scss",
+        "scss/foundation.scss"
       ]
     }
   }
