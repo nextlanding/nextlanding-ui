@@ -12,10 +12,10 @@ exports.config =
       joinTo:
         'js/app.js': /^app/
         'js/vendor.js': /^(bower_components|vendor)/
-
     stylesheets:
       joinTo:
-        'css/app.css': /^(app|vendor)/
+        'css/app.css': /^app/
+        'css/vendor.css': /^(bower_components|vendor)/
       order:
         before: [
           'app/styles/app.less'
