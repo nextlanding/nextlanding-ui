@@ -29,6 +29,12 @@
     },
     "angular-mocks": {
       "main": "README.md"
+    },
+    "foundation":{
+      "main": [
+        "js/foundation.min.js",
+        "css/foundation.css"
+      ]
     }
   }
 }
