@@ -16,34 +16,11 @@
     "angular-resource": "1.0.7",
     "angular-cookies": "1.0.7",
     "angular-mocks": "1.0.7",
-    "foundation": "git://github.com/zurb/foundation"
+    "sass-bootstrap": "~3.0.0"
   },
   "overrides": {
     "angular-mocks": {
       "main": "README.md"
-    },
-    "foundation":{
-      "main": [
-        "js/vendor/zepto.js",
-        "js/foundation/foundation.js",
-        "js/foundation/foundation.alerts.js",
-        "js/foundation/foundation.clearing.js",
-        "js/foundation/foundation.cookie.js",
-        "js/foundation/foundation.dropdown.js",
-        "js/foundation/foundation.forms.js",
-        "js/foundation/foundation.joyride.js",
-        "js/foundation/foundation.magellan.js",
-        "js/foundation/foundation.orbit.js",
-        "js/foundation/foundation.reveal.js",
-        "js/foundation/foundation.sections.js",
-        "js/foundation/foundation.tooltips.js",
-        "js/foundation/foundation.topbar.js",
-        "js/foundation/foundation.interchange.js",
-        "js/foundation/foundation.placeholder.js",
-        "js/foundation/foundation.abide.js",
-        "scss/normalize.scss",
-        "scss/foundation.scss"
-      ]
     }
   }
 }
