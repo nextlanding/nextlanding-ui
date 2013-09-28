@@ -1,5 +1,5 @@
 exports.config =
-  # See docs at http://brunch.readthedocs.org/en/latest/config.html.
+# See docs at http://brunch.readthedocs.org/en/latest/config.html.
   conventions:
     assets: /^app\/assets\//
   modules:
@@ -11,15 +11,19 @@ exports.config =
     javascripts:
       joinTo:
         'js/app.js': /^app/
-        'js/vendor.js': /^(bower_components|vendor)/
+        'js/vendor.js': (path) ->
+          (path.indexOf("vendor") isnt -1 or path.indexOf("bower_components") isnt -1) \
+          and path.indexOf("modernizr") is -1
+        'js/modernizr.js': (path) ->
+          path.indexOf('modernizr') isnt -1
     stylesheets:
       joinTo:
         'css/app.css': /^app/
         'css/vendor.css': /^(bower_components|vendor)/
 
     templates:
-      joinTo: 
-        'js/dontUseMe' : /^app/ # dirty hack for Jade compiling.
+      joinTo:
+        'js/dontUseMe': /^app/ # dirty hack for Jade compiling.
 
   plugins:
     jade:
@@ -28,5 +32,5 @@ exports.config =
       modules_folder: 'partials'
       locals: {}
 
-  # Enable or disable minifying of result js / css files.
-  # minify: true
+# Enable or disable minifying of result js / css files.
+# minify: true
