@@ -4,13 +4,7 @@
 
 angular.module('app.controllers', [])
 
-.controller('AppCtrl', [
-  '$scope'
-  '$location'
-  '$resource'
-  '$rootScope'
-
-($scope, $location, $resource, $rootScope) ->
+.controller('AppCtrl', ($scope, $location, $resource, $rootScope) ->
 
   # Uses the url to determine if the selected
   # menu item should have the class active.
@@ -32,7 +26,7 @@ angular.module('app.controllers', [])
       return 'active'
     else
       return ''
-])
+)
 
 .controller('MyCtrl1', [
   '$scope'
