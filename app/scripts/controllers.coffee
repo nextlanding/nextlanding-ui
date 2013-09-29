@@ -42,38 +42,55 @@ angular.module('app.controllers', [])
   $scope
 ])
 
-.controller('TodoCtrl', [
+.controller('AptListCtrl', [
   '$scope'
 
 ($scope) ->
 
-  $scope.todos = [
-    text: "learn angular"
-    done: true
+  $scope.apartments = [
+    address: "123 Fake Street"
+    bedroom_count: 2
+    bathroom_count: 1.5
+    price: 1850
   ,
-    text: "build an angular app"
-    done: false
+    address: "W 84 and Broadway"
+    bedroom_count: 2
+    bathroom_count: 1.5
+    price: 1850
   ]
-
-  $scope.addTodo = ->
-    $scope.todos.push
-      text: $scope.todoText
-      done: false
-
-    $scope.todoText = ""
-
-  $scope.remaining = ->
-    count = 0
-    angular.forEach $scope.todos, (todo) ->
-      count += (if todo.done then 0 else 1)
-
-    count
-
-  $scope.archive = ->
-    oldTodos = $scope.todos
-    $scope.todos = []
-    angular.forEach oldTodos, (todo) ->
-      $scope.todos.push todo  unless todo.done
-
 ])
+  .controller('TodoCtrl', [
+    '$scope'
+
+    ($scope) ->
+
+      $scope.todos = [
+        text: "learn angular"
+        done: true
+      ,
+        text: "build an angular app"
+        done: false
+      ]
+
+      $scope.addTodo = ->
+        $scope.todos.push
+          text: $scope.todoText
+          done: false
+
+        $scope.todoText = ""
+
+      $scope.remaining = ->
+        count = 0
+        angular.forEach $scope.todos, (todo) ->
+          count += (if todo.done then 0 else 1)
+
+        count
+
+      $scope.archive = ->
+        oldTodos = $scope.todos
+        $scope.todos = []
+        angular.forEach oldTodos, (todo) ->
+          $scope.todos.push todo  unless todo.done
+
+  ])
 
