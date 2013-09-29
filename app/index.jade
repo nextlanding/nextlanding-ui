@@ -42,27 +42,23 @@ head
       enabled: true
     };
 body(ng-controller='AppCtrl')
-  .container
-    .navbar.navbar-default
-      .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='#') Nextlanding UI
-        .navbar-collapse.collapse
-          div(ng-include="'/partials/nav.html'")
-    .container.main-content
-      div(ng-view)
-      div Angular Brunch seed app: v<span app-version></span>
-    .push
-
-  footer.footer
+  nav.navbar.navbar-default.navbar-fixed-top
     .container
+      .navbar-header
+        a.navbar-brand(href='../') Nextlanding
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      #navbar-main.navbar-collapse.collapse
+        div(ng-include="'/partials/nav.html'")
+  .container.main-content
+    div(ng-view)
+    div Angular Brunch seed app: v<span app-version></span>
+    footer.footer
       p
         small
           a(href='https://github.com/scotch/angular-brunch-seed') angular-brunch-seed | source
-
   //- JavaScript at the bottom for fast page loading
   script(src='/js/vendor.js')
   script(src='/js/partials.js')
