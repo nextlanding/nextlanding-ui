@@ -2,8 +2,6 @@
 
 # Declare app level module which depends on filters, and services
 apartments = angular.module('apartments', [
-  'ngCookies'
-  'ngResource',
   'apartments.controllers'
   'apartments.directives'
   'apartments.filters'

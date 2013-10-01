@@ -2,8 +2,6 @@
 
 # Declare app level module which depends on filters, and services
 Todo = angular.module('todo', [
-  'ngCookies'
-  'ngResource',
   'todo.controllers',
   'todo.directives'
   'todo.filters'

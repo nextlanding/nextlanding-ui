@@ -1,8 +1,6 @@
 'use strict'
 
 App = angular.module('app', [
-  'ngCookies'
-  'ngResource'
   'todo'
   'apartments'
   'main.controllers'
