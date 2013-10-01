@@ -16,6 +16,12 @@ exports.config =
           and path.indexOf("modernizr") is -1
         'js/modernizr.js': (path) ->
           path.indexOf('modernizr') isnt -1
+      order:
+        before:[
+          'app/scripts/modules/main/main.coffee'
+          'app/scripts/modules/apartments/apartments.coffee'
+          'app/scripts/modules/todo/todo.coffee'
+        ]
     stylesheets:
       joinTo:
         'css/app.css': /^app/
