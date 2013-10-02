@@ -1,24 +1,43 @@
 .container(ng-controller='AptListCtrl')
   .bs-docs-section
-    .row
-      .col-lg-12
-        .page-header
-          h1#forms Start a Search
-    .row
-      .col-lg-6
-        .well
-          form.bs-example.form-horizontal
+    form(name='searchForm', ng-init='step = 1').bs-example.form-horizontal
+      .row
+        .col-lg-12
+          .page-header
+            h1#forms Start a Search
+      div.row(ng-show='step==1')
+        .col-lg-6(ng-form='step1form')
+          .well
+              fieldset
+                legend Step 1 - Location
+                .form-group
+                  label.col-lg-2.control-label(for='input-location') Location
+                  .col-lg-10
+                    input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='location', required='required')
+                    span.help-block
+                      | A longer block of help text that breaks onto a new line and may extend beyond one line.
+                .form-group
+                  .col-lg-10.col-lg-offset-2
+                    button.btn.btn-primary(ng-disabled='!step1form.$valid', ng-click='step = 2') Next
+      div.row(ng-show='step==2')
+        .col-lg-6(ng-form='step2Form')
+          .well
             fieldset
-              legend Step 1 - Location
+              legend Step 2 - Description
               .form-group
-                label.col-lg-2.control-label(for='inputEmail') Location
+                label.col-lg-2.control-label(for='txt-description') Description
                 .col-lg-10
-                  input#inputEmail.form-control(type='text', placeholder='City, zip, etc')
+                  textarea#txt-description.form-control(placeholder='Some stuff....', ng-model='description', required='required')
                   span.help-block
                     | A longer block of help text that breaks onto a new line and may extend beyond one line.
               .form-group
                 .col-lg-10.col-lg-offset-2
-                  button.btn.btn-default Cancel
-                  button.btn.btn-primary(type='submit') Submit
+                  button.btn.btn-warn(ng-click='step = 1') Prev
+                  button.btn.btn-primary(ng-disabled='!step2Form.$valid', ng-click='submit()') Next
+      div
+        | Validation status:
+        div  Whole form valid? {{searchForm.$valid}}
+        div  Step1 valid? {{step1form.$valid}}
+        div  Step2 valid? {{step2Form.$valid}}
   .row(ng-repeat='apt in apartments')
     h2 {{ apt.address }}
