@@ -15,6 +15,7 @@ App.config(($routeProvider, $locationProvider) ->
     .when('/todo', {templateUrl: '/_public/js/todo/todo.html'})
     .when('/view1', {templateUrl: '/_public/js/main/partial1.html'})
     .when('/list', {templateUrl: '/_public/js/apartments/list.html'})
+    .when('/search', {templateUrl: '/_public/js/search/start.html'})
     # Catch all
     .otherwise({redirectTo: '/todo'})
   # Without server side support html5 must be disabled.
