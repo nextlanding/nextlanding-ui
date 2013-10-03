@@ -1,0 +1,14 @@
+div.row(ng-show="currentStep=='locationStep'")
+  .col-lg-6(ng-form='locationStepForm')
+    .well
+      fieldset
+        legend Step 1 - Location
+        .form-group
+          label.col-lg-2.control-label(for='input-location') Location
+          .col-lg-10
+            input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='location', required='required')
+            span.help-block
+              | A longer block of help text that breaks onto a new line and may extend beyond one line.
+        .form-group
+          .col-lg-10.col-lg-offset-2
+            button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()') Next
