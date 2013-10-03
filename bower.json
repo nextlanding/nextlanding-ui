@@ -11,11 +11,12 @@
   "dependencies": {
     "console-polyfill": "~0.1.0",
     "angular-bootstrap": "~0.6.0",
-    "angular": "1.0.8",
-    "angular-sanitize": "1.0.8",
-    "angular-resource": "1.0.8",
-    "angular-cookies": "1.0.8",
-    "angular-mocks": "1.0.8",
+    "angular": "~1.2.0",
+    "angular-sanitize": "~1.2.0", 
+    "angular-resource": "~1.2.0",
+    "angular-route": "~1.2.0",
+    "angular-cookies": "~1.2.0",
+    "angular-mocks": "~1.2.0",
     "sass-bootstrap": "~3.0.0"
   },
   "overrides": {

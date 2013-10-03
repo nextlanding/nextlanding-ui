@@ -9,6 +9,7 @@ App = angular.module('app', [
   'main.filters'
   'main.services'
   'partials'
+  'ngRoute'
 ])
 
 App.config(($routeProvider, $locationProvider) ->
