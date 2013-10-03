@@ -3,6 +3,7 @@
 App = angular.module('app', [
   'todo'
   'apartments'
+  'search'
   'main.controllers'
   'main.directives'
   'main.filters'
