@@ -1,0 +1,14 @@
+div.row(ng-show="currentStep=='descriptionStep'")
+  .col-lg-6(ng-form='descriptionStepForm')
+    .well
+      fieldset
+        legend Step 3 - Description
+        .form-group
+          label.col-lg-2.control-label(for='input-description') Description
+          .col-lg-10
+            input#input-description.form-control(type='text', placeholder='City, zip, etc', ng-model='description', required='required')
+            span.help-block
+              | A longer block of help text that breaks onto a new line and may extend beyond one line.
+        .form-group
+          .col-lg-10.col-lg-offset-2
+            button.btn.btn-primary(ng-disabled='!descriptionStepForm.$valid', ng-click='proceed()') Next
