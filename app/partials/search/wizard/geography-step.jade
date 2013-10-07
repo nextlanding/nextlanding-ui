@@ -2,11 +2,14 @@ div.row(ng-show="currentStep=='geographyStep'")
   .col-lg-6(ng-form='geographyStepForm')
     .well
       fieldset
-        legend Step 2 - Description
+        legend Step 2 - Geography
         .form-group
-          label.col-lg-2.control-label(for='txt-description') Description
+          label.col-lg-2.control-label(for='btn-geography') Geography
           .col-lg-10
-            textarea#txt-description.form-control(placeholder='Some stuff....', ng-model='description', required='required')
+            .btn-group
+              button#btn-geography.btn.btn-default(type="button") 1
+              button.btn.btn-default(type="button") 2
+              button.btn.btn-default(type="button") 3
             span.help-block
               | A longer block of help text that breaks onto a new line and may extend beyond one line.
         .form-group
