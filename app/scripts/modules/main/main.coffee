@@ -13,7 +13,7 @@ App = angular.module('app', [
   'restangular'
 ])
 
-App.config(($routeProvider, $locationProvider, RestangularProvider) ->
+App.config(($routeProvider) ->
   $routeProvider
   .when('/todo', {templateUrl: '/_public/js/todo/todo.html'})
   .when('/view1', {templateUrl: '/_public/js/main/partial1.html'})
@@ -21,10 +21,14 @@ App.config(($routeProvider, $locationProvider, RestangularProvider) ->
   .when('/search', {templateUrl: '/_public/js/search/start.html'})
   # Catch all
   .otherwise({redirectTo: '/todo'})
+)
 
+App.config(($locationProvider) ->
   # Without server side support html5 must be disabled.
   $locationProvider.html5Mode(true)
+)
 
+App.config((RestangularProvider) ->
   RestangularProvider.setBaseUrl('http://localhost:8000/api/')
 
   # This function is used to map the JSON data to something Restangular expects
