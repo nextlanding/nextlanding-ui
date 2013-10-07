@@ -3,7 +3,7 @@
 ### Controllers ###
 
 angular.module('search.controllers')
-.controller('SearchWizardCtrl', ($scope, $http) ->
+.controller('SearchWizardCtrl', ($scope, $http, Restangular) ->
     $scope.steps = [
       'locationStep'
       'geographyStep'
@@ -20,16 +20,8 @@ angular.module('search.controllers')
       nextStep = $scope.steps.indexOf($scope.currentStep) + 1
 
       if $scope.steps.length == nextStep
-        # this callback will be called asynchronously
-        # when the response is available
-        $http(
-          method: "GET"
-          url: "http://localhost:8000/api/search/"
-        ).success((data, status, headers, config) ->
-          console.log data
-        ).error (data, status, headers, config) ->
-          # called asynchronously if an error occurs
-          # or server returns response with an error status.
+        baseSearches = Restangular.all('search')
+        baseSearches.getList().then -> console.log(args)
       else
         $scope.currentStep = $scope.steps[ nextStep]
 
