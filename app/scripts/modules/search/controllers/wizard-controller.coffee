@@ -9,7 +9,7 @@ angular.module('search.controllers')
       'geographyStep'
       'descriptionStep'
     ]
-
+    $scope.search = {}
     #set initial step
     $scope.currentStep = $scope.steps[0]
 
@@ -20,6 +20,7 @@ angular.module('search.controllers')
       nextStep = $scope.steps.indexOf($scope.currentStep) + 1
 
       if $scope.steps.length == nextStep
+        console.log($scope.search)
         baseSearches = Restangular.all('search')
         baseSearches.getList().then (search) -> console.log(search)
       else
