@@ -21,8 +21,10 @@ angular.module('search.controllers')
 
       if $scope.steps.length == nextStep
         console.log($scope.search)
-        baseSearches = Restangular.all('search')
-        baseSearches.getList().then (search) -> console.log(search)
+        baseSearches = Restangular.all('search/init')
+        baseSearches.getList()
+        baseSearches.post($scope.search).then -> console.log(arguments)
+#        baseSearches.getList().then (search) -> console.log(search)
       else
         $scope.currentStep = $scope.steps[ nextStep]
 

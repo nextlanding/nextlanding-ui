@@ -2,7 +2,7 @@
 
 ### Controllers ###
 
-angular.module('apartments.controllers')
+angular.module('apartment.controllers')
   .controller('AptListCtrl', ($scope) ->
     $scope.apartments = [
       address: "123 Fake Street"
