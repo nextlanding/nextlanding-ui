@@ -6,7 +6,7 @@ div.row(ng-show="currentStep=='locationStep'")
         .form-group
           label.col-lg-2.control-label(for='input-location') Location
           .col-lg-10
-            input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.specified_location', required='required')
+            input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required='required')
             span.help-block
               | A longer block of help text that breaks onto a new line and may extend beyond one line.
         .form-group
