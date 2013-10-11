@@ -2,7 +2,7 @@
 
 App = angular.module('app', [
   'todo'
-  'apartments'
+  'apartment'
   'search'
   'main.controllers'
   'main.directives'
@@ -29,7 +29,11 @@ App.config(($locationProvider) ->
 )
 
 App.config((RestangularProvider) ->
-  RestangularProvider.setBaseUrl('http://localhost:8000/api/')
+  RestangularProvider.setBaseUrl 'http://localhost:8000/api/'
+  RestangularProvider.setDefaultHttpFields
+    withCredentials: true
+
+
 
   # This function is used to map the JSON data to something Restangular expects
   # http://stackoverflow.com/a/17386402/173957
