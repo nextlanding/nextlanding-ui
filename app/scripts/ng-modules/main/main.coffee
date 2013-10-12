@@ -4,13 +4,13 @@ App = angular.module('app', [
   'todo'
   'apartment'
   'search'
+  'googleMaps'
   'main.controllers'
   'main.directives'
   'main.filters'
   'main.services'
   'partials'
   'ngRoute'
-  'restangular'
 ])
 
 App.config(($routeProvider) ->

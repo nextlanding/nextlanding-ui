@@ -1,6 +1,19 @@
 'use strict'
 
-window.onGoogleReady = ->
-  angular.bootstrap document.getElementById "map", ["app.ui-map"]
+# Declare app level module which depends on filters, and services
+search = angular.module('googleMaps', [
+  'googleMaps.controllers'
+  'googleMaps.directives'
+  'googleMaps.filters'
+  'googleMaps.services'
+  'ui.map'
+])
 
-angular.module 'app.ui-map', ['ui.map']
+angular.module('googleMaps.controllers', [])
+angular.module('googleMaps.directives', [])
+angular.module('googleMaps.filters', [])
+angular.module('googleMaps.services', [])
+
+
+window.onGoogleReady = ->
+  angular.bootstrap document, ["app"]

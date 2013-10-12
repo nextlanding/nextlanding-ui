@@ -1,7 +1,7 @@
 !!!5
 //- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 - var beg = '<html class="no-js'
-- var end = '" lang="en" ng-app="app">'
+- var end = '" lang="en">'
 
 //if lte IE 7
   script(src='http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
@@ -54,6 +54,8 @@ body(ng-controller='AppCtrl')
         div(ng-include="'/_public/js/main/nav.html'")
   .main-content
     div(ng-view)
+    section#map(ng-controller='MapCtrl')
+      .map-canvas(ui-map='myMap', ui-options='mapOptions')
     div Angular Brunch seed app: v<span app-version></span>
     footer.footer
       p

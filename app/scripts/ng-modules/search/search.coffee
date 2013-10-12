@@ -6,6 +6,7 @@ search = angular.module('search', [
   'search.directives'
   'search.filters'
   'search.services'
+  'restangular'
 ])
 
 angular.module('search.controllers', [])
