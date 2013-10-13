@@ -13,7 +13,3 @@ angular.module('googleMaps.controllers', [])
 angular.module('googleMaps.directives', [])
 angular.module('googleMaps.filters', [])
 angular.module('googleMaps.services', [])
-
-
-window.onGoogleReady = ->
-  angular.bootstrap document, ["app"]

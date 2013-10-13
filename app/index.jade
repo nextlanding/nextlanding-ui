@@ -1,7 +1,7 @@
 !!!5
 //- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 - var beg = '<html class="no-js'
-- var end = '" lang="en">'
+- var end = '" lang="en" ng-app="app">'
 
 //if lte IE 7
   script(src='http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
@@ -62,8 +62,8 @@ body(ng-controller='AppCtrl')
         small
           a(href='https://github.com/scotch/angular-brunch-seed') angular-brunch-seed | source
   //- JavaScript at the bottom for fast page loading
+  script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false')
   script(src='/js/vendor.js')
   script(src='/js/templates.js')
   script(src='/js/app.js')
-  script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady')
 
