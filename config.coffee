@@ -2,7 +2,7 @@ exports.config =
 # See docs at http://brunch.readthedocs.org/en/latest/config.html.
   conventions:
     assets: /^app\/assets\//
-    vendor: (path) -> true #hack to force brunch-coffeescript to wrap anonymous functions
+    vendor: -> true #hack to force brunch-coffeescript to wrap anonymous functions
   modules:
     definition: false
     wrapper: false
