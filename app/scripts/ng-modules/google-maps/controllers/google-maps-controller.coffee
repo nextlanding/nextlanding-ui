@@ -1,7 +1,10 @@
 'use strict'
 
 angular.module('googleMaps.controllers')
-.controller "MapCtrl", ($scope) ->
+.controller "SearchMapCtrl", ($scope) ->
+    $scope.$watch('currentStep',(newVal) ->
+      if newVal is 'geographyStep' then $scope.$broadcast("map:shown")
+    )
     $scope.mapOptions =
       center: new google.maps.LatLng(40.714224, -73.961452)
       mapTypeId: google.maps.MapTypeId.ROADMAP,

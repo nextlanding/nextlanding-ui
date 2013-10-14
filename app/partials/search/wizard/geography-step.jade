@@ -4,8 +4,8 @@ div.row(ng-show="currentStep=='geographyStep'")
       fieldset
         legend Step 2 - Geography
         .col-lg-10
-          section#map(ng-controller='MapCtrl')
-            .map-canvas(ui-map='myMap', ui-options='mapOptions', google-maps-drawabble-map,
+          section#map(ng-controller='SearchMapCtrl')
+            .map-canvas(ui-map='myMap', ui-options='mapOptions', google-maps-drawabble-map,google-maps-resizable-map,
             ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)'}"
             )
           span.help-block
