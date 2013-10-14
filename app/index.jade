@@ -54,15 +54,17 @@ body(ng-controller='AppCtrl')
         div(ng-include="'/_public/js/main/nav.html'")
   .main-content
     div(ng-view)
-    section#map(ng-controller='MapCtrl')
-      .map-canvas(ui-map='myMap', ui-options='mapOptions')
+    section#map(ng-controller='MapCtrl', ng-init="xyz=1")
+      .map-canvas(ui-map='myMap', ui-options='mapOptions', google-maps-drawabble-map,
+        ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)'}"
+      )
     div Angular Brunch seed app: v<span app-version></span>
     footer.footer
       p
         small
           a(href='https://github.com/scotch/angular-brunch-seed') angular-brunch-seed | source
   //- JavaScript at the bottom for fast page loading
-  script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false')
+  script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing')
   script(src='/js/vendor.js')
   script(src='/js/templates.js')
   script(src='/js/app.js')

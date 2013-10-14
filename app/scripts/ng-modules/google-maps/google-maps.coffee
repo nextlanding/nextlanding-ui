@@ -10,6 +10,6 @@ search = angular.module('googleMaps', [
 ])
 
 angular.module('googleMaps.controllers', [])
-angular.module('googleMaps.directives', [])
+angular.module('googleMaps.directives', ['ui.map'])
 angular.module('googleMaps.filters', [])
 angular.module('googleMaps.services', [])
