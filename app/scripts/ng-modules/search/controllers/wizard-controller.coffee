@@ -44,4 +44,4 @@ angular.module('search.controllers')
     saveSearchToScope = (search,scope)->
       search.search_attrs = angular.fromJson search.search_attrs
       scope.search = search
-  )
+      )

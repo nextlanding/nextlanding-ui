@@ -6,7 +6,6 @@ angular.module('googleMaps.directives')
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
       map = scope[attrs.uiMap]
-      scope.$on("map:shown", (event, args)->
+      scope.$on("map:ui:shown", (event, args)->
         google.maps.event.trigger(map, 'resize')
       )
-

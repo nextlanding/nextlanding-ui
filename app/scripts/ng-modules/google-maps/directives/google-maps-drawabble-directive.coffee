@@ -6,27 +6,27 @@ angular.module('googleMaps.directives')
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
       map = scope[attrs.uiMap]
-      drawingManager = new google.maps.drawing.DrawingManager(
+
+      polygonOptions =
+        fillColor: "#0076BF"
+        fillOpacity: 0.3
+        strokeColor: "#0076BF"
+        strokeOpacity: 0.5
+        strokeWeight: 2
+        clickable: false
+        zIndex: 1
+        editable: true
+
+      drawingManager = new google.maps.drawing.DrawingManager
         drawingMode: google.maps.drawing.OverlayType.POLYGON
         drawingControl: true
         drawingControlOptions:
           position: google.maps.ControlPosition.TOP_CENTER
           drawingModes: [google.maps.drawing.OverlayType.POLYGON]
-
-        polygonOptions:
-          fillColor: "#0076BF"
-          fillOpacity: 0.3
-          strokeColor: "#0076BF"
-          strokeOpacity: 0.5
-          strokeWeight: 2
-          clickable: false
-          zIndex: 1
-          editable: true
-      )
+        polygonOptions: polygonOptions
 
       drawingManager.setMap map
 
-      #region events
       eventName = 'polygoncomplete'
       google.maps.event.addListener drawingManager, eventName, (event) ->
         elm.triggerHandler "map-" + eventName, event
@@ -35,4 +35,16 @@ angular.module('googleMaps.directives')
         #We don't want to use timeout because tons of these events fire at once,
         #and we only need one $apply
         scope.$apply()  unless scope.$$phase
-      #endregion events
+
+      offDataRetrieved =
+        scope.$on "map:data:retrieved", (event, args)->
+          angular.forEach args, (value, key) ->
+            paths = (new google.maps.LatLng(p[0], p[1]) for p in value)
+            new google.maps.Polygon angular.extend
+                paths: paths
+                map:map
+                ,
+                polygonOptions
+
+          #we only want to be notified the first time we've gotten map data
+          offDataRetrieved()

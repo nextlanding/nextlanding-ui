@@ -2,13 +2,18 @@
 
 angular.module('googleMaps.controllers')
 .controller "SearchMapCtrl", ($scope) ->
-    $scope.$watch('currentStep',(newVal) ->
-      if newVal is 'geographyStep' then $scope.$broadcast("map:shown")
+    $scope.$watch('currentStep', (newVal) ->
+      $scope.$broadcast("map:ui:shown") if newVal is 'geographyStep'
     )
+
+    $scope.$watch('search', (search) ->
+      $scope.$broadcast("map:data:retrieved", search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
+    )
+
     $scope.mapOptions =
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+      panControl: false
       center: new google.maps.LatLng(40.714224, -73.961452)
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      panControl: false,
       zoom: 12
 
     $scope.addDesiredHomeArea = ($event, $params) ->
