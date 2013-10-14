@@ -3,15 +3,13 @@ div.row(ng-show="currentStep=='geographyStep'")
     .well
       fieldset
         legend Step 2 - Geography
-        .form-group
-          label.col-lg-2.control-label(for='btn-geography') Geography
-          .col-lg-10
-            .btn-group
-              button#btn-geography.btn.btn-default(type="button") 1
-              button.btn.btn-default(type="button") 2
-              button.btn.btn-default(type="button") 3
-            span.help-block
-              | A longer block of help text that breaks onto a new line and may extend beyond one line.
+        .col-lg-10
+          section#map(ng-controller='MapCtrl')
+            .map-canvas(ui-map='myMap', ui-options='mapOptions', google-maps-drawabble-map,
+            ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)'}"
+            )
+          span.help-block
+            | A longer block of help text that breaks onto a new line and may extend beyond one line.
         .form-group
           .col-lg-10.col-lg-offset-2
             button.btn.btn-warn(ng-click='retreat()') Prev

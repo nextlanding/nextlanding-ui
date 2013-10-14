@@ -54,10 +54,6 @@ body(ng-controller='AppCtrl')
         div(ng-include="'/_public/js/main/nav.html'")
   .main-content
     div(ng-view)
-    section#map(ng-controller='MapCtrl', ng-init="xyz=1")
-      .map-canvas(ui-map='myMap', ui-options='mapOptions', google-maps-drawabble-map,
-        ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)'}"
-      )
     div Angular Brunch seed app: v<span app-version></span>
     footer.footer
       p

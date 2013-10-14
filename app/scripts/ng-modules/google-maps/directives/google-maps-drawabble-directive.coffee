@@ -6,6 +6,7 @@ angular.module('googleMaps.directives')
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
       map = scope[attrs.uiMap]
+      window.map = map
       drawingManager = new google.maps.drawing.DrawingManager(
         drawingMode: google.maps.drawing.OverlayType.POLYGON
         drawingControl: true
