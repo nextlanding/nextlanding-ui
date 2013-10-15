@@ -18,8 +18,11 @@ angular.module('googleMaps.controllers')
 
     $scope.addDesiredHomeArea = ($event, $params) ->
       #first get a list of boundary paths
-      #any given boundary path can have sever points and each point is a lat/lng
-      boundList = ([point.lat(), point.lng()] for point,i in path.getArray() for path in $event.getPaths().getArray())
+      #any given boundary path can have several points and each point is a lat/lng
+      debugger
+      $scope.pathList ||= []
+      $scope.pathList.push $event.getPath().getArray()
+      boundList = ([point.lat(), point.lng()] for point in path for path in $scope.pathList)
 
       #the api expects a hash of boundary paths
       # {

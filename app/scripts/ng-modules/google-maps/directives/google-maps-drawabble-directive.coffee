@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('googleMaps.directives')
-.directive "googleMapsDrawabbleMap", ->
+.directive "googleMapsDrawabbleMap", (googleMapsService) ->
     restrict: "A"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
@@ -36,15 +36,21 @@ angular.module('googleMaps.directives')
         #and we only need one $apply
         scope.$apply()  unless scope.$$phase
 
+
       offDataRetrieved =
         scope.$on "map:data:retrieved", (event, args)->
+          polygonList = []
+
           angular.forEach args, (value, key) ->
             paths = (new google.maps.LatLng(p[0], p[1]) for p in value)
             new google.maps.Polygon angular.extend
-                paths: paths
-                map:map
-                ,
-                polygonOptions
+              paths: paths
+              map: map,
+              polygonOptions
+
+            polygonList.push paths
+
+          scope.bounds = googleMapsService.getBoundsFromPolygons(polygonList...)
 
           #we only want to be notified the first time we've gotten map data
           offDataRetrieved()
