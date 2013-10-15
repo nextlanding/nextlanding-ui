@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('googleMaps.controllers')
-.controller "SearchMapCtrl", ($scope) ->
+.controller "SearchMapCtrl", ($scope,googleMaps) ->
     $scope.$watch('currentStep', (newVal) ->
       $scope.$broadcast("map:ui:shown") if newVal is 'geographyStep'
     )
@@ -11,15 +11,14 @@ angular.module('googleMaps.controllers')
     )
 
     $scope.mapOptions =
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: googleMaps.MapTypeId.ROADMAP
       panControl: false
-      center: new google.maps.LatLng(40.714224, -73.961452)
+      center: new googleMaps.LatLng(40.714224, -73.961452)
       zoom: 12
 
     $scope.addDesiredHomeArea = ($event, $params) ->
       #first get a list of boundary paths
       #any given boundary path can have several points and each point is a lat/lng
-      debugger
       $scope.pathList ||= []
       $scope.pathList.push $event.getPath().getArray()
       boundList = ([point.lat(), point.lng()] for point in path for path in $scope.pathList)

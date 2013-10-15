@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('googleMaps.directives')
-.directive "googleMapsDrawabbleMap", (googleMapsService) ->
+.directive "googleMapsDrawabbleMap", (googleMaps, googleMapsService) ->
     restrict: "A"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
@@ -17,18 +17,18 @@ angular.module('googleMaps.directives')
         zIndex: 1
         editable: true
 
-      drawingManager = new google.maps.drawing.DrawingManager
-        drawingMode: google.maps.drawing.OverlayType.POLYGON
+      drawingManager = new googleMaps.drawing.DrawingManager
+        drawingMode: googleMaps.drawing.OverlayType.POLYGON
         drawingControl: true
         drawingControlOptions:
-          position: google.maps.ControlPosition.TOP_CENTER
-          drawingModes: [google.maps.drawing.OverlayType.POLYGON]
+          position: googleMaps.ControlPosition.TOP_CENTER
+          drawingModes: [googleMaps.drawing.OverlayType.POLYGON]
         polygonOptions: polygonOptions
 
       drawingManager.setMap map
 
       eventName = 'polygoncomplete'
-      google.maps.event.addListener drawingManager, eventName, (event) ->
+      googleMaps.event.addListener drawingManager, eventName, (event) ->
         elm.triggerHandler "map-" + eventName, event
 
         #We create an $apply if it isn't happening. we need better support for this
@@ -42,8 +42,8 @@ angular.module('googleMaps.directives')
           polygonList = []
 
           angular.forEach args, (value, key) ->
-            paths = (new google.maps.LatLng(p[0], p[1]) for p in value)
-            new google.maps.Polygon angular.extend
+            paths = (new googleMaps.LatLng(p[0], p[1]) for p in value)
+            new googleMaps.Polygon angular.extend
               paths: paths
               map: map,
               polygonOptions
