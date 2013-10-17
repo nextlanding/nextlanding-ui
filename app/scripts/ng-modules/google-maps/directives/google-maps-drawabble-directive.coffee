@@ -50,6 +50,9 @@ angular.module('googleMaps.directives')
 
             polygonList.push paths
 
+          # this directive will not force the map to actually "re-paint" itself with the boundaries
+          # that's the responsiblity of the RepaintableMapDirective. The google map has some conditions in which it must
+          # be a visible DOM element to correctly resize itself.
           scope.bounds = googleMapsService.getBoundsFromPolygons(polygonList...)
 
           #we only want to be notified the first time we've gotten map data

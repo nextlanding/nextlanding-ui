@@ -10,6 +10,8 @@ angular.module('googleMaps.controllers')
       $scope.$broadcast("map:data:retrieved", search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
     )
 
+    # FYI - I don't really know why the UI guys decided to have the controller be responsible for the map settings
+    # as this seems like more of a directive concern...
     $scope.mapOptions =
       mapTypeId: googleMaps.MapTypeId.ROADMAP
       panControl: false
