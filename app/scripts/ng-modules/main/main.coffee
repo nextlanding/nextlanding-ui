@@ -28,8 +28,8 @@ App.config(($locationProvider) ->
   $locationProvider.html5Mode(true)
 )
 
-App.config((RestangularProvider) ->
-  RestangularProvider.setBaseUrl 'http://localhost:8000/api/'
+App.config((RestangularProvider, MainConfig) ->
+  RestangularProvider.setBaseUrl MainConfig.API_ENDPOINT
   RestangularProvider.setDefaultHttpFields
     withCredentials: true
 

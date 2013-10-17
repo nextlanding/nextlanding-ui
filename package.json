@@ -33,6 +33,8 @@
 
     "jade-angularjs-brunch2": "~1.6.1",
 
+    "process-env-brunch": "1.4.4-d",
+
     "karma": "~0.9.4",
     "karma-coffee-preprocessor": "~0.0.2",
     "karma-ng-scenario": "~0.0.2"
