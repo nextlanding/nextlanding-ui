@@ -12,22 +12,26 @@ ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 SOURCE_DIR = os.path.join(ROOT_DIR, '_public')
 DEST_DIR = os.path.join(ROOT_DIR, '_out')
 
-public_assets_config = (
-  lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),
-)
 
-#defines where files will be emitted
-env = Environment(DEST_DIR, public_assets=public_assets_config)
-env.finders.register(FileSystemFinder([SOURCE_DIR]))
-env.register_defaults()
-
-if __name__ == '__main__':
-  env.save()
-  manifest = env.manifest
-  for k, v in env.manifest.files.items():
+def delete_unused_files(manifest):
+  for k, v in manifest.files.items():
     if k.endswith('html'):
       path = os.path.join(DEST_DIR, v)
     else:
       path = os.path.join(DEST_DIR, k)
 
     os.remove(path)
+
+
+if __name__ == '__main__':
+  public_assets_config = (
+    lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),
+  )
+
+  #defines where files will be emitted
+  env = Environment(DEST_DIR, public_assets=public_assets_config)
+  env.finders.register(FileSystemFinder([SOURCE_DIR]))
+  env.register_defaults()
+
+  env.save()
+  delete_unused_files(env.manifest)
