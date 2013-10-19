@@ -2,6 +2,7 @@ exports.config =
 # See docs at http://brunch.readthedocs.org/en/latest/config.html.
   conventions:
     assets: /^app\/assets\//
+    vendor: -> true #hack to force brunch-coffeescript to wrap anonymous functions
   modules:
     definition: false
     wrapper: false
@@ -16,6 +17,14 @@ exports.config =
           and path.indexOf("modernizr") is -1
         'js/modernizr.js': (path) ->
           path.indexOf('modernizr') isnt -1
+      order:
+        before:[
+          'app/scripts/ng-modules/main/main.coffee'
+          'app/scripts/ng-modules/apartment/apartment.coffee'
+          'app/scripts/ng-modules/todo/todo.coffee'
+          'app/scripts/ng-modules/search/search.coffee'
+          'app/scripts/ng-modules/google-maps/google-maps.coffee'
+        ]
     stylesheets:
       joinTo:
         'css/app.css': /^app/

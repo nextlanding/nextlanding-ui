@@ -1,0 +1,15 @@
+.container
+  div(ng-controller='AptListCtrl')
+    #banner.page-header
+      .row
+        .col-md-12
+          h1 Apartment List
+    .bs-docs-section
+      .row
+        .col-lg-4
+          h2 apartmetn 1
+      .row
+        .col-lg-4
+          h2 apartmetn 1
+      .row(ng-repeat='apt in apartments')
+        h2 {{ apt.address }}
