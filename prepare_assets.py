@@ -31,12 +31,17 @@ def delete_unused_files(manifest):
 
 def reference_fingerprinted_files(env):
   filename = os.path.join(env.root, 'index.html')
-  soup = BeautifulSoup(open(filename))
+
+  # lxml does a better job of closing tags correctly when using jade
+  # jade doesn't close meta, link tags, etc and the default BS HTML parser gets confused and produces unmatched tags
+  soup = BeautifulSoup(open(filename), 'lxml')
+
   assets_to_rewrite = soup.findAll('script') + soup.findAll('link', {'rel': 'stylesheet'})
 
   for asset in assets_to_rewrite:
     path_type = 'src'
     path = asset.get(path_type)
+
     if not path:
       path_type = 'href'
       path = asset.get(path_type)
@@ -48,13 +53,14 @@ def reference_fingerprinted_files(env):
       asset[path_type] = fingerprint_path
 
   with open(filename, 'wb') as f:
-    f.write(unicode(soup))
+    f.write(unicode(soup.prettify()))
 
 if __name__ == '__main__':
   #defines where files will be emitted
   env = Environment(DEST_DIR, public_assets=(
     lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),)
   )
+
   env.finders.register(FileSystemFinder([SOURCE_DIR]))
   env.register_defaults()
 
