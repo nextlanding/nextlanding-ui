@@ -18,7 +18,7 @@ DEST_DIR = os.path.join(ROOT_DIR, '_out')
 
 def delete_unused_files(manifest):
   for k, v in manifest.files.items():
-    if k.endswith('html'):
+    if k.endswith('html') or k.startswith('fonts'):
       #don't use the fingerprinted html files
       path = os.path.join(DEST_DIR, v)
     else:
@@ -58,7 +58,8 @@ def reference_fingerprinted_files(env):
 if __name__ == '__main__':
   #defines where files will be emitted
   env = Environment(DEST_DIR, public_assets=(
-    lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),)
+    lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),
+    lambda path: any(path.startswith(ext) for ext in ('fonts')))
   )
 
   env.finders.register(FileSystemFinder([SOURCE_DIR]))
