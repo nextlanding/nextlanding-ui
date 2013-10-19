@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 
 from bs4 import BeautifulSoup
 from gears.environment import Environment
@@ -57,7 +58,15 @@ def reference_fingerprinted_files(env):
   with open(filename, 'wb') as f:
     f.write(unicode(soup.prettify()))
 
+
+def delete_dest():
+  if os.path.exists(DEST_DIR):
+    shutil.rmtree(DEST_DIR)
+
 if __name__ == '__main__':
+  #clean slate
+  delete_dest()
+
   #defines where files will be emitted
   env = Environment(DEST_DIR, public_assets=(
     lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),
