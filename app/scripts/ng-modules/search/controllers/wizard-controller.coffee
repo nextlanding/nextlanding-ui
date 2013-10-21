@@ -3,7 +3,7 @@
 ### Controllers ###
 
 angular.module('search.controllers')
-.controller('SearchWizardCtrl', ($scope, $http, Restangular) ->
+.controller 'SearchWizardCtrl', ($scope, $http, Restangular, MainConfig) ->
     searchInitResource = Restangular.one('search/init')
 
     $scope.search = {} #create parent-level search
@@ -12,7 +12,10 @@ angular.module('search.controllers')
       'locationStep'
       'geographyStep'
       'descriptionStep'
+      'paymentStep'
     ]
+
+    $scope.stripeKey = MainConfig.STRIPE_PUBLIC_KEY
 
     $scope.currentStep = $scope.steps[0]
 
@@ -41,7 +44,6 @@ angular.module('search.controllers')
     $scope.retreat = ->
       $scope.currentStep = $scope.steps[$scope.steps.indexOf($scope.currentStep) - 1]
 
-    saveSearchToScope = (search,scope)->
+    saveSearchToScope = (search, scope)->
       search.search_attrs = angular.fromJson search.search_attrs
       scope.search = search
-      )

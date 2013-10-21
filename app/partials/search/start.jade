@@ -8,10 +8,9 @@
       ng-include(src="'/_public/js/search/wizard/location-step.html'")
       ng-include(src="'/_public/js/search/wizard/geography-step.html'")
       ng-include(src="'/_public/js/search/wizard/description-step.html'")
+      ng-include(src="'/_public/js/search/wizard/payment-step.html'")
       div
         | Validation status:
         div  Whole form valid? {{searchForm.$valid}}
         div  Step1 valid? {{locationStepForm.$valid}}
         div  Step2 valid? {{geographyStepForm.$valid}}
-  .row(ng-repeat='apt in apartments')
-    h2 {{ apt.address }}

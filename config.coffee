@@ -19,6 +19,8 @@ exports.config =
           path.indexOf('modernizr') isnt -1
       order:
         before:[
+          #jquery must be loaded before angular otherwise jqLite will be used
+          'bower_components/jquery/jquery.js'
           'app/scripts/ng-modules/main/main.coffee'
           'app/scripts/ng-modules/apartment/apartment.coffee'
           'app/scripts/ng-modules/todo/todo.coffee'

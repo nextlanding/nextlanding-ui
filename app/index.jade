@@ -60,8 +60,8 @@ body(ng-controller='AppCtrl')
         small
           a(href='https://github.com/scotch/angular-brunch-seed') angular-brunch-seed | source
   //- JavaScript at the bottom for fast page loading
+  //- Google map must be loaded first because the ng-google-map-service assumes the google object is available
   script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing')
   script(src='js/vendor.js')
   script(src='js/templates.js')
   script(src='js/app.js')
-
