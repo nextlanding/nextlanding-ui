@@ -26,6 +26,7 @@ exports.config =
           'app/scripts/ng-modules/todo/todo.coffee'
           'app/scripts/ng-modules/search/search.coffee'
           'app/scripts/ng-modules/google-maps/google-maps.coffee'
+          'app/scripts/ng-modules/stripe/stripe.coffee'
         ]
     stylesheets:
       joinTo:

@@ -11,6 +11,7 @@ App = angular.module('app', [
   'main.services'
   'partials'
   'ngRoute'
+  'stripe'
 ])
 
 App.config(($routeProvider) ->
