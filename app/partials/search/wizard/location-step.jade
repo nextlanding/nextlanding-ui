@@ -11,4 +11,6 @@ div.row(ng-show="currentStep=='locationStep'")
               | A longer block of help text that breaks onto a new line and may extend beyond one line.
         .form-group
           .col-lg-10.col-lg-offset-2
-            button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()') Next
+            //- the type must be button or it will trigger a submit event
+            //- http://stackoverflow.com/a/15314160/173957
+            button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next

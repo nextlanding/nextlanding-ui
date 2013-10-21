@@ -12,5 +12,5 @@ div.row(ng-show="currentStep=='geographyStep'")
             | A longer block of help text that breaks onto a new line and may extend beyond one line.
         .form-group
           .col-lg-10.col-lg-offset-2
-            button.btn.btn-warn(ng-click='retreat()') Prev
-            button.btn.btn-primary(ng-disabled='!geographyStepForm.$valid', ng-click='proceed()') Next
+            button.btn.btn-warn(ng-click='retreat()',type='button') Prev
+            button.btn.btn-primary(ng-disabled='!geographyStepForm.$valid', ng-click='proceed()',type='button') Next

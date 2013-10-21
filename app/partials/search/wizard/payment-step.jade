@@ -6,9 +6,10 @@ div.row(ng-show="currentStep=='paymentStep'")
         .form-group
           label.col-lg-2.control-label(for='input-description') Payment
           .col-lg-10
+            stripe-checkout(alert-text='hi!!!!')
             span.help-block
               | A longer block of help text that breaks onto a new line and may extend beyond one line.
         .form-group
           .col-lg-10.col-lg-offset-2
-            button.btn.btn-warn(ng-click='retreat()') Prev
-            button.btn.btn-primary(ng-disabled='!paymentStepForm.$valid', ng-click='proceed()') Next
+            button.btn.btn-warn(ng-click='retreat()',type='button') Prev
+            button.btn.btn-primary(ng-disabled='!paymentStepForm.$valid', ng-click='proceed()',type='button') Next
