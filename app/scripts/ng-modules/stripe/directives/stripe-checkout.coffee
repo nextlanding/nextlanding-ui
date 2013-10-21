@@ -1,22 +1,22 @@
 'use strict'
 
 angular.module('stripe.directives')
-.directive "stripeCheckout", (Stripe, MainConfig) ->
-    restrict: 'E'
-    replace: true
-    template: "<div></div>"
+.directive "stripeCheckout", (StripeCheckout, MainConfig) ->
+    restrict: 'A'
+    transclude: false
     scope:
-      amount: '@',
-      description: '@',
-      image: '@',
+      amount: '@'
+      description: '@'
+      image: '@'
+      paymentCallback: '&'
     link: (scope, elem, attrs) ->
-      scriptString = "<script src='https://checkout.stripe.com/v2/checkout.js' class='stripe-button'
-                      data-key='#{MainConfig.STRIPE_PUBLIC_KEY}'
-                      data-amount='#{scope.amount}'
-                      data-name='Nextlanding'
-                      data-description='#{scope.description}'
-                      data-currency='usd'
-                      data-image='#{scope.image}'>
-                      </script>"
-
-      elem.append scriptString
+      elem.on 'click', ->
+        StripeCheckout.open
+          key: MainConfig.STRIPE_PUBLIC_KEY
+          amount: scope.amount
+          currency: 'usd'
+          name: 'Nextlanding'
+          description: scope.description
+          image: scope.image
+          token: (token) ->
+            scope.paymentCallback token:token
