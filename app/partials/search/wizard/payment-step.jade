@@ -6,7 +6,11 @@ div.row(ng-show="currentStep=='paymentStep'")
         .form-group
           label.col-lg-2.control-label(for='input-description') Payment
           .col-lg-10
-            stripe-checkout(alert-text='hi!!!!')
+            stripe-checkout(
+              amount='3500'
+              description='Nextlanding Search ($35.00)'
+              image='https://stripe.com/img/documentation/checkout/marketplace.png'
+            )
             span.help-block
               | A longer block of help text that breaks onto a new line and may extend beyond one line.
         .form-group
