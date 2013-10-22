@@ -21,13 +21,9 @@ App.config ($stateProvider, $urlRouterProvider) ->
   $stateProvider.state "home",
     url: "/"
     templateUrl: "/_public/js/main/home.html"
-
-
-#  $routeProvider
-#  .when('/view1', {templateUrl: '/_public/js/main/partial1.html'})
-#  .when('/list', {templateUrl: '/_public/js/apartments/list.html'})
-#  .when('/search', {templateUrl: '/_public/js/search/start.html'})
-#  # Catch all
+  .state "search",
+    url: "/search"
+    templateUrl: "/_public/js/search/start.html"
 
 
 App.config(($locationProvider) ->
