@@ -6,7 +6,7 @@ s3_bucket: <%= ENV['AWS_STORAGE_BUCKET_NAME'] %>
 # See README for more detailed info on each of them.
 
 max_age:
-  "index.html":
+  "index.html": 0
   "*": <%= 60 * 60 * 24 * 365 %> #one year
 
 gzip: true
