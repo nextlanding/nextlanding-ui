@@ -12,17 +12,23 @@ App = angular.module('app', [
   'partials'
   'ngRoute'
   'stripe'
+  'ui.router'
 ])
 
-App.config(($routeProvider) ->
-  $routeProvider
-  .when('/todo', {templateUrl: '/_public/js/todo/todo.html'})
-  .when('/view1', {templateUrl: '/_public/js/main/partial1.html'})
-  .when('/list', {templateUrl: '/_public/js/apartments/list.html'})
-  .when('/search', {templateUrl: '/_public/js/search/start.html'})
-  # Catch all
-  .otherwise({redirectTo: '/todo'})
-)
+App.config ($stateProvider, $urlRouterProvider) ->
+  $urlRouterProvider.otherwise "/"
+
+  $stateProvider.state "home",
+    url: "/"
+    templateUrl: "/_public/js/main/home.html"
+
+
+#  $routeProvider
+#  .when('/view1', {templateUrl: '/_public/js/main/partial1.html'})
+#  .when('/list', {templateUrl: '/_public/js/apartments/list.html'})
+#  .when('/search', {templateUrl: '/_public/js/search/start.html'})
+#  # Catch all
+
 
 App.config(($locationProvider) ->
   # Without server side support html5 must be disabled.
