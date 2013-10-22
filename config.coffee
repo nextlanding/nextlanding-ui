@@ -30,8 +30,12 @@ exports.config =
         ]
     stylesheets:
       joinTo:
-        'css/app.css': /^app/
-        'css/vendor.css': /^(bower_components|vendor)/
+        'css/app.css': /^(app|vendor)/
+      order:
+        before: [
+          #our assets should be loaded before vendor assets so we can override sass variables
+          'app/styles/app.scss'
+        ]
 
     templates:
       joinTo:
