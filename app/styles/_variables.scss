@@ -6,11 +6,17 @@
 // Global values
 // --------------------------------------------------
 
+$broken-white: #F2F2F2;
+$continuum: #C6E269;
+$calm-lime: #90C567;
+$heraklion: #227D7E;
+$sea-jeans: #1B334E;
+
 // Grays
 // -------------------------
 
 $gray-darker:            lighten(#000, 13.5%) !default; // #222
-$gray-dark:              lighten(#000, 20%) !default;   // #333
+$gray-dark:              lighten(#000, 20%) !default;   // $calm-lime
 $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 60%) !default;   // #999
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
@@ -18,8 +24,8 @@ $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 // Brand colors
 // -------------------------
 
-$brand-primary:         #1B334E !default;
-$brand-heading:         #F2F2F2 !default;
+$brand-primary:         $sea-jeans !default;
+$brand-heading:         $broken-white !default;
 $brand-success:         #5cb85c !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
@@ -108,7 +114,7 @@ $table-border-color:                 #ddd !default; // table and cell border
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              #333 !default;
+$btn-default-color:              $calm-lime !default;
 $btn-default-bg:                 #fff !default;
 $btn-default-border:             #ccc !default;
 
@@ -249,7 +255,7 @@ $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2
 
 // Navbar links
 $navbar-default-link-color:                $brand-heading !default;
-$navbar-default-link-hover-color:          #333 !default;
+$navbar-default-link-hover-color:          $calm-lime !default;
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         #555 !default;
 $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
@@ -296,9 +302,9 @@ $navbar-inverse-search-border:              $navbar-inverse-bg !default;
 $navbar-inverse-search-placeholder-color:   #ccc !default;
 
 // Inverted navbar toggle
-$navbar-inverse-toggle-hover-bg:            #333 !default;
+$navbar-inverse-toggle-hover-bg:            $calm-lime !default;
 $navbar-inverse-toggle-icon-bar-bg:         #fff !default;
-$navbar-inverse-toggle-border-color:        #333 !default;
+$navbar-inverse-toggle-border-color:        $calm-lime !default;
 
 
 // Navs
@@ -485,7 +491,7 @@ $list-group-active-bg:        $component-active-bg !default;
 $list-group-active-border:    $list-group-active-bg !default;
 
 $list-group-link-color:          #555 !default;
-$list-group-link-heading-color:  #333 !default;
+$list-group-link-heading-color:  $calm-lime !default;
 
 
 // Panels
