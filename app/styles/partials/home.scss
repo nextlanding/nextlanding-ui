@@ -2,8 +2,10 @@
 
 #home-container {
   .jumbotron {
-    @media screen and (min-width: $screen-tablet) {
-      h1 {
+    h1 {
+      color: $nl-very-bright;
+      text-shadow: 0px 2px 25px $gray-dark;
+      @media screen and (min-width: $screen-tablet) {
         font-size: ($font-size-base * 2.6);
       }
     }
