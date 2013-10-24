@@ -4,10 +4,14 @@
       h1
         span.br-md Save Dozens of Hours
         span  on Your Apartment Search
-      p
-        | This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
-      p
-        a.btn.btn-primary.btn-lg Learn more
+      .row
+        form.form-inline(role='form')
+          .form-group.col-md-4
+            label.sr-only(for='search-location') Search Location
+            input#search-location.form-control(type='text', placeholder='Where do you want to live?')
+          button.btn.btn-primary(type='submit') Search
+
+      h3 Guaranteed results for <span class='price'>$35</span> or your money back.
 
   .container
     #banner.page-header

@@ -2,12 +2,29 @@
 
 #home-container {
   .jumbotron {
-    h1 {
+    background: $nl-very-bright url('http://www.istockphoto.com/image-zoom/8048950/3/380/253/zoom-8048950-3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding-top: 168px;
+    padding-bottom: 168px;
+
+    h1, h3 {
       color: $nl-very-bright;
-      text-shadow: 0px 2px 25px $gray-dark;
+    }
+
+    h1 {
+      text-shadow: 0px 2px 25px rgba(0, 0, 0, 0.4);
+      margin-bottom: 50px;
+
+      //- Responsive
       @media screen and (min-width: $screen-tablet) {
         font-size: ($font-size-base * 2.6);
       }
+    }
+
+    .price {
+      color: $nl-medium-bright;
     }
   }
 }
