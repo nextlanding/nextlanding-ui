@@ -1,0 +1,17 @@
+//
+// Nextlanding Mixins
+// --------------------------------------------------
+
+// Responsive Viewing
+// --------------------------------------------------
+
+//- conditional word wrapping http://www.css-101.org/articles/responsive-line-breaks/wbr-versus-br.php
+//- http://stackoverflow.com/questions/10933837/line-break-like-br-using-only-css
+@mixin conditional-line-break($min-width) {
+  @media (min-width: $min-width) {
+    &:after {
+      content: '\a';
+      white-space: pre;
+    }
+  }
+}

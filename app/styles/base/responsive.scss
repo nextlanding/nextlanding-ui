@@ -1,0 +1,13 @@
+@import "../modules/base_mixins";
+@import "../modules/base_variables";
+@import "../modules/bootstrap_variables";
+
+
+// Conditional viewing classes
+// --------------------------------------------------
+
+//- conditional word wrapping http://www.css-101.org/articles/responsive-line-breaks/wbr-versus-br.php
+//- http://stackoverflow.com/questions/10933837/line-break-like-br-using-only-css
+.br-md{
+  @include conditional-line-break($screen-md);
+}
