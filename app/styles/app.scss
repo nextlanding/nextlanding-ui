@@ -1,5 +1,4 @@
-@import "variables";
-@import "overrides";
+@import "modules/base_variables";
+@import "modules/bootstrap_variables";
+@import "modules/overrides";
 @import "bower_components/sass-bootstrap/lib/bootstrap";
-
-#map, .map-canvas { height: 400px; width:300px; margin: 0; padding: 0  }

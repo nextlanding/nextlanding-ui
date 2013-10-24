@@ -1,0 +1,8 @@
+@import "base";
+
+//- conditional word wrapping http://www.css-101.org/articles/responsive-line-breaks/wbr-versus-br.php
+#welcome-blurb-heading {
+  @media (min-width: $screen-md) {
+    white-space: nowrap;
+  }
+}
