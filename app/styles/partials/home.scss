@@ -1,1 +1,11 @@
 @import "base";
+
+#home-container {
+  .jumbotron {
+    @media screen and (min-width: $screen-tablet) {
+      h1 {
+        font-size: ($font-size-base * 2.6);
+      }
+    }
+  }
+}
