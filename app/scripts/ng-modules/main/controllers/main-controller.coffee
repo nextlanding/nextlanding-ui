@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('main.controllers')
-.controller('AppCtrl', ($scope, $location) ->
+.controller 'AppCtrl', ($scope, $location, MainConfig) ->
 
   # Uses the url to determine if the selected
   # menu item should have the class active.
@@ -9,6 +9,8 @@ angular.module('main.controllers')
   $scope.$watch('$location.path()', (path) ->
     $scope.activeNavId = path || '/'
   )
+
+  $scope.searchPrice = MainConfig.SEARCH_PRICE
 
   # getClass compares the current url with the id.
   # If the current url starts with the id it returns 'active'
@@ -23,4 +25,3 @@ angular.module('main.controllers')
       return 'active'
     else
       return ''
-)
