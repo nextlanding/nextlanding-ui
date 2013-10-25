@@ -4,10 +4,13 @@
   .jumbotron {
     background: $nl-very-bright url('http://www.istockphoto.com/image-zoom/8048950/3/380/253/zoom-8048950-3.jpg');
     background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
 
     padding-top: 168px;
     padding-bottom: 168px;
+
+    margin-bottom: 0;
 
     h1, h3 {
       color: $nl-very-bright;
