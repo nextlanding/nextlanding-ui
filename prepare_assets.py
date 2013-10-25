@@ -63,6 +63,7 @@ def delete_dest():
   if os.path.exists(DEST_DIR):
     shutil.rmtree(DEST_DIR)
 
+
 if __name__ == '__main__':
   #clean slate
   delete_dest()
@@ -70,7 +71,7 @@ if __name__ == '__main__':
   #defines where files will be emitted
   env = Environment(DEST_DIR, public_assets=(
     lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),
-    lambda path: any(path.startswith(ext) for ext in ('fonts')))
+    lambda path: any(path.startswith(ext) for ext in ('fonts', 'images')))
   )
 
   env.finders.register(FileSystemFinder([SOURCE_DIR]))
