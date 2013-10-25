@@ -20,7 +20,7 @@ DEST_DIR = os.path.join(ROOT_DIR, '_out')
 def delete_unused_files(manifest):
   for k, v in manifest.files.items():
 
-    if k.endswith('css') or k.endswith('js'):
+    if any(k.endswith(ext) for ext in ('css', 'js', 'png', 'jpg', 'jpeg')):
       #use the fingerprinted html files
       path = os.path.join(DEST_DIR, k)
     else:
