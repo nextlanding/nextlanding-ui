@@ -2,7 +2,7 @@
 
 #home-container {
   .jumbotron {
-    background: $nl-very-bright url('http://www.istockphoto.com/image-zoom/8048950/3/380/253/zoom-8048950-3.jpg');
+    background: $nl-very-bright url('../images/zoom-8048950-3.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,11 +14,12 @@
 
     h1, h3 {
       color: $nl-very-bright;
+      text-shadow: 0px 2px 18px #000, 0px -3px 6px #000;
     }
 
     h1 {
-      text-shadow: 0px 2px 25px rgba(0, 0, 0, 0.4);
       margin-bottom: 50px;
+      line-height: 120%;
 
       //- Responsive
       @media screen and (min-width: $screen-tablet) {
