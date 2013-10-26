@@ -42,62 +42,70 @@
   .page-header {
     border-bottom: 0;
 
-    h2 {
-      color: $nl-medium-bright;
-
-      //- Responsive
-      @media screen and (min-width: $screen-tablet) {
-        font-size: ($font-size-base * 3.428571428571429);
-      }
-    }
-
-    h3 {
-      color: $nl-medium-bright;
-
-      //- Responsive
-      @media screen and (min-width: $screen-tablet) {
-        font-size: ($font-size-base * 3);
-      }
-    }
-
-    h4 {
-      color: $nl-very-dark;
-
-      //- Responsive
-      @media screen and (min-width: $screen-tablet) {
-        font-size: ($font-size-base * 2.285714285714286);
-      }
-    }
-
     p {
       font-family: $nl-font-family-content;
-      font-size: ($font-size-base * 1.714285714285714);
+      color: $nl-gray;
     }
 
-    .hil-blurb {
+    //- Value proposition
+    &#value-props-section {
+      h2 {
+        color: $nl-medium-bright;
+
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          font-size: ($font-size-base * 3.428571428571429);
+        }
+      }
+
+      p {
+        font-size: ($font-size-base * 1.714285714285714);
+      }
+    }
+
+    //- How it loks
+    &#hil-section {
+      h3 {
+        color: $nl-medium-bright;
+
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          font-size: ($font-size-base * 3);
+        }
+      }
+
+      h4 {
+        color: $nl-very-dark;
+
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          font-size: ($font-size-base * 2.285714285714286);
+        }
+      }
+
       p {
         font-size: ($font-size-base * 1.571428571428571);
       }
-    }
 
-    //- How it works blurbs - Responsive
-    @media screen and (min-width: $screen-lg) {
-      #how-it-looks-img {
-        z-index: -1;
-      }
+      //- How it looks blurbs - Responsive
+      @media screen and (min-width: $screen-lg) {
+        #how-it-looks-img {
+          z-index: -1;
+        }
 
-      #quick-info-heading {
-        top: 150px;
-        left: -95px;
-      }
+        #quick-info-heading {
+          top: 150px;
+          left: -95px;
+        }
 
-      #map-interface-heading {
-        margin-top: 35px;
-        margin-right: -15px;
-      }
+        #map-interface-heading {
+          margin-top: 35px;
+          margin-right: -15px;
+        }
 
-      #listing-info-heading {
-        right: -190px;
+        #listing-info-heading {
+          right: -190px;
+        }
       }
     }
 
@@ -121,6 +129,46 @@
       b {
         font-weight: normal;
         text-decoration: underline;
+      }
+    }
+
+    //- Best stuff
+    &#best-stuff-section {
+      h4 {
+        color: $nl-gray;
+
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          font-size: ($font-size-base * 2.142857142857143);
+        }
+      }
+
+      .best-stuff-image {
+        min-height: 100px;
+        background-repeat: no-repeat;
+      }
+
+      #google-best-stuff {
+        background-image: url('../images/bg/best-stuff.jpg');
+        @media screen and (min-width: $screen-lg) {
+          background-size: 416%;
+        }
+      }
+
+      #nyt-best-stuff {
+        background-image: url('../images/bg/best-stuff.jpg');
+        @media screen and (min-width: $screen-lg) {
+          background-position-x: -187px;
+          background-size: 215.7%;
+        }
+      }
+
+      #lifehacker-best-stuff {
+        background-image: url('../images/bg/best-stuff.jpg');
+        @media screen and (min-width: $screen-lg) {
+          background-position-x: -446px;
+          background-size: 175.4%;
+        }
       }
     }
   }
