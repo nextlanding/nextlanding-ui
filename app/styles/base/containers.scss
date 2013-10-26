@@ -8,7 +8,7 @@
 // --------------------------------------------------
 
 .alt-section{
-  background: $gray-lighter url('../images/handmadepaper.png');
+  background: $gray-lighter url('../bg-images/handmadepaper.png');
   border-bottom: 1px solid $nl-alt-container-bottom;
   @include box-shadow(0px 1px $nl-alt-container-bottom-shaddow);
 }

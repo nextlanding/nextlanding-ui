@@ -71,7 +71,7 @@ if __name__ == '__main__':
   #defines where files will be emitted
   env = Environment(DEST_DIR, public_assets=(
     lambda path: any(path.endswith(ext) for ext in ('.css', '.js', '.html')),
-    lambda path: any(path.startswith(ext) for ext in ('fonts', 'images')))
+    lambda path: any(path.startswith(ext) for ext in ('fonts', 'bg-images')))
   )
 
   env.finders.register(FileSystemFinder([SOURCE_DIR]))
