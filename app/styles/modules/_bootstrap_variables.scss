@@ -41,11 +41,9 @@ $link-hover-color:      darken($link-color, 15%) !default;
 // Typography
 // -------------------------
 
-$font-family-heading:  Montserrat, Helvetica, Arial, sans-serif !default;
-$font-family-content:  "Open Sans", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace !default;
-$font-family-base:        $font-family-heading !default;
+$font-family-base:        $nl-font-family-heading !default;
 
 $font-size-base:          14px !default;
 $font-size-large:         ceil($font-size-base * 1.25) !default; // ~18px

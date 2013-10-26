@@ -23,12 +23,35 @@
 
       //- Responsive
       @media screen and (min-width: $screen-tablet) {
-        font-size: ($font-size-base * 2.6);
+        font-size: ($font-size-base * 4.5);
+      }
+    }
+
+    h3 {
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        font-size: ($font-size-base * 2.5);
       }
     }
 
     .price {
       color: $nl-medium-bright;
+    }
+  }
+
+  .page-header {
+    h2 {
+      color: $nl-medium-bright;
+
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        font-size: ($font-size-base * 3.428571428571429);
+      }
+    }
+
+    p {
+      font-family: $nl-font-family-content;
+      font-size: ($font-size-base * 1.714285714285714);
     }
   }
 }
