@@ -68,15 +68,14 @@
   section.section
     .container
       #best-stuff-section.page-header
-        h4 Nextlanding helps relocate folks at:
-        .row
-          .col-md-2
-            #google-best-stuff.best-stuff-image
-          .col-md-4
-            #nyt-best-stuff.best-stuff-image
-          .col-md-4
-            #lifehacker-best-stuff.best-stuff-image
-
+        h4.text-center Nextlanding helps relocate folks at:
+        ul.row
+          li.col-md-2.col-md-offset-2
+            img#google-best-stuff.img-responsive(src='/images/best-stuff-google.png')
+          li.col-md-4
+            img#nyt-best-stuff.img-responsive(src='/images/best-stuff-nyt.png')
+          li.col-md-2
+            img#lifehacker-best-stuff.img-responsive(src='/images/best-stuff-lifehacker.png')
   section
     .container
       .bs-docs-section.clearfix

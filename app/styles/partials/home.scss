@@ -137,37 +137,27 @@
       h4 {
         color: $nl-gray;
 
+        margin-bottom: 70px;
+
         //- Responsive
         @media screen and (min-width: $screen-tablet) {
           font-size: ($font-size-base * 2.142857142857143);
         }
       }
 
-      .best-stuff-image {
-        min-height: 100px;
-        background-repeat: no-repeat;
+      li {
+        text-align: center;
+        list-style-type: none;
       }
 
-      #google-best-stuff {
-        background-image: url('../images/bg/best-stuff.jpg');
-        @media screen and (min-width: $screen-lg) {
-          background-size: 416%;
-        }
-      }
-
-      #nyt-best-stuff {
-        background-image: url('../images/bg/best-stuff.jpg');
-        @media screen and (min-width: $screen-lg) {
-          background-position-x: -187px;
-          background-size: 215.7%;
-        }
+      img{
+        position: relative;
       }
 
       #lifehacker-best-stuff {
-        background-image: url('../images/bg/best-stuff.jpg');
-        @media screen and (min-width: $screen-lg) {
-          background-position-x: -446px;
-          background-size: 175.4%;
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          top: 8px;
         }
       }
     }
