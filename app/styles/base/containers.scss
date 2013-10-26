@@ -1,6 +1,8 @@
 @import "../modules/base_mixins";
 @import "../modules/base_variables";
 @import "../modules/bootstrap_variables";
+@import "bower_components/sass-bootstrap/lib/bootstrap";
+
 
 
 // Container Styles
@@ -8,4 +10,6 @@
 
 .alt-section{
   background: $gray-lighter url('../images/handmadepaper.png');
+  border-bottom: 1px solid $nl-alt-container-bottom;
+  @include box-shadow(0px 1px $nl-alt-container-bottom-shaddow);
 }
