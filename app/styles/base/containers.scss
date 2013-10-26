@@ -7,8 +7,12 @@
 // Container Styles
 // --------------------------------------------------
 
-.alt-section{
-  background: $gray-lighter url('../images/bg/handmadepaper.png');
+.section{
   border-bottom: 1px solid $nl-alt-container-bottom;
   @include box-shadow(0px 1px $nl-alt-container-bottom-shaddow);
+}
+
+.alt-section{
+  @extend .section;
+  background: $gray-lighter url('../images/bg/handmadepaper.png');
 }
