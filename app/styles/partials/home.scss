@@ -49,9 +49,47 @@
       }
     }
 
+    h3 {
+      color: $nl-medium-bright;
+
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        font-size: ($font-size-base * 3);
+      }
+    }
+
+    h4 {
+      color: $nl-very-dark;
+
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        font-size: ($font-size-base * 2.285714285714286);
+      }
+    }
+
     p {
       font-family: $nl-font-family-content;
       font-size: ($font-size-base * 1.714285714285714);
+    }
+
+    .hil-blurb {
+      p {
+        font-size: ($font-size-base * 1.571428571428571);
+      }
+    }
+
+    //- How it works blurbs
+    @media screen and (min-width: $screen-tablet) {
+    //- Responsive
+      #quick-info-heading {
+        top: 150px;
+        left: -95px;
+      }
+
+      #map-interface-heading {
+        margin-top: 35px;
+        margin-right: -15px;
+      }
     }
   }
 }
