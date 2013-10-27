@@ -29,7 +29,8 @@ head
   meta(name='description', content='')
   meta(name='author', content='')
   title(ng-bind-template='{{pageTitle}}')
-  link(href='http://fonts.googleapis.com/css?family=Montserrat|Open+Sans', rel='stylesheet', type='text/css')
+  link(href='//fonts.googleapis.com/css?family=Montserrat|Open+Sans', rel='stylesheet', type='text/css')
+  link(href='//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css', rel='stylesheet', type='text/css')
   link(rel='stylesheet', href='css/app.css')
   //-
     All JavaScript at the bottom, except this Modernizr build incl. Respond.js
@@ -42,23 +43,10 @@ head
       enabled: true
     };
 body(ng-controller='AppCtrl')
-  nav.navbar.navbar-default.navbar-fixed-top
-    .container
-      .navbar-header
-        a.navbar-brand(href='../') Nextlanding
-        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-      #navbar-main.navbar-collapse.collapse
-        div(ng-include="'/_public/js/main/nav.html'")
+  ng-include(src="'/_public/js/main/nav.html'")
   .main-content
-    div(ui-view)
-    div Angular Brunch seed app: v<span app-version></span>
-    footer.footer
-      p
-        small
-          a(href='https://github.com/scotch/angular-brunch-seed') angular-brunch-seed | source
+    ui-view
+  ng-include(src="'/_public/js/main/footer.html'")
   //- JavaScript at the bottom for fast page loading
   //- Google map must be loaded first because the ng-google-map-service assumes the google object is available
   script(src='//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing')

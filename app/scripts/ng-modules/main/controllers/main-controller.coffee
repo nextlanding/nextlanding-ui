@@ -11,6 +11,7 @@ angular.module('main.controllers')
   )
 
   $scope.searchPrice = MainConfig.SEARCH_PRICE
+  $scope.currentDate = Date.now()
 
   # getClass compares the current url with the id.
   # If the current url starts with the id it returns 'active'
