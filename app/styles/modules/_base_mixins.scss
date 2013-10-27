@@ -15,3 +15,12 @@
     }
   }
 }
+
+// Images
+// --------------------------------------------------
+
+@mixin img-responsive-center($margin-vertical: 0) {
+  img.img-responsive {
+    margin: $margin-vertical auto;
+  }
+}

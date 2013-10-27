@@ -49,6 +49,8 @@
 
     //- Value proposition
     &#value-props-section {
+      @include img-responsive-center(35px);
+
       h2 {
         color: $nl-medium-bright;
 
@@ -111,6 +113,8 @@
 
     //- Customers & testimonials
     &#customers-section {
+      @include img-responsive-center();
+
       h4 {
         color: $nl-gray;
         margin-bottom: 70px;
@@ -131,10 +135,6 @@
       b {
         font-weight: normal;
         text-decoration: underline;
-      }
-
-      img.img-responsive{
-        margin: 0 auto;
       }
     }
 
