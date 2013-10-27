@@ -113,6 +113,7 @@
     &#customers-section {
       h4 {
         color: $nl-gray;
+        margin-bottom: 70px;
 
         //- Responsive
         @media screen and (min-width: $screen-tablet) {
@@ -120,6 +121,7 @@
         }
       }
       p {
+        min-height: 120px;
         //- Responsive
         @media screen and (min-width: $screen-tablet) {
           font-size: ($font-size-base * 1.285714285714286);
@@ -129,6 +131,10 @@
       b {
         font-weight: normal;
         text-decoration: underline;
+      }
+
+      img.img-responsive{
+        margin: 0 auto;
       }
     }
 
