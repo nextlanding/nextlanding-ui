@@ -97,6 +97,7 @@
 
         #quick-info-heading {
           top: 150px;
+          padding-left: 0;
         }
 
         #map-interface-heading {
@@ -109,7 +110,8 @@
         }
 
         #listing-info-heading {
-          right: -190px;
+          right: -202px;
+          padding: 0;
         }
       }
     }
