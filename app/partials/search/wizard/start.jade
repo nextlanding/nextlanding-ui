@@ -1,0 +1,65 @@
+#search-wizard-container
+  section.alt-section.clearfix
+    #search-wizard-section.container.rounded-light-container(ng-controller='SearchWizardCtrl')
+      .page-header
+        h1.text-center Step One: The Basics
+      .alert.alert-info
+        p We need to collect some information about where you’re moving and within 24 hours you'll have a complete list of aparments.
+
+        p If you’re not 100% satisfied with your results, we’ll refund your ${{searchPrice}}.
+      form.form-horizontal(role='form')
+        .form-group
+          label.col-lg-2.control-label(for='inputEmail1') Email
+          .col-lg-10
+            input#inputEmail1.form-control(type='email', placeholder='Email')
+        .form-group
+          label.col-lg-2.control-label(for='inputPassword1') Password
+          .col-lg-10
+            input#inputPassword1.form-control(type='password', placeholder='Password')
+        .form-group
+          .col-lg-offset-2.col-lg-10
+            .checkbox
+              label
+                input(type='checkbox')
+                | Remember me
+        .form-group
+          .col-lg-offset-2.col-lg-10
+            button.btn.btn-default(type='submit') Sign in
+
+
+  section.alt-section
+    .container
+      #value-props-section.page-header
+        .row
+          .col-md-4
+            h2.text-center Comprehesive
+            img.img-responsive(src='/images/home-globe.png')
+            p
+              | We pull in listings from everywhere so you don’t miss any leads.
+          .col-md-4
+            h2.text-center Accurate
+            img.img-responsive(src='/images/home-puzzle.png')
+            p
+              | We check availability and accuracy of every listings so you don’t have to.
+          .col-md-4
+            h2.text-center Easy
+            img.img-responsive(src='/images/home-key.png')
+            p
+              | Verified results within 24 hours. No spam, just that fastest way to your new home.
+
+.container(ng-controller='SearchWizardCtrl')
+  .bs-docs-section
+    form(name='searchForm').bs-example.form-horizontal
+      .row
+        .col-lg-12
+          .page-header
+            h1#forms Start a Search
+      ng-include(src="'/_public/js/search/wizard/location-step.html'")
+      ng-include(src="'/_public/js/search/wizard/geography-step.html'")
+      ng-include(src="'/_public/js/search/wizard/description-step.html'")
+      ng-include(src="'/_public/js/search/wizard/payment-step.html'")
+      div
+        | Validation status:
+        div  Whole form valid? {{searchForm.$valid}}
+        div  Step1 valid? {{locationStepForm.$valid}}
+        div  Step2 valid? {{geographyStepForm.$valid}}

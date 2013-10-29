@@ -26,7 +26,7 @@ App.config ($stateProvider, $urlRouterProvider) ->
       templateUrl: "/_public/js/main/partial1.html"
   .state "search",
     url: "/search"
-    templateUrl: "/_public/js/search/start.html"
+    templateUrl: "/_public/js/search/wizard/start.html"
 
 
 App.config(($locationProvider) ->

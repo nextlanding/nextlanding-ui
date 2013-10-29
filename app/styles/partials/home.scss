@@ -42,11 +42,6 @@
   .page-header {
     border-bottom: 0;
 
-    p {
-      font-family: $nl-font-family-content;
-      color: $nl-gray;
-    }
-
     //- Value proposition
     &#value-props-section {
       @include img-responsive-center(35px);
