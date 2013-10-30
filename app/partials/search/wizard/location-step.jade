@@ -1,16 +1,20 @@
-div.row(ng-show="currentStep=='locationStep'")
-  .col-lg-6(ng-form='locationStepForm')
-    .well
-      fieldset
-        legend Step 1 - Location
-        .form-group
-          label.col-lg-2.control-label(for='input-location') Location
-          .col-lg-10
-            input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required='required')
-            span.help-block
-              | A longer block of help text that breaks onto a new line and may extend beyond one line.
-        .form-group
-          .col-lg-10.col-lg-offset-2
-            //- the type must be button or it will trigger a submit event
-            //- http://stackoverflow.com/a/15314160/173957
-            button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next
+section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationStepForm')
+  .page-header
+    h1.text-center Step One: The Basics
+  .alert.alert-info
+    p We need to collect some information about where you’re moving and within 24 hours you'll have a complete list of aparments.
+
+    p If you’re not 100% satisfied with your results, we’ll refund your ${{searchPrice}}.
+  .form-group
+    label.col-lg-4.control-label(for='input-location') Where are you moving?
+    .col-lg-4
+      input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required='required')
+  .form-group
+    .col-lg-10.col-lg-offset-2
+      //- the type must be button or it will trigger a submit event
+      //- http://stackoverflow.com/a/15314160/173957
+      button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next
+  section#search-map(ng-controller='SearchMapCtrl')
+    .map-canvas(ui-map='search-map', ui-options='mapOptions', google-maps-drawabble-map,google-maps-repaintable-map,
+    ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)'}"
+    )
