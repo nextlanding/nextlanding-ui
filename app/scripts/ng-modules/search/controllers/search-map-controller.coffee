@@ -3,7 +3,7 @@
 angular.module('googleMaps.controllers')
 .controller "SearchMapCtrl", ($scope,googleMaps) ->
     $scope.$watch('currentStep', (newVal) ->
-      $scope.$broadcast("map:ui:shown") if newVal is 'geographyStep'
+      $scope.$broadcast("map:ui:shown") if newVal is 'locationStep'
     )
 
     $scope.$watch('search', (search) ->
