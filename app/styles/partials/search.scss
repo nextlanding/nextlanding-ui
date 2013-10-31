@@ -3,6 +3,7 @@
 #search-wizard-container {
   #search-wizard-section {
     margin-top: 70px;
+    margin-bottom: 20px;
 
     h1 {
       color: $nl-less-bright;
@@ -15,6 +16,17 @@
 
     .page-header {
       border-bottom: 0;
+    }
+
+    #progress-buttons {
+      margin-top: 25px
+    }
+
+    //- Location screen
+    #location-step {
+      #map-help {
+        margin-top: 50px;
+      }
     }
   }
 }
