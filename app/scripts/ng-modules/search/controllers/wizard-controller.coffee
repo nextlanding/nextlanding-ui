@@ -10,8 +10,10 @@ angular.module('search.controllers')
 
     $scope.steps = [
       'locationStep'
-      'geographyStep'
       'descriptionStep'
+      'generalDetailsStep'
+      'amenityDetailsStep'
+      'communicationStep'
       'paymentStep'
     ]
 
