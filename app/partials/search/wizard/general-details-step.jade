@@ -1,21 +1,45 @@
 section#general-details-step(ng-show="currentStep=='generalDetailsStep'", ng-form='generalDetailsStepForm')
   .page-header
     h1.text-center Step Three: What is your budget?
-  form.form-horizontal(role='form')
+  .form-horizontal(role='form')
     .form-group
-      label.col-sm-2.control-label(for='inputEmail3') Email
-      .col-sm-10
-        input#inputEmail3.form-control(type='email', placeholder='Email')
+      label.col-md-1.control-label.col-md-offset-2(for='price-min') Price
+      .input-group.col-md-2
+        span.input-group-addon $
+        input#price-min.form-control(type='text')
+        span.input-group-addon .00
+      label.col-md-1.control-label(for='price-max') To
+      .input-group.col-md-2
+        span.input-group-addon $
+        input#price-max.form-control(type='text')
+        span.input-group-addon .00
+  .form-horizontal(role='form')
     .form-group
-      label.col-sm-2.control-label(for='inputPassword3') Password
-      .col-sm-10
-        input#inputPassword3.form-control(type='password', placeholder='Password')
+      label.col-md-1.control-label.col-md-offset-2(for='bed-min') Bedrooms
+      .input-group.col-md-2
+        input#bed-min.form-control(type='text')
+        span.input-group-addon br
+      label.col-md-1.control-label(for='bed-max') To
+      .input-group.col-md-2
+        input#bed-max.form-control(type='text')
+        span.input-group-addon br
+  .form-horizontal(role='form')
     .form-group
-      .col-sm-offset-2.col-sm-10
-        .checkbox
-          label
-            input(type='checkbox')
-            | Remember me
+      label.col-md-1.control-label.col-md-offset-2(for='bath-min') Bathrooms
+      .input-group.col-md-2
+        input#bath-min.form-control(type='text')
+        span.input-group-addon ba
+      label.col-md-1.control-label(for='bath-max') To
+      .input-group.col-md-2
+        input#bath-max.form-control(type='text')
+        span.input-group-addon ba
+  .form-horizontal(role='form')
     .form-group
-      .col-sm-offset-2.col-sm-10
-        button.btn.btn-default(type='submit') Sign in
+      label.col-md-1.control-label.col-md-offset-2(for='area-min') Area
+      .input-group.col-md-2
+        input#area-min.form-control(type='text')
+        span.input-group-addon sq ft
+      label.col-md-1.control-label(for='area-max') To
+      .input-group.col-md-2
+        input#area-max.form-control(type='text')
+        span.input-group-addon sq ft
