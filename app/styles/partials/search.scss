@@ -24,6 +24,11 @@
 
     //- Location screen
     #location-step {
+      #search-info-message{
+        a{
+          color: $nl-less-dark;
+        }
+      }
       #map-help {
         margin-top: 50px;
       }
