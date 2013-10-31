@@ -1,15 +1,12 @@
-div.row(ng-show="currentStep=='descriptionStep'")
-  .col-lg-6(ng-form='descriptionStepForm')
-    .well
-      fieldset
-        legend Step 3 - Description
-        .form-group
-          label.col-lg-2.control-label(for='input-description') Description
-          .col-lg-10
-            textarea#txt-description.form-control(placeholder='Some stuff....', ng-model='search.search_attrs.description', required='required')
-            span.help-block
-              | A longer block of help text that breaks onto a new line and may extend beyond one line.
-        .form-group
-          .col-lg-10.col-lg-offset-2
-            button.btn.btn-warn(ng-click='retreat()',type='button') Prev
-            button.btn.btn-primary(ng-disabled='!descriptionStepForm.$valid', ng-click='proceed()',type='submit',type='button') Next
+section#description-step(ng-form='descriptionStepForm')
+  .page-header
+    h1.text-center Step Two: Tell Us About Yourself
+  .alert.alert-info
+    p#search-info-message Describe who you are and what you're looking for. Don't worry about price and other desired amenities - that comes later.
+      a(href='#') Read more.
+  .form-group
+    label.col-md-2.col-md-offset-2.control-label(for='input-description') Description
+    .col-md-5
+      textarea#txt-description.form-control(placeholder='Hi, my name is Amy! I'm looking for a place within walking distance of...', ng-model='search.search_attrs.description', required='required')
+      span.help-block
+        | A longer block of help text that breaks onto a new line and may extend beyond one line.
