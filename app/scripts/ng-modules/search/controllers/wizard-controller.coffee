@@ -27,13 +27,15 @@ angular.module('search.controllers')
       $scope.currentStep
 
     $scope.proceed = ->
-      if $scope.search.url
-        searchPromise = $scope.search.put()
-      else
-        searchPromise = Restangular.all('search/init').post($scope.search).then (search) ->
-          saveSearchToScope(search, $scope)
+#      if $scope.search.url
+#        searchPromise = $scope.search.put()
+#      else
+#        searchPromise = Restangular.all('search/init').post($scope.search).then (search) ->
+#          saveSearchToScope(search, $scope)
+#
+#      searchPromise.then ->
+#        nextStep = $scope.steps.indexOf($scope.currentStep) + 1
 
-      searchPromise.then ->
         nextStep = $scope.steps.indexOf($scope.currentStep) + 1
 
         if $scope.steps.length == nextStep

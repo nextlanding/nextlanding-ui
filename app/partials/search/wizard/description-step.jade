@@ -1,4 +1,4 @@
-section#description-step(ng-form='descriptionStepForm')
+section#description-step(ng-show="currentStep=='descriptionStep'", ng-form='descriptionStepForm')
   .page-header
     h1.text-center Step Two: Tell Us About Yourself
   .alert.alert-info
@@ -7,6 +7,4 @@ section#description-step(ng-form='descriptionStepForm')
   .form-group
     label.col-md-2.col-md-offset-2.control-label(for='input-description') Description
     .col-md-5
-      textarea#txt-description.form-control(placeholder='Hi, my name is Amy! I'm looking for a place within walking distance of...', ng-model='search.search_attrs.description', required='required')
-      span.help-block
-        | A longer block of help text that breaks onto a new line and may extend beyond one line.
+      textarea#txt-description.form-control(placeholder="Hi, my name is Amy! I'm looking for a place within walking distance of...", ng-model='search.search_attrs.description', required='required')

@@ -8,6 +8,7 @@ angular.module('googleMaps.directives')
     restrict: "A"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
+      #ui-map.js uses the same attr so we can avoid isolated scope
       map = scope[attrs.uiMap]
       scope.$on "map:ui:shown", (event, args)->
         googleMaps.event.trigger(map, 'resize')
