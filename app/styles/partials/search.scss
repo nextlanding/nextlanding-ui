@@ -4,6 +4,7 @@
   #search-wizard-section {
     margin-top: 70px;
     margin-bottom: 20px;
+    padding-bottom: 20px;
 
     h1 {
       color: $nl-less-bright;
@@ -24,8 +25,8 @@
 
     //- Location screen
     #location-step {
-      #search-info-message{
-        a{
+      #search-info-message {
+        a {
           color: $nl-less-dark;
         }
       }
@@ -36,7 +37,7 @@
 
     //- Description screen
     #description-step {
-      #txt-description{
+      #txt-description {
         min-height: 300px;
       }
     }
