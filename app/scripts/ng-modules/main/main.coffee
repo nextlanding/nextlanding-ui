@@ -13,6 +13,7 @@ App = angular.module('app', [
   'ngRoute'
   'stripe'
   'ui.router'
+  'ui.bootstrap'
 ])
 
 App.config ($stateProvider, $urlRouterProvider) ->
