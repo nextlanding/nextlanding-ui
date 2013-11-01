@@ -1,17 +1,21 @@
 section#payment-step(ng-show="currentStep=='paymentStep'", ng-form='paymentStepForm')
   .page-header
-    h1.text-center Step One: The basics
+    h1.text-center Step Six: Almost done
   .alert.alert-info
-    p#search-info-message First, we need to collect some information about where you’re moving.  If you’re not 100% satisfied with the results, we’ll refund your <strong>${{searchPrice}}. </strong>
+    p#search-info-message We'll notify you within 24 hours and provide a unique link to your apartment listings. If you’re not 100% satisfied with the results, we’ll refund your <strong>${{searchPrice}}. </strong>
       a(href='#') Read more.
   .form-group
-    label.col-lg-2.control-label(for='input-description') Payment
-    .col-lg-10
-      button.stripe-button.btn.btn-primary(stripe-checkout
+    label.col-md-2.col-md-offset-2.control-label(for='input-description') Payment
+    .col-md-8
+      button.stripe-button.btn.btn-primary.btn-sm(stripe-checkout
       amount='3500'
       description='Nextlanding Search ($35.00)'
       image='https://stripe.com/img/documentation/checkout/marketplace.png'
       payment-callback='paymentCallback(token)'
-      ) Purchase this now
-      span.help-block
-        | A longer block of help text that breaks onto a new line and may extend beyond one line.
+      ) Pay with card
+  .row
+    .col-md-8.col-md-offset-4
+      p
+        a(href='https://stripe.com', target='_blank')
+          img(src='https://nextlanding.s3.amazonaws.com/static/img/payment/stripe.png')
+          |  Your credit card information is safe with us.
