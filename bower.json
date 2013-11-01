@@ -43,6 +43,9 @@
         "./modules/unique/unique.js",
         "./modules/validate/validate.js"
       ]
+    },
+    "sass-bootstrap": {
+      "main": []
     }
   }
 }
