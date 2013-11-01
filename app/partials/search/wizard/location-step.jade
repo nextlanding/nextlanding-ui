@@ -3,7 +3,9 @@ section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationSt
     h1.text-center Step One: The basics
   .alert.alert-info
     p#search-info-message First, we need to collect some information about where you’re moving.  If you’re not 100% satisfied with the results, we’ll refund your <strong>${{searchPrice}}. </strong>
-      a(href='#',popover="I appeared on mouse enter!", popover-trigger="mouseenter") Read more.
+      a(href='#',
+      popover="Nextlanding will collect information necessary to provide you with a custom set of apartment listings. We'll notify you within 24 hours letting you know when your listings are ready.",
+      popover-trigger="mouseenter") Read more.
   .form-group
     label.col-lg-4.control-label(for='input-location') Where are you moving?
     .col-lg-4
