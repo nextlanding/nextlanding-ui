@@ -10,9 +10,9 @@ section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationSt
     label.col-lg-4.control-label(for='input-location') Where are you moving?
     .col-lg-4
       .input-group
-        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required='required')
+        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required='required',ui-keypress="{enter:'searchMap()'}")
         span.input-group-btn
-          button.btn.btn-default(type='button') Go!
+          button.btn.btn-default(type='button', ng-click="searchMap()") Go!
   p#map-help.help-block.text-center Draw on the map to show us approximately where you are looking.
   .row
     .col-md-offset-1.col-md-10

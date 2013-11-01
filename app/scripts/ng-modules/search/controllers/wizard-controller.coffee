@@ -50,6 +50,8 @@ angular.module('search.controllers')
       debugger
       console.log token
 
+    $scope.searchMap = ->
+      alert $scope.search.search_attrs.specified_location
 
     saveSearchToScope = (search, scope)->
       search.search_attrs = angular.fromJson search.search_attrs

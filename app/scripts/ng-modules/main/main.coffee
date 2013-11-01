@@ -14,6 +14,7 @@ App = angular.module('app', [
   'stripe'
   'ui.router'
   'ui.bootstrap'
+  'ui.utils'
 ])
 
 App.config ($stateProvider, $urlRouterProvider) ->

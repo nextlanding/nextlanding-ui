@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('googleMaps.controllers')
+angular.module('search.controllers')
 .controller "SearchMapCtrl", ($scope,googleMaps) ->
     $scope.$watch('currentStep', (newVal) ->
       $scope.$broadcast("map:ui:shown") if newVal is 'locationStep'
