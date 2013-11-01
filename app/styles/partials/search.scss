@@ -19,6 +19,13 @@
       border-bottom: 0;
     }
 
+    #search-step-section{
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        min-height: 660px;
+      }
+    }
+
     #progress-buttons {
       margin-top: 25px
     }
