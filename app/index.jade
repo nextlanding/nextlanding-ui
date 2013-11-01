@@ -42,7 +42,7 @@ head
     window.brunch['auto-reload'] = {
       enabled: true
     };
-body(ng-controller='AppCtrl')
+body(ng-controller='AppCtrl', ng-class="{'alt-section':state.current.data.style.webAppStyle}")
   ng-include(src="'/_public/js/main/nav.html'")
   .main-content
     ui-view

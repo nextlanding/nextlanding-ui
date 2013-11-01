@@ -1,20 +1,18 @@
 #search-wizard-container
-  section.alt-section.clearfix
-    #search-wizard-section.container.rounded-light-container(ng-controller='SearchWizardCtrl')
+  #search-wizard-section.container.rounded-light-container(ng-controller='SearchWizardCtrl')
+    form(name='searchForm').bs-example.form-horizontal
+      ng-include(src="'/_public/js/search/wizard/location-step.html'")
+      ng-include(src="'/_public/js/search/wizard/description-step.html'")
+      ng-include(src="'/_public/js/search/wizard/general-details-step.html'")
+      ng-include(src="'/_public/js/search/wizard/amenity-details-step.html'")
+      ng-include(src="'/_public/js/search/wizard/contact-step.html'")
+      ng-include(src="'/_public/js/search/wizard/payment-step.html'")
+      #progress-buttons.row
+        .col-md-1.col-md-offset-9
+          button.btn.btn-info(ng-click='retreat()',type='button') Prev
+        .col-md-1
+          button.btn.btn-primary(ng-click='proceed()',type='button') Next
+//- button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next
 
-      form(name='searchForm').bs-example.form-horizontal
-        ng-include(src="'/_public/js/search/wizard/location-step.html'")
-        ng-include(src="'/_public/js/search/wizard/description-step.html'")
-        ng-include(src="'/_public/js/search/wizard/general-details-step.html'")
-        ng-include(src="'/_public/js/search/wizard/amenity-details-step.html'")
-        ng-include(src="'/_public/js/search/wizard/contact-step.html'")
-        ng-include(src="'/_public/js/search/wizard/payment-step.html'")
-        #progress-buttons.row
-          .col-md-1.col-md-offset-9
-            button.btn.btn-info(ng-click='retreat()',type='button') Prev
-          .col-md-1
-            button.btn.btn-primary(ng-click='proceed()',type='button') Next
-            //- button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next
-
-              //- the type must be button or it will trigger a submit event
-              //- http://stackoverflow.com/a/15314160/173957
+          //- the type must be button or it will trigger a submit event
+          //- http://stackoverflow.com/a/15314160/173957

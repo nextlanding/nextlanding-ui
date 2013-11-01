@@ -21,12 +21,18 @@ App.config ($stateProvider, $urlRouterProvider) ->
   $stateProvider.state "home",
     url: "/"
     templateUrl: "/_public/js/main/home.html"
+    data:
+      style:
+        webAppStyle: false
   .state "styles",
       url: "/styles"
       templateUrl: "/_public/js/main/partial1.html"
   .state "search",
     url: "/search"
     templateUrl: "/_public/js/search/wizard/start.html"
+    data:
+      style:
+        webAppStyle:true
 
 
 App.config(($locationProvider) ->
