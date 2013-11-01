@@ -13,7 +13,7 @@ angular.module('search.controllers')
       'descriptionStep'
       'generalDetailsStep'
       'amenityDetailsStep'
-      'communicationStep'
+      'contactStep'
       'paymentStep'
     ]
 

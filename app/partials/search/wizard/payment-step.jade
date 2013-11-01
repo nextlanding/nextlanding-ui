@@ -1,21 +1,17 @@
-div.row(ng-show="currentStep=='paymentStep'")
-  .col-lg-6(ng-form='paymentStepForm')
-    .well
-      fieldset
-        legend Step 4 - Payment
-        .form-group
-          label.col-lg-2.control-label(for='input-description') Payment
-          .col-lg-10
-            button.stripe-button.btn.btn-primary(stripe-checkout
-            amount='3500'
-            description='Nextlanding Search ($35.00)'
-            image='https://stripe.com/img/documentation/checkout/marketplace.png'
-            payment-callback='paymentCallback(token)'
-            ) Purchase this now
-
-            span.help-block
-              | A longer block of help text that breaks onto a new line and may extend beyond one line.
-        .form-group
-          .col-lg-10.col-lg-offset-2
-            button.btn.btn-warn(ng-click='retreat()',type='button') Prev
-            button.btn.btn-primary(ng-disabled='!paymentStepForm.$valid', ng-click='proceed()',type='button') Next
+section#payment-step(ng-show="currentStep=='paymentStep'", ng-form='paymentStepForm')
+  .page-header
+    h1.text-center Step One: The basics
+  .alert.alert-info
+    p#search-info-message First, we need to collect some information about where you’re moving.  If you’re not 100% satisfied with the results, we’ll refund your <strong>${{searchPrice}}. </strong>
+      a(href='#') Read more.
+  .form-group
+    label.col-lg-2.control-label(for='input-description') Payment
+    .col-lg-10
+      button.stripe-button.btn.btn-primary(stripe-checkout
+      amount='3500'
+      description='Nextlanding Search ($35.00)'
+      image='https://stripe.com/img/documentation/checkout/marketplace.png'
+      payment-callback='paymentCallback(token)'
+      ) Purchase this now
+      span.help-block
+        | A longer block of help text that breaks onto a new line and may extend beyond one line.
