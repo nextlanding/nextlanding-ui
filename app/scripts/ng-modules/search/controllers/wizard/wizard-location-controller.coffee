@@ -36,7 +36,8 @@ angular.module('search.controllers')
       $scope.search.search_attrs.geo_boundary_points = boundHash
 
     $scope.geoLookup = ->
-      if $scope.locationStepForm.$valid
+      if $scope.locationStepForm.$valid and $scope.locationStepForm.$dirty
         $scope.$broadcast('map:location:searched', address: $scope.search.search_attrs.specified_location)
         $scope.locationEntered = true
+        $scope.locationStepForm.$setPristine()
         $scope.$broadcast("map:ui:shown")
