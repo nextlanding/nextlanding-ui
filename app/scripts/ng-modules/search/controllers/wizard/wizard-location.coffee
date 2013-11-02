@@ -1,13 +1,14 @@
 'use strict'
 
 angular.module('search.controllers')
-.controller "SearchWizardLocationCtrl", ($scope,googleMaps) ->
+.controller "SearchWizardLocationCtrl", ($scope, googleMaps) ->
     $scope.$watch('currentStep', (newVal) ->
       $scope.$broadcast("map:ui:shown") if newVal is 'locationStep'
     )
 
     $scope.$watch('search', (search) ->
-      $scope.$broadcast("map:data:retrieved", search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
+      $scope.$broadcast("map:data:retrieved",
+        search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
     )
 
     # FYI - I don't really know why the UI guys decided to have the controller be responsible for the map settings
@@ -40,4 +41,4 @@ angular.module('search.controllers')
 
     $scope.geoLookup = ->
       if $scope.locationStepForm.$valid
-        alert $scope.search.search_attrs.specified_location
+        $scope.$broadcast('map:location:searched', address: $scope.search.search_attrs.specified_location)
