@@ -2,10 +2,6 @@
 
 angular.module('search.controllers')
 .controller "SearchWizardLocationCtrl", ($scope, googleMaps) ->
-    $scope.$watch('currentStep', (newVal) ->
-      $scope.$broadcast("map:ui:shown") if newVal is 'locationStep'
-    )
-
     $scope.$watch('search', (search) ->
       $scope.$broadcast("map:data:retrieved",
         search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
@@ -42,3 +38,5 @@ angular.module('search.controllers')
     $scope.geoLookup = ->
       if $scope.locationStepForm.$valid
         $scope.$broadcast('map:location:searched', address: $scope.search.search_attrs.specified_location)
+        $scope.locationEntered = true
+        $scope.$broadcast("map:ui:shown")
