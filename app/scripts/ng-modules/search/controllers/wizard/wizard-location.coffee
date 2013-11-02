@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('search.controllers')
-.controller "SearchMapCtrl", ($scope,googleMaps) ->
+.controller "SearchWizardLocationCtrl", ($scope,googleMaps) ->
     $scope.$watch('currentStep', (newVal) ->
       $scope.$broadcast("map:ui:shown") if newVal is 'locationStep'
     )
@@ -37,3 +37,7 @@ angular.module('search.controllers')
         this
 
       $scope.search.search_attrs.geo_boundary_points = boundHash
+
+    $scope.geoLookup = ->
+      if $scope.locationStepForm.$valid
+        alert $scope.search.search_attrs.specified_location

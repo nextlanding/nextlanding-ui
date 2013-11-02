@@ -3,7 +3,7 @@
 ### Controllers ###
 
 angular.module('search.controllers')
-.controller 'SearchWizardCtrl', ($scope, $http, Restangular) ->
+.controller 'SearchWizardMainCtrl', ($scope, $http, Restangular) ->
     searchInitResource = Restangular.one('search/init')
 
     $scope.search = {} #create parent-level search
@@ -49,9 +49,6 @@ angular.module('search.controllers')
     $scope.paymentCallback = (token) ->
       debugger
       console.log token
-
-    $scope.searchMap = ->
-      alert $scope.search.search_attrs.specified_location
 
     saveSearchToScope = (search, scope)->
       search.search_attrs = angular.fromJson search.search_attrs

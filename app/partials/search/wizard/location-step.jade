@@ -1,4 +1,4 @@
-section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationStepForm')
+section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationStepForm',ng-controller='SearchWizardLocationCtrl')
   .page-header
     h1.text-center Step One: The basics
   .alert.alert-info
@@ -10,13 +10,11 @@ section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationSt
     label.col-lg-4.control-label(for='input-location') Where are you moving?
     .col-lg-4
       .input-group
-        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required='required',ui-keypress="{enter:'searchMap()'}")
+        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup()'}")
         span.input-group-btn
-          button.btn.btn-default(type='button', ng-click="searchMap()") Go!
+          button.btn.btn-default(type='button', ng-click="geoLookup()",ng-disabled="!locationStepForm.$valid") Go!
   p#map-help.help-block.text-center Draw on the map to show us approximately where you are looking.
   .row
     .col-md-offset-1.col-md-10
-      section#search-map(ng-controller='SearchMapCtrl')
-        .map-canvas(ui-map='searchMap', ui-options='mapOptions', google-maps-drawabble-map,google-maps-repaintable-map,
-        ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)'}"
-        )
+      section#search-map
+        .map-canvas(ui-map='searchMap', ui-options='mapOptions')
