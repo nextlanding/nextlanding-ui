@@ -1,6 +1,6 @@
 section#general-details-step(ng-show="currentStep=='generalDetailsStep'", ng-form='generalDetailsStepForm')
   .page-header
-    h1.text-center Step Three: What is your budget?
+    h1.label-separator Step Three: What is your budget?
   .form-horizontal(role='form')
     .form-group
       label.col-md-1.control-label.col-md-offset-2(for='price-min') Price
@@ -8,7 +8,8 @@ section#general-details-step(ng-show="currentStep=='generalDetailsStep'", ng-for
         span.input-group-addon $
         input#price-min.form-control(type='text',placeholder='1000')
         span.input-group-addon .00
-      label.col-md-1.control-label(for='price-max') To
+      label.col-md-1.control-label.label-separator(for='price-max')
+        i.fa.fa-minus
       .input-group.col-md-2
         span.input-group-addon $
         input#price-max.form-control(type='text',placeholder='3500')
@@ -19,7 +20,8 @@ section#general-details-step(ng-show="currentStep=='generalDetailsStep'", ng-for
       .input-group.col-md-2
         input#bed-min.form-control(type='text',placeholder='1')
         span.input-group-addon br
-      label.col-md-1.control-label(for='bed-max') To
+      label.col-md-1.control-label.label-separator(for='bed-max')
+        i.fa.fa-minus
       .input-group.col-md-2
         input#bed-max.form-control(type='text',placeholder='3')
         span.input-group-addon br
@@ -29,7 +31,8 @@ section#general-details-step(ng-show="currentStep=='generalDetailsStep'", ng-for
       .input-group.col-md-2
         input#bath-min.form-control(type='text',placeholder='1')
         span.input-group-addon ba
-      label.col-md-1.control-label(for='bath-max') To
+      label.col-md-1.control-label.label-separator(for='bath-max')
+        i.fa.fa-minus
       .input-group.col-md-2
         input#bath-max.form-control(type='text',placeholder='2.5')
         span.input-group-addon ba
@@ -39,7 +42,8 @@ section#general-details-step(ng-show="currentStep=='generalDetailsStep'", ng-for
       .input-group.col-md-2
         input#area-min.form-control(type='text',placeholder='450')
         span.input-group-addon sq ft
-      label.col-md-1.control-label(for='area-max') To
+      label.col-md-1.control-label.label-separator(for='area-max')
+        i.fa.fa-minus
       .input-group.col-md-2
         input#area-max.form-control(type='text',placeholder='1000')
         span.input-group-addon sq ft
