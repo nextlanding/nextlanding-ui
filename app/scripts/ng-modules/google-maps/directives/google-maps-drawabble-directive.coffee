@@ -35,7 +35,7 @@ angular.module('googleMaps.directives')
         draggable: false
         raiseOnDrag: false
         map: map
-        labelContent: "Click to remove this drawing"
+        labelContent: "Click anywhere on the blue drawing to remove it"
         labelAnchor: new google.maps.Point(0, 40)
         labelClass: "map-marker-label" # the CSS class for the label
         labelStyle:
@@ -55,7 +55,6 @@ angular.module('googleMaps.directives')
 
         #display the 'remove' label when we hover over the polygon
         googleMaps.event.addListener newPolygon, "mouseover", (mouseOverEvent) ->
-          debugger
           bounds = googleMapsService.getBoundsFromPolygons(newPolygon)
 
           marker.setPosition new google.maps.LatLng(bounds.getNorthEast().lat(),bounds.getCenter().lng())

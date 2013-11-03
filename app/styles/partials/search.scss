@@ -43,14 +43,13 @@
       }
 
       .map-marker-label {
-        color: red;
-        background-color: white;
-        font-family: "Lucida Grande", "Arial", sans-serif;
-        font-size: 10px;
-        font-weight: bold;
+        color: $nl-very-bright;
+        background-color: $nl-gray;
+        font-size: 12px;
         text-align: center;
-        width: 125px;
-        border: 2px solid black;
+        width: 200px;
+        padding:5px;
+        font-family: $nl-font-family-heading;
       }
     }
 
