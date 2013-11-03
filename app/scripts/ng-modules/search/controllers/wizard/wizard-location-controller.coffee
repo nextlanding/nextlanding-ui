@@ -7,6 +7,10 @@ angular.module('search.controllers')
         search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
     )
 
+    $scope.$watch('locationStepForm.$valid', (isValid) ->
+      $scope.currentStepForm.valid = isValid
+    )
+
     # FYI - I don't really know why the UI guys decided to have the controller be responsible for the map settings
     # as this seems like more of a directive concern...
     $scope.mapOptions =

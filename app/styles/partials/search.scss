@@ -39,6 +39,7 @@
       }
       #map-help {
         margin-top: 50px;
+        @include transition-delay(1s);
       }
     }
 

@@ -8,7 +8,7 @@
         ng-include(src="'/_public/js/search/wizard/amenity-details-step.html'")
         ng-include(src="'/_public/js/search/wizard/contact-step.html'")
         ng-include(src="'/_public/js/search/wizard/payment-step.html'")
-      #progress-buttons.row
+      #progress-buttons.row(ng-show='currentStepForm.valid')
         .col-md-1.col-md-offset-9
           button.btn.btn-info(ng-click='retreat()',type='button') Prev
         .col-md-1

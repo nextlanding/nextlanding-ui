@@ -18,6 +18,7 @@ angular.module('search.controllers')
     ]
 
     $scope.currentStep = $scope.steps[0]
+    $scope.currentStepForm = {}
 
     searchInitResource.get().then (search) ->
       if search?
