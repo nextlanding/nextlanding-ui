@@ -8,11 +8,11 @@
         ng-include(src="'/_public/js/search/wizard/amenity-details-step.html'")
         ng-include(src="'/_public/js/search/wizard/contact-step.html'")
         ng-include(src="'/_public/js/search/wizard/payment-step.html'")
-      #progress-buttons.row(ng-show='currentStepForm.valid')
+      #progress-buttons.row
         .col-md-1.col-md-offset-9
-          button.btn.btn-info(ng-click='retreat()',type='button') Prev
+          button.btn.btn-info(ng-click='retreat()',type='button',ng-show='currentStep != steps[0]') Prev
         .col-md-1
-          button.btn.btn-primary(ng-click='proceed()',type='button') Next
+          button.btn.btn-primary(ng-click='proceed()',type='button',ng-disabled='!currentStepForm.valid') Next
 //- button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next
 
           //- the type must be button or it will trigger a submit event
