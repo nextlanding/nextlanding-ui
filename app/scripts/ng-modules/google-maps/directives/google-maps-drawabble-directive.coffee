@@ -14,7 +14,7 @@ angular.module('googleMaps.directives')
         strokeColor: "#0076BF"
         strokeOpacity: 0.5
         strokeWeight: 2
-        clickable: false
+        draggable: true
         zIndex: 1
         editable: true
 
@@ -29,8 +29,15 @@ angular.module('googleMaps.directives')
       drawingManager.setMap map
 
       eventName = 'polygoncomplete'
-      googleMaps.event.addListener drawingManager, eventName, (event) ->
-        elm.triggerHandler "map-" + eventName, event
+      googleMaps.event.addListener drawingManager, eventName, (newPolygon) ->
+
+        drawingManager.setDrawingMode null
+
+        googleMaps.event.addListener newPolygon, 'click', ->
+          newPolygon.setMap null
+
+
+        elm.triggerHandler "map-" + eventName, newPolygon
 
         #We create an $apply if it isn't happening. we need better support for this
         #We don't want to use timeout because tons of these events fire at once,
