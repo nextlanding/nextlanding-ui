@@ -28,14 +28,40 @@ angular.module('googleMaps.directives')
 
       drawingManager.setMap map
 
+      #display a marker to remove polygon
+      #http://stackoverflow.com/a/10723555/173957
+      marker = new MarkerWithLabel
+        position: new google.maps.LatLng(0, 0)
+        draggable: false
+        raiseOnDrag: false
+        map: map
+        labelContent: "Click to remove this drawing"
+        labelAnchor: new google.maps.Point(0, 40)
+        labelClass: "map-marker-label" # the CSS class for the label
+        labelStyle:
+          opacity: 1.0
+        icon: "http://placehold.it/1x1"
+        visible: false
+
       eventName = 'polygoncomplete'
       googleMaps.event.addListener drawingManager, eventName, (newPolygon) ->
 
+        #remove the drawing option
         drawingManager.setDrawingMode null
 
+        #when they click the polygon, it'll be deleted
         googleMaps.event.addListener newPolygon, 'click', ->
           newPolygon.setMap null
 
+        #display the 'remove' label when we hover over the polygon
+        googleMaps.event.addListener newPolygon, "mouseover", (mouseOverEvent) ->
+          debugger
+          bounds = googleMapsService.getBoundsFromPolygons(newPolygon)
+
+          marker.setPosition new google.maps.LatLng(bounds.getNorthEast().lat(),bounds.getCenter().lng())
+          marker.setVisible true
+        googleMaps.event.addListener newPolygon, "mouseout", (event) ->
+          marker.setVisible false
 
         elm.triggerHandler "map-" + eventName, newPolygon
 

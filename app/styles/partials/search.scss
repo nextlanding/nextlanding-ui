@@ -41,6 +41,17 @@
         margin-top: 50px;
         @include transition-delay(1s);
       }
+
+      .map-marker-label {
+        color: red;
+        background-color: white;
+        font-family: "Lucida Grande", "Arial", sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        width: 125px;
+        border: 2px solid black;
+      }
     }
 
     //- Description screen
