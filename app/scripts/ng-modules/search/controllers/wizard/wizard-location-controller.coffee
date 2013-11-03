@@ -7,6 +7,11 @@ angular.module('search.controllers')
         search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
     )
 
+    $scope.$watch('currentStep', (currentStep) ->
+      if currentStep is 'locationStep'
+        $scope.currentStepForm.valid = $scope.locationStepForm.$valid
+    )
+
     $scope.$watch('locationStepForm.$valid', (isValid) ->
       $scope.currentStepForm.valid = isValid
     )

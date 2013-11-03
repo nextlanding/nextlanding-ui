@@ -1,4 +1,4 @@
-section#description-step(ng-show="currentStep=='descriptionStep'", ng-form='descriptionStepForm')
+section#description-step(ng-show="currentStep=='descriptionStep'", ng-form='descriptionStepForm',ng-controller='SearchWizardDescriptionCtrl')
   .page-header
     h1.text-center Step Two: Tell us about yourself
   .alert.alert-info
@@ -7,4 +7,4 @@ section#description-step(ng-show="currentStep=='descriptionStep'", ng-form='desc
   .form-group
     label.col-md-2.col-md-offset-2.control-label(for='txt-description') Description
     .col-md-5
-      textarea#txt-description.form-control(placeholder="Hi, my name is Amy! I'm looking for a place within walking distance of...", ng-model='search.search_attrs.description', required='required')
+      textarea#txt-description.form-control(placeholder="Hi, my name is Amy! I'm looking for a place within walking distance of...", ng-model='search.search_attrs.description', required)
