@@ -1,0 +1,19 @@
+@import "../base";
+
+// Animation Styles
+// --------------------------------------------------
+
+.animate-fade.ng-hide-add, .animate-fade.ng-hide-remove {
+  @include transition(all .05s linear);
+  display: block !important;
+}
+
+.animate-fade.ng-hide-add.ng-hide-add-active,
+.animate-fade.ng-hide-remove {
+  opacity:0;
+}
+
+.animate-fade.ng-hide-add,
+.animate-fade.ng-hide-remove.ng-hide-remove-active {
+  opacity:1;
+}

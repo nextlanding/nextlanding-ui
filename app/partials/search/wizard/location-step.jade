@@ -13,7 +13,7 @@ section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationSt
         input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup()'}")
         span.input-group-btn
           button.btn.btn-default(type='button', ng-click="geoLookup()",ng-disabled="!locationStepForm.$valid") Go!
-  section#map(ng-show='locationEntered')
+  section.animate-fade(ng-show='locationEntered')
     p#map-help.help-block.text-center Draw on the map to show us approximately where you are looking.
     .row
       .col-md-offset-1.col-md-10
