@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('search.controllers')
-.controller "SearchWizardDescriptionCtrl", ($scope, googleMaps) ->
+.controller "SearchWizardDescriptionCtrl", ($scope) ->
 
     $scope.$watch('currentStep', (currentStep) ->
       if currentStep is 'descriptionStep'
