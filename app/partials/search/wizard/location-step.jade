@@ -10,9 +10,9 @@ section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationSt
     label.col-lg-4.control-label(for='input-location') Where are you moving?
     .col-lg-4
       .input-group
-        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup()'}")
+        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup($event)'}")
         span.input-group-btn
-          button.btn.btn-default(type='button', ng-click="geoLookup()",ng-disabled="!locationStepForm.$valid") View on map
+          button.btn.btn-default(type='button', ng-click="geoLookup($event)",ng-disabled="locationStepForm.$invalid") View on map
   section.animate-fade(ng-show='locationEntered')
     p#map-help.help-block.text-center.animate-fade(ng-show='locationEntered') Draw on the map to show us approximately where you are looking. You can draw more than one shape.
     .row

@@ -12,7 +12,7 @@
         .col-md-1.col-md-offset-9
           button.btn.btn-info(ng-click='retreat()',type='button',ng-show='currentStep != steps[0]') Prev
         .col-md-1
-          button.btn.btn-primary(ng-click='proceed()',type='button',ng-disabled='!currentStepForm.valid') Next
+          button.btn.btn-primary(ng-click='proceed()',type='submit',ng-disabled='!currentStepForm.valid') Next
 //- button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next
 
           //- the type must be button or it will trigger a submit event
