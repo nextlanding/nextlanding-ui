@@ -1,5 +1,5 @@
 'use strict'
 
 angular.module('googleMaps.services')
-.factory "googleMaps", ->
+.factory "GoogleMaps", ->
     window.google.maps

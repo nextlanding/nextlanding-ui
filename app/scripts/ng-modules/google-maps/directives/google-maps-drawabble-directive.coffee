@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('googleMaps.directives')
-.directive "googleMapsDrawabbleMap", (googleMaps, googleMapsService) ->
+.directive "googleMapsDrawabbleMap", (GoogleMaps, GoogleMapsService) ->
     restrict: "A"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
@@ -18,12 +18,12 @@ angular.module('googleMaps.directives')
         zIndex: 1
         editable: true
 
-      drawingManager = new googleMaps.drawing.DrawingManager
-        drawingMode: googleMaps.drawing.OverlayType.POLYGON
+      drawingManager = new GoogleMaps.drawing.DrawingManager
+        drawingMode: GoogleMaps.drawing.OverlayType.POLYGON
         drawingControl: true
         drawingControlOptions:
-          position: googleMaps.ControlPosition.TOP_CENTER
-          drawingModes: [googleMaps.drawing.OverlayType.POLYGON]
+          position: GoogleMaps.ControlPosition.TOP_CENTER
+          drawingModes: [GoogleMaps.drawing.OverlayType.POLYGON]
         polygonOptions: polygonOptions
 
       drawingManager.setMap map
@@ -44,22 +44,22 @@ angular.module('googleMaps.directives')
         visible: false
 
       eventName = 'polygoncomplete'
-      googleMaps.event.addListener drawingManager, eventName, (newPolygon) ->
+      GoogleMaps.event.addListener drawingManager, eventName, (newPolygon) ->
 
         #remove the drawing option
         drawingManager.setDrawingMode null
 
         #when they click the polygon, it'll be deleted
-        googleMaps.event.addListener newPolygon, 'click', ->
+        GoogleMaps.event.addListener newPolygon, 'click', ->
           newPolygon.setMap null
 
         #display the 'remove' label when we hover over the polygon
-        googleMaps.event.addListener newPolygon, "mouseover", (mouseOverEvent) ->
-          bounds = googleMapsService.getBoundsFromPolygons(newPolygon)
+        GoogleMaps.event.addListener newPolygon, "mouseover", (mouseOverEvent) ->
+          bounds = GoogleMapsService.getBoundsFromPolygons(newPolygon)
 
           marker.setPosition new google.maps.LatLng(bounds.getNorthEast().lat(),bounds.getCenter().lng())
           marker.setVisible true
-        googleMaps.event.addListener newPolygon, "mouseout", (event) ->
+        GoogleMaps.event.addListener newPolygon, "mouseout", (event) ->
           marker.setVisible false
 
         elm.triggerHandler "map-" + eventName, newPolygon
@@ -75,8 +75,8 @@ angular.module('googleMaps.directives')
           polygonList = []
 
           angular.forEach args, (value, key) ->
-            paths = (new googleMaps.LatLng(p[0], p[1]) for p in value)
-            new googleMaps.Polygon angular.extend
+            paths = (new GoogleMaps.LatLng(p[0], p[1]) for p in value)
+            new GoogleMaps.Polygon angular.extend
               paths: paths
               map: map,
               polygonOptions
@@ -86,7 +86,7 @@ angular.module('googleMaps.directives')
           # this directive will not force the map to actually "re-paint" itself with the boundaries
           # that's the responsiblity of the RepaintableMapDirective. The google map has some conditions in which it must
           # be a visible DOM element to correctly resize itself.
-          scope.bounds = googleMapsService.getBoundsFromPolygons(polygonList...)
+          scope.bounds = GoogleMapsService.getBoundsFromPolygons(polygonList...)
 
           #we only want to be notified the first time we've gotten map data
           offDataRetrieved()

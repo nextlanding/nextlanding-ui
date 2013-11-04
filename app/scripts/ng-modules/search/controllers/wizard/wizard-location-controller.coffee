@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('search.controllers')
-.controller "SearchWizardLocationCtrl", ($scope, googleMaps) ->
+.controller "SearchWizardLocationCtrl", ($scope, GoogleMaps) ->
     $scope.$watch('search', (search) ->
       $scope.$broadcast("map:data:retrieved",
         search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?
@@ -19,9 +19,9 @@ angular.module('search.controllers')
     # FYI - I don't really know why the UI guys decided to have the controller be responsible for the map settings
     # as this seems like more of a directive concern...
     $scope.mapOptions =
-      mapTypeId: googleMaps.MapTypeId.ROADMAP
+      mapTypeId: GoogleMaps.MapTypeId.ROADMAP
       panControl: false
-      center: new googleMaps.LatLng(40.714224, -73.961452)
+      center: new GoogleMaps.LatLng(40.714224, -73.961452)
       zoom: 12
 
     $scope.addDesiredHomeArea = ($event, $params) ->
