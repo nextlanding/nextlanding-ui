@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('stripe.directives')
-.directive "stripeCheckout", (StripeCheckout, MainConfig) ->
+.directive "stripeCheckout", (StripeCheckout, AppConfig) ->
     restrict: 'A'
     transclude: false
     scope:
@@ -12,7 +12,7 @@ angular.module('stripe.directives')
     link: (scope, elem, attrs) ->
       elem.on 'click', ->
         StripeCheckout.open
-          key: MainConfig.STRIPE_PUBLIC_KEY
+          key: AppConfig.STRIPE_PUBLIC_KEY
           amount: scope.amount
           currency: 'usd'
           name: 'Nextlanding'

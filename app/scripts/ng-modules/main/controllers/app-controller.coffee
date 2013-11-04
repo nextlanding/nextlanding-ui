@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('main.controllers')
-.controller 'AppCtrl', ($scope, $location, $state, MainConfig) ->
+.controller 'AppCtrl', ($scope, $location, $state, AppConfig) ->
 
     # use the sate for various things like conditional css based on custom state data
     $scope.state = $state
@@ -13,7 +13,7 @@ angular.module('main.controllers')
       $scope.activeNavId = path || '/'
     )
 
-    $scope.searchPrice = MainConfig.SEARCH_PRICE
+    $scope.searchPrice = AppConfig.SEARCH_PRICE
     $scope.currentDate = Date.now()
 
     # getClass compares the current url with the id.

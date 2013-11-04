@@ -42,8 +42,8 @@ App.config(($locationProvider) ->
   $locationProvider.html5Mode(true)
 )
 
-App.config((RestangularProvider, MainConfig) ->
-  RestangularProvider.setBaseUrl MainConfig.API_ENDPOINT
+App.config((RestangularProvider, AppConfig) ->
+  RestangularProvider.setBaseUrl AppConfig.API_ENDPOINT
   RestangularProvider.setDefaultHttpFields
     withCredentials: true
 
