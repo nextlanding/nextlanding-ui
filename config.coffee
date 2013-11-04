@@ -23,7 +23,6 @@ exports.config =
           'bower_components/jquery/jquery.js'
           'app/scripts/ng-modules/main/main.coffee'
           'app/scripts/ng-modules/apartment/apartment.coffee'
-          'app/scripts/ng-modules/todo/todo.coffee'
           'app/scripts/ng-modules/search/search.coffee'
           'app/scripts/ng-modules/google-maps/google-maps.coffee'
           'app/scripts/ng-modules/stripe/stripe.coffee'

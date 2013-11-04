@@ -1,7 +1,6 @@
 'use strict'
 
 App = angular.module('app', [
-  'todo'
   'apartment'
   'search'
   'googleMaps'
