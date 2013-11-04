@@ -37,13 +37,14 @@ angular.module('search.controllers')
 
       $scope.model.search.search_attrs.geo_boundary_points = boundHash
 
+    $scope.specifiedLocationCopy = null
     $scope.geoLookup = ($event)  ->
       #we want the enter event to not trigger a form submission - just do the map lookup - do not move onto the next step
       $event.preventDefault()
 
       #even tho the button is disabled, they still might hit enter
-      if $scope.locationStepForm.$valid and $scope.locationStepForm.$dirty
+      if $scope.locationStepForm.$valid and $scope.specifiedLocationCopy isnt $scope.model.search.search_attrs.specified_location
         $scope.$broadcast('map:location:searched', address: $scope.model.search.search_attrs.specified_location)
-        $scope.locationEntered = true
-        $scope.locationStepForm.$setPristine()
+        $scope.locationEntered = true #used to display the map
         $scope.$broadcast("map:ui:shown")
+        $scope.specifiedLocationCopy = angular.copy $scope.model.search.search_attrs.specified_location
