@@ -43,7 +43,7 @@ angular.module('search.controllers')
 
       #even tho the button is disabled, they still might hit enter
       if $scope.locationStepForm.$valid and $scope.locationStepForm.$dirty
-        $scope.$broadcast('map:location:searched', address: $scope.model.search_attrs.specified_location)
+        $scope.$broadcast('map:location:searched', address: $scope.model.search.search_attrs.specified_location)
         $scope.locationEntered = true
         $scope.locationStepForm.$setPristine()
         $scope.$broadcast("map:ui:shown")

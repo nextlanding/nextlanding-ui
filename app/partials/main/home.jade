@@ -8,7 +8,7 @@
         form.form-inline(role='form',ng-submit='startSearch()')
           .form-group.col-md-4.input-group-lg
             label.sr-only(for='search-location') Search Location
-            input#search-location.form-control(type='text',ng-model='model.specifiedLocation', placeholder='Where do you want to live?')
+            input#search-location.form-control(type='text',ng-model='model.search.search_attrs.specified_location', placeholder='Where do you want to live?')
           .col-md-2
             button.btn.btn-primary.btn-lg(type='submit') Search
 
