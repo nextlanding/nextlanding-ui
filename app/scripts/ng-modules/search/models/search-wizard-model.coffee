@@ -36,11 +36,11 @@ angular.module('search.services')
         console.log('done')
       else
         currentStep = steps[nextStep]
-
-      broadcastCurrentStep()
+        broadcastCurrentStep()
 
     retreat = ->
       currentStep = steps[steps.indexOf(currentStep) - 1]
+      broadcastCurrentStep()
 
     #this is its own function because of mutability of the current step variable
     getCurrentStep = ->
