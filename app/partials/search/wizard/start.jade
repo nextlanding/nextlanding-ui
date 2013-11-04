@@ -10,10 +10,6 @@
         ng-include(src="'/_public/js/search/wizard/payment-step.html'")
       #progress-buttons.row
         .col-md-1.col-md-offset-9
-          button.btn.btn-info(ng-click='retreat()',type='button',ng-show='currentStep != steps[0]') Prev
+          button.btn.btn-info(ng-click='retreat()',type='button',ng-show='model.currentStep != model.steps[0]') Prev
         .col-md-1
-          button.btn.btn-primary(ng-click='proceed()',type='submit',ng-disabled='!currentStepForm.valid') Next
-//- button.btn.btn-primary(ng-disabled='!locationStepForm.$valid', ng-click='proceed()',type='button') Next
-
-          //- the type must be button or it will trigger a submit event
-          //- http://stackoverflow.com/a/15314160/173957
+          button.btn.btn-primary(ng-click='proceed()',type='submit',ng-disabled='currentStep.form.$invalid') Next

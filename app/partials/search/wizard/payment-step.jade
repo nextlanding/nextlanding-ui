@@ -1,4 +1,4 @@
-section#payment-step(ng-show="currentStep=='paymentStep'", ng-form='paymentStepForm')
+section#payment-step(ng-show="isCurrentStep('paymentStep')", ng-form='paymentStepForm')
   .page-header
     h1.text-center Step Six: Almost done
   .alert.alert-info

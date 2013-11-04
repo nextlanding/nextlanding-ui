@@ -1,4 +1,4 @@
-section#contact-step(ng-show="currentStep=='contactStep'", ng-form='contactStepForm',ng-controller='SearchWizardContactCtrl')
+section#contact-step(ng-show="isCurrentStep('contactStep')", ng-form='contactStepForm',ng-controller='SearchWizardContactCtrl')
   .page-header
     h1.text-center Step Five: Let's keep in touch
   .alert.alert-info
@@ -6,4 +6,4 @@ section#contact-step(ng-show="currentStep=='contactStep'", ng-form='contactStepF
   .form-group(ng-class="{'has-error': contactStepForm.contactEmail.$invalid, 'has-success': contactStepForm.contactEmail.$valid}")
     label.col-md-2.col-md-offset-2.control-label(for='txt-contact') Email
     .col-md-5
-      input#txt-contact.form-control(type='email', placeholder='someone@gmail.com', ng-model='search.search_attrs.contact_email', required='required', name='contactEmail')
+      input#txt-contact.form-control(type='email', placeholder='someone@gmail.com', ng-model='model.search_attrs.contact_email', required='required', name='contactEmail')

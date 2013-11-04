@@ -12,4 +12,4 @@ search = angular.module('search', [
 angular.module('search.controllers', ['googleMaps'])
 angular.module('search.directives', [])
 angular.module('search.filters', [])
-angular.module('search.services', [])
+angular.module('search.services', ['restangular'])

@@ -1,4 +1,4 @@
-section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationStepForm',ng-controller='SearchWizardLocationCtrl')
+section#location-step(ng-show="isCurrentStep('locationStep')", ng-form='locationStepForm',ng-controller='SearchWizardLocationCtrl')
   .page-header
     h1.text-center Step One: The basics
   .alert.alert-info
@@ -10,7 +10,7 @@ section#location-step(ng-show="currentStep=='locationStep'", ng-form='locationSt
     label.col-lg-4.control-label(for='input-location') Where are you moving?
     .col-lg-4
       .input-group
-        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='search.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup($event)'}")
+        input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='model.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup($event)'}")
         span.input-group-btn
           button.btn.btn-default(type='button', ng-click="geoLookup($event)",ng-disabled="locationStepForm.$invalid") View on map
   section.animate-fade(ng-show='locationEntered')

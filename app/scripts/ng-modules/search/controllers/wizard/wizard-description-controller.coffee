@@ -1,13 +1,8 @@
 'use strict'
 
 angular.module('search.controllers')
-.controller "SearchWizardDescriptionCtrl", ($scope) ->
+.controller "SearchWizardDescriptionCtrl", ($scope, SearchWizardModel) ->
+    $scope.model = SearchWizardModel
 
-    $scope.$watch('currentStep', (currentStep) ->
-      if currentStep is 'descriptionStep'
-        $scope.currentStepForm.valid = $scope.descriptionStepForm.$valid
-    )
-
-    $scope.$watch('descriptionStepForm.$valid', (isValid) ->
-      $scope.currentStepForm.valid = isValid
-    )
+    $scope.$on "currentStep:changed:descriptionStep", ->
+      $scope.currentStep.form = $scope.descriptionStepForm
