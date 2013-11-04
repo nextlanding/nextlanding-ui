@@ -6,4 +6,4 @@ section#contact-step(ng-show="currentStep=='contactStep'", ng-form='contactStepF
   .form-group(ng-class="{'has-error': contactStepForm.$invalid, 'has-success': contactStepForm.$valid}")
     label.col-md-2.col-md-offset-2.control-label(for='txt-contact') Email
     .col-md-5
-      input#txt-contact.form-control(type='email', placeholder='someone@gmail.com', ng-model='search.search_attrs.contact_email', required='required')
+      input#txt-contact.form-control(type='email', placeholder='someone@gmail.com', ng-model='search.search_attrs.contact_email', required='required', name='contactEmail')

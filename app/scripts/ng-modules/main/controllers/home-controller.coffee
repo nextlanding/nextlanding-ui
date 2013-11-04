@@ -3,4 +3,4 @@
 angular.module('main.controllers')
 .controller 'HomeCtrl', ($scope, $state) ->
   $scope.startSearch = ->
-    alert ('start')
+    $state.go('search')
