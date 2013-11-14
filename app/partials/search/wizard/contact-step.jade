@@ -3,7 +3,7 @@ section#contact-step(ng-show="isCurrentStep('contactStep')", ng-form='contactSte
     h1.text-center Step Five: Let's keep in touch
   .alert.alert-info
     p#search-info-message We'll notify you within 24 hours and provide a unique link to your apartment listings.
-  .form-group(ng-class="{'has-error': contactStepForm.contactEmail.$invalid, 'has-success': contactStepForm.contactEmail.$valid}")
+  .form-group
     label.col-md-2.col-md-offset-2.control-label(for='txt-contact') Email
     .col-md-5
       input#txt-contact.form-control(type='email', placeholder='someone@gmail.com', ng-model='model.search_attrs.contact_email', required='required', name='contactEmail')
