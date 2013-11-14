@@ -9,7 +9,7 @@ section#payment-step(ng-show="isCurrentStep('paymentStep')", ng-form='paymentSte
     .col-md-8
       button.stripe-button.btn.btn-primary.btn-sm(stripe-checkout
       amount='3500'
-      description='Nextlanding Search ({{searchPrice}})'
+      description='Nextlanding Search ({{searchPrice | currency}})'
       image='https://stripe.com/img/documentation/checkout/marketplace.png'
       payment-callback='paymentCallback(token)'
       ) Pay with card
