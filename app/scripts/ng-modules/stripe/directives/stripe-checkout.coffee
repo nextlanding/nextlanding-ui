@@ -11,7 +11,7 @@ angular.module('stripe.directives')
       paymentCallback: '&'
     link: (scope, elem, attrs) ->
       elem.on 'click', ->
-        elem.attr('disabled', 'disabled')
+        elem.attr 'disabled', 'disabled'
         StripeCheckout.open
           key: AppConfig.STRIPE_PUBLIC_KEY
           amount: scope.amount
@@ -20,6 +20,6 @@ angular.module('stripe.directives')
           description: scope.description
           image: scope.image
           closed: ->
-            elem.removeAttr('disabled')
+            scope.$apply(-> elem.removeAttr 'disabled')
           token: (token) ->
             scope.$apply(-> scope.paymentCallback token: token)

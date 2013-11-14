@@ -12,7 +12,6 @@ section#payment-step(ng-show="isCurrentStep('paymentStep')", ng-form='paymentSte
       description='Nextlanding Search ({{searchPrice}})'
       image='https://stripe.com/img/documentation/checkout/marketplace.png'
       payment-callback='paymentCallback(token)'
-      ng-disabled='token.value'
       ) Pay with card
   .row
     .col-md-8.col-md-offset-4
