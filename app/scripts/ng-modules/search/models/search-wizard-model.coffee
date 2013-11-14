@@ -46,8 +46,12 @@ angular.module('search.services')
     getCurrentStep = ->
       currentStep
 
+    isLastStep = ->
+      getCurrentStep() == steps[steps.length - 1]
+
     search: search
     steps: steps
     getCurrentStep: getCurrentStep
     proceed: proceed
     retreat: retreat
+    isLastStep: isLastStep

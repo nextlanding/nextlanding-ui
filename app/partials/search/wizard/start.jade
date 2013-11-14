@@ -12,4 +12,6 @@
         .col-md-1.col-md-offset-9
           button.btn.btn-info(ng-click='retreat()',type='button',ng-show='model.getCurrentStep() != model.steps[0]') Prev
         .col-md-1
-          button.btn.btn-primary(ng-click='proceed()',type='submit',ng-disabled='currentStep.form.$invalid') Next
+          button.btn.btn-primary(ng-click='proceed()',type='submit',ng-disabled='currentStep.form.$invalid')
+            span(ng-hide='model.isLastStep()') Next
+            span(ng-show='model.isLastStep()') Submit

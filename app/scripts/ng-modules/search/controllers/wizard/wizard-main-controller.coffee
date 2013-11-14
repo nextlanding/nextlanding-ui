@@ -14,6 +14,7 @@ angular.module('search.controllers')
 
     $scope.proceed = -> $scope.model.proceed()
     $scope.retreat = -> $scope.model.retreat()
+    $scope.isLastStep = -> $scope.model.isLastStep()
 
     $scope.isCurrentStep = (stepName)->
       $scope.model.getCurrentStep() == stepName
