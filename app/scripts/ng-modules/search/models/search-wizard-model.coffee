@@ -61,6 +61,10 @@ angular.module('search.services')
       isLastStep: isLastStep
       parseSearch: parseSearch
 
+    # defining a getter property here because the search is constantly replaced by the restangular responses
+    # using angular.extend was causing problems with re-writing the object.
+    # we could just make search a function called getSearch() but then each template would be look like:
+    # <input ng-model='model.getSearch().location.name....
     Object.defineProperty retVal, 'search',
       get: -> search
 
