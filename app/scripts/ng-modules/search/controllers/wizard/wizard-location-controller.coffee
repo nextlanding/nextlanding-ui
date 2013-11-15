@@ -3,9 +3,7 @@
 angular.module('search.controllers')
 .controller "SearchWizardLocationCtrl", ($scope, GoogleMaps, SearchWizardModel) ->
     $scope.model = SearchWizardModel
-    #    $scope.$watch('model.data', (search) ->
-    #      $scope.$broadcast("map:data:retrieved",
-    #        search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?)
+
     $scope.$on "currentStep:changed:locationStep", ->
       $scope.currentStep.form = $scope.locationStepForm
 
@@ -30,6 +28,10 @@ angular.module('search.controllers')
 
       $scope.polygonList = $scope.polygonList.filter (polygon) ->
         polygon isnt polygonToRemove
+
+    $scope.$watch 'model.search.search_attrs.geo_boundary_points', (newValue, oldValue)->
+      #the $watch expression will run the first time so make sure we only broadcast the event if we have the data
+      $scope.$broadcast("map:data:retrieved", $scope.model.search.search_attrs.geo_boundary_points) if newValue isnt oldValue
 
     $scope.recalcBoundaryPoints = ->
       boundList = ([point.lat(), point.lng()] for point in path.getPath().getArray() for path in $scope.polygonList)

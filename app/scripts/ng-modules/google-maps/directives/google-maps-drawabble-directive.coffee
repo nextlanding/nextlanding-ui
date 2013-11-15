@@ -49,6 +49,16 @@ angular.module('googleMaps.directives')
         #remove the drawing option
         drawingManager.setDrawingMode null
 
+        addPolygonEvents newPolygon
+
+        elm.triggerHandler "map-" + eventName, newPolygon
+
+        #We create an $apply if it isn't happening. we need better support for this
+        #We don't want to use timeout because tons of these events fire at once,
+        #and we only need one $apply
+        scope.$apply()  unless scope.$$phase
+
+      addPolygonEvents = (newPolygon)->
         #when they click the polygon, it'll be deleted
         GoogleMaps.event.addListener newPolygon, 'click', ->
           newPolygon.setMap null
@@ -58,18 +68,10 @@ angular.module('googleMaps.directives')
         GoogleMaps.event.addListener newPolygon, "mouseover", (mouseOverEvent) ->
           bounds = GoogleMapsService.getBoundsFromPolygons(newPolygon)
 
-          marker.setPosition new google.maps.LatLng(bounds.getNorthEast().lat(),bounds.getCenter().lng())
+          marker.setPosition new google.maps.LatLng(bounds.getNorthEast().lat(), bounds.getCenter().lng())
           marker.setVisible true
         GoogleMaps.event.addListener newPolygon, "mouseout", (event) ->
           marker.setVisible false
-
-        elm.triggerHandler "map-" + eventName, newPolygon
-
-        #We create an $apply if it isn't happening. we need better support for this
-        #We don't want to use timeout because tons of these events fire at once,
-        #and we only need one $apply
-        scope.$apply()  unless scope.$$phase
-
 
       offDataRetrieved =
         scope.$on "map:data:retrieved", (event, args)->
@@ -77,12 +79,14 @@ angular.module('googleMaps.directives')
 
           angular.forEach args, (value, key) ->
             paths = (new GoogleMaps.LatLng(p[0], p[1]) for p in value)
-            new GoogleMaps.Polygon angular.extend
+            newPolygon = new GoogleMaps.Polygon angular.extend
               paths: paths
               map: map,
               polygonOptions
 
-            polygonList.push paths
+            addPolygonEvents(newPolygon)
+
+            polygonList.push newPolygon
 
           # this directive will not force the map to actually "re-paint" itself with the boundaries
           # that's the responsiblity of the RepaintableMapDirective. The google map has some conditions in which it must
