@@ -3,9 +3,9 @@
 angular.module('search.controllers')
 .controller "SearchWizardLocationCtrl", ($scope, GoogleMaps, SearchWizardModel) ->
     $scope.model = SearchWizardModel
-#    $scope.$watch('model.data', (search) ->
-#      $scope.$broadcast("map:data:retrieved",
-#        search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?)
+    #    $scope.$watch('model.data', (search) ->
+    #      $scope.$broadcast("map:data:retrieved",
+    #        search.search_attrs.geo_boundary_points) if search.search_attrs?.geo_boundary_points?)
     $scope.$on "currentStep:changed:locationStep", ->
       $scope.currentStep.form = $scope.locationStepForm
 
@@ -20,9 +20,19 @@ angular.module('search.controllers')
     $scope.addDesiredHomeArea = ($event, $params) ->
       #first get a list of boundary paths
       #any given boundary path can have several points and each point is a lat/lng
-      $scope.pathList ||= []
-      $scope.pathList.push $event.getPath().getArray()
-      boundList = ([point.lat(), point.lng()] for point in path for path in $scope.pathList)
+      polygon = $params[0]
+      $scope.polygonList ||= []
+      $scope.polygonList.push polygon
+      $scope.recalcBoundaryPoints()
+
+    $scope.removeDesiredHomeArea = ($event, $params) ->
+      polygonToRemove = $params[0]
+
+      $scope.polygonList = $scope.polygonList.filter (polygon) ->
+        polygon isnt polygonToRemove
+
+    $scope.recalcBoundaryPoints = ->
+      boundList = ([point.lat(), point.lng()] for point in path.getPath().getArray() for path in $scope.polygonList)
 
       #the api expects a hash of boundary paths
       # {

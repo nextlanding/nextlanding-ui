@@ -19,5 +19,5 @@ section.parent-form#location-step(ng-show="isCurrentStep('locationStep')", ng-fo
       .col-md-offset-1.col-md-10
         section#search-map
           .map-canvas(ui-map='searchMap', ui-options='mapOptions', google-maps-drawabble-map,google-maps-repaintable-map,google-maps-searchable-map,
-          ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)'}"
+          ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)','map-click': 'removeDesiredHomeArea($event, $params)'}"
           )

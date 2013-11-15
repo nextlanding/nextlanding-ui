@@ -52,6 +52,7 @@ angular.module('googleMaps.directives')
         #when they click the polygon, it'll be deleted
         GoogleMaps.event.addListener newPolygon, 'click', ->
           newPolygon.setMap null
+          elm.triggerHandler "map-" + 'click', newPolygon
 
         #display the 'remove' label when we hover over the polygon
         GoogleMaps.event.addListener newPolygon, "mouseover", (mouseOverEvent) ->
