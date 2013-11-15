@@ -93,5 +93,8 @@ angular.module('googleMaps.directives')
           # be a visible DOM element to correctly resize itself.
           scope.bounds = GoogleMapsService.getBoundsFromPolygons(polygonList...)
 
+          #remove the drawing option
+          drawingManager.setDrawingMode null
+
           #we only want to be notified the first time we've gotten map data
           offDataRetrieved()
