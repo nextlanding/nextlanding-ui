@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('main.controllers')
+angular.module('app.controllers')
 .controller 'AppCtrl', ($scope, $location, $state, AppConfig) ->
 
     # use the sate for various things like conditional css based on custom state data

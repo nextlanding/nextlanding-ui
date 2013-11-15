@@ -4,10 +4,10 @@ App = angular.module('app', [
   'apartment'
   'search'
   'googleMaps'
-  'main.controllers'
-  'main.directives'
-  'main.filters'
-  'main.services'
+  'app.controllers'
+  'app.directives'
+  'app.filters'
+  'app.services'
   'partials'
   'stripe'
   'ngAnimate'
@@ -67,7 +67,7 @@ App.config((RestangularProvider, AppConfig) ->
 )
 
 # Declare app level module which depends on filters, and services
-angular.module('main.controllers', [])
-angular.module('main.directives', ['main.services'])
-angular.module('main.filters', [])
-angular.module('main.services', [])
+angular.module('app.controllers', [])
+angular.module('app.directives', ['app.services'])
+angular.module('app.filters', [])
+angular.module('app.services', [])

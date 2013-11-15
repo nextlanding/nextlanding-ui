@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('main.controllers')
+angular.module('app.controllers')
 .controller 'HomeCtrl', ($scope, $state, SearchWizardModel) ->
     $scope.model = SearchWizardModel
 
