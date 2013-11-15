@@ -31,7 +31,9 @@ angular.module('search.controllers')
 
     $scope.$watch 'model.search.search_attrs.geo_boundary_points', (newValue, oldValue)->
       #the $watch expression will run the first time so make sure we only broadcast the event if we have the data
-      $scope.$broadcast("map:data:retrieved", $scope.model.search.search_attrs.geo_boundary_points) if newValue isnt oldValue
+      if newValue isnt oldValue
+        $scope.$broadcast("map:data:retrieved", $scope.model.search.search_attrs.geo_boundary_points)
+        $scope.broadcastSearch()
 
     $scope.recalcBoundaryPoints = ->
       boundList = ([point.lat(), point.lng()] for point in path.getPath().getArray() for path in $scope.polygonList)
@@ -56,7 +58,10 @@ angular.module('search.controllers')
 
       #even tho the button is disabled, they still might hit enter
       if $scope.locationStepForm.$valid and $scope.specifiedLocationCopy isnt $scope.model.search.search_attrs.specified_location
-        $scope.$broadcast('map:location:searched', address: $scope.model.search.search_attrs.specified_location)
-        $scope.locationEntered = true #used to display the map
-        $scope.$broadcast("map:ui:shown")
-        $scope.specifiedLocationCopy = angular.copy $scope.model.search.search_attrs.specified_location
+        $scope.broadcastSearch()
+
+    $scope.broadcastSearch = ->
+      $scope.$broadcast('map:location:searched', address: $scope.model.search.search_attrs.specified_location)
+      $scope.locationEntered = true #used to display the map
+      $scope.$broadcast("map:ui:shown")
+      $scope.specifiedLocationCopy = angular.copy $scope.model.search.search_attrs.specified_location
