@@ -2,8 +2,8 @@
 
 angular.module('search.services')
 .factory 'SearchWizardModel', ($rootScope, $timeout, Restangular) ->
-    searchInitResource = Restangular.one('search/init')
     search = {}
+
     steps = [
       'locationStep'
       'descriptionStep'
@@ -22,14 +22,14 @@ angular.module('search.services')
     $timeout(broadcastCurrentStep)
 
     proceed = ->
-      #      if $scope.search.url
-      #        searchPromise = $scope.search.put()
-      #      else
-      #        searchPromise = Restangular.all('search/init').post($scope.search).then (search) ->
-      #          saveSearchToScope(search, $scope)
-      #
-      #      searchPromise.then ->
-      #        nextStep = $scope.steps.indexOf($scope.currentStep) + 1
+      if search.url
+        response = search.put()
+      else
+        response = Restangular.all('search/init').post(search)
+
+      response.then (response) ->
+        parseSearch(response)
+
       nextStep = steps.indexOf(currentStep) + 1
 
       if steps.length == nextStep
@@ -49,9 +49,19 @@ angular.module('search.services')
     isLastStep = ->
       getCurrentStep() == steps[steps.length - 1]
 
-    search: search
-    steps: steps
-    getCurrentStep: getCurrentStep
-    proceed: proceed
-    retreat: retreat
-    isLastStep: isLastStep
+    parseSearch = (response) ->
+      search = response
+      search.search_attrs = angular.fromJson response.search_attrs
+
+    retVal =
+      steps: steps
+      getCurrentStep: getCurrentStep
+      proceed: proceed
+      retreat: retreat
+      isLastStep: isLastStep
+      parseSearch: parseSearch
+
+    Object.defineProperty retVal, 'search',
+      get: -> search
+
+    retVal
