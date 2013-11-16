@@ -51,7 +51,7 @@ App.config((RestangularProvider, AppConfig) ->
   # This function is used to map the JSON data to something Restangular expects
   # http://stackoverflow.com/a/17386402/173957
   RestangularProvider.setResponseExtractor (response, operation, what, url) ->
-    if operation == "getList"
+    if operation is "getList" and response.results?
 
       # Use results as the return type, and save the result metadata
       # in _resultmeta

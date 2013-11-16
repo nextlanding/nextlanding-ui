@@ -22,10 +22,11 @@ angular.module('search.services')
     $timeout(broadcastCurrentStep)
 
     proceed = ->
-      if search.url
-        response = search.put()
+      if search.id
+        #use customput because restangular expects a getList to return multiple items
+        response = search.customPUT()
       else
-        response = Restangular.all('search/init').post(search)
+        response = Restangular.all('potential_search_init').post(search)
 
       response.then (response) ->
         parseSearch(response)
