@@ -4,6 +4,8 @@ angular.module('search.services')
 .factory 'SearchWizardModel', ($rootScope, $timeout, Restangular) ->
     search = {}
 
+    initFired = false
+
     steps = [
       'locationStep'
       'descriptionStep'
@@ -12,6 +14,15 @@ angular.module('search.services')
       'contactStep'
       'paymentStep'
     ]
+
+    init = ->
+      unless initFired
+        initFired = true
+        #get the initial response
+        #we're doing a get to return just 1 item - this is unconventional and requires a .customPUT call later in the model
+        Restangular.all('potential_search_init').getList().then (response) ->
+          if response
+            parseSearch(response)
 
     broadcastCurrentStep = ->
       $rootScope.$broadcast "currentStep:changed:#{currentStep}"
@@ -25,7 +36,7 @@ angular.module('search.services')
       if search.id
         #use customput because restangular expects a getList to return multiple items
         #this is a hack to prevent restangular from attachin an id to the path
-        response = search.customPUT(angular.extend(search,id:null))
+        response = search.customPUT(angular.extend(search, id: null))
       else
         response = Restangular.all('potential_search_init').post(search)
 
@@ -57,6 +68,7 @@ angular.module('search.services')
 
     retVal =
       steps: steps
+      init: init
       getCurrentStep: getCurrentStep
       proceed: proceed
       retreat: retreat
@@ -68,6 +80,7 @@ angular.module('search.services')
     # we could just make search a function called getSearch() but then each template would be look like:
     # <input ng-model='model.getSearch().location.name....
     Object.defineProperty retVal, 'search',
-      get: -> search
+      get: ->
+        search
 
     retVal
