@@ -51,13 +51,6 @@ angular.module('googleMaps.directives')
 
         addPolygonEvents newPolygon
 
-        elm.triggerHandler "map-" + eventName, newPolygon
-
-        #We create an $apply if it isn't happening. we need better support for this
-        #We don't want to use timeout because tons of these events fire at once,
-        #and we only need one $apply
-        scope.$apply()  unless scope.$$phase
-
       addPolygonEvents = (newPolygon)->
         #when they click the polygon, it'll be deleted
         GoogleMaps.event.addListener newPolygon, 'click', ->
@@ -72,6 +65,13 @@ angular.module('googleMaps.directives')
           marker.setVisible true
         GoogleMaps.event.addListener newPolygon, "mouseout", (event) ->
           marker.setVisible false
+
+        elm.triggerHandler "map-" + eventName, newPolygon
+
+        #We create an $apply if it isn't happening. we need better support for this
+        #We don't want to use timeout because tons of these events fire at once,
+        #and we only need one $apply
+        scope.$apply()  unless scope.$$phase
 
       offDataRetrieved =
         scope.$on "map:data:retrieved", (event, args)->

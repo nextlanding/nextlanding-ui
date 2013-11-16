@@ -29,7 +29,10 @@ angular.module('search.controllers')
       $scope.polygonList = $scope.polygonList.filter (polygon) ->
         polygon isnt polygonToRemove
 
-    $scope.$watch 'model.search.search_attrs.geo_boundary_points', (newValue, oldValue)->
+      $scope.recalcBoundaryPoints()
+
+    geoWatchDeregister = $scope.$watch 'model.search.search_attrs.geo_boundary_points', (newValue, oldValue)->
+      #we only want to fire the watch when the page first loads, not after each subsequent change
       #the $watch expression will run the first time so make sure we only broadcast the event if we have the data
       if newValue isnt oldValue
         $scope.$broadcast("map:data:retrieved", $scope.model.search.search_attrs.geo_boundary_points)
@@ -49,6 +52,8 @@ angular.module('search.controllers')
         @[i] = b for b, i in boundList
         this
 
+      #we only want to fire the watch when the page first loads, not after each subsequent change
+      geoWatchDeregister()
       $scope.model.search.search_attrs.geo_boundary_points = boundHash
 
     $scope.specifiedLocationCopy = null
