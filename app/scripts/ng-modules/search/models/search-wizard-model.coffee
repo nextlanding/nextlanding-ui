@@ -24,7 +24,8 @@ angular.module('search.services')
     proceed = ->
       if search.id
         #use customput because restangular expects a getList to return multiple items
-        response = search.customPUT()
+        #this is a hack to prevent restangular from attachin an id to the path
+        response = search.customPUT(angular.extend(search,id:null))
       else
         response = Restangular.all('potential_search_init').post(search)
 
