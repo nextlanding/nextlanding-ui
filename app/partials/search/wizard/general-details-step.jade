@@ -6,44 +6,44 @@ section.parent-form#general-details-step(ng-show="isCurrentStep('generalDetailsS
       label.col-md-1.control-label.col-md-offset-2(for='price-min') Price
       .input-group.col-md-2
         span.input-group-addon $
-        input#price-min.form-control(type='number',placeholder='1000', required,ng-model='model.search_attrs.price_min',integer)
+        input#price-min.form-control(type='number',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
         span.input-group-addon .00
       label.col-md-1.control-label.label-separator(for='price-max')
         i.fa.fa-minus
       .input-group.col-md-2
         span.input-group-addon $
-        input#price-max.form-control(type='number',placeholder='3500',required,ng-model='model.search_attrs.price_max',integer)
+        input#price-max.form-control(type='number',placeholder='3500',required,ng-model='model.search.search_attrs.price_max',integer)
         span.input-group-addon .00
   .form-horizontal(role='form')
     .form-group
       label.col-md-1.control-label.col-md-offset-2(for='bed-min') Bedrooms
       .input-group.col-md-2
-        input#bed-min.form-control(type='number',placeholder='1',required,ng-model='model.search_attrs.bed_min',integer)
+        input#bed-min.form-control(type='number',placeholder='1',required,ng-model='model.search.search_attrs.bedroom_min',integer)
         span.input-group-addon br
       label.col-md-1.control-label.label-separator(for='bed-max')
         i.fa.fa-minus
       .input-group.col-md-2
-        input#bed-max.form-control(type='number',placeholder='3',required,ng-model='model.search_attrs.bed_max',integer)
+        input#bed-max.form-control(type='number',placeholder='3',required,ng-model='model.search.search_attrs.bedroom_max',integer)
         span.input-group-addon br
   .form-horizontal(role='form')
     .form-group
       label.col-md-1.control-label.col-md-offset-2(for='bath-min') Bathrooms
       .input-group.col-md-2
-        input#bath-min.form-control(type='number',placeholder='1',required,ng-model='model.search_attrs.bath_min',float)
+        input#bath-min.form-control(type='number',placeholder='1',required,ng-model='model.search.search_attrs.bathroom_min',float)
         span.input-group-addon ba
       label.col-md-1.control-label.label-separator(for='bath-max')
         i.fa.fa-minus
       .input-group.col-md-2
-        input#bath-max.form-control(type='number',placeholder='2.5',required,ng-model='model.search_attrs.bath_max',float)
+        input#bath-max.form-control(type='number',placeholder='2.5',required,ng-model='model.search.search_attrs.bathroom_max',float)
         span.input-group-addon ba
   .form-horizontal(role='form')
     .form-group
       label.col-md-1.control-label.col-md-offset-2(for='area-min') Area
       .input-group.col-md-2
-        input#area-min.form-control(type='number',placeholder='450',ng-model='model.search_attrs.area_min',float)
+        input#area-min.form-control(type='number',placeholder='450',ng-model='model.search.search_attrs.sqfeet_min',float)
         span.input-group-addon sq ft
       label.col-md-1.control-label.label-separator(for='area-max')
         i.fa.fa-minus
       .input-group.col-md-2
-        input#area-max.form-control(type='number',placeholder='1000',ng-model='model.search_attrs.area_max',float)
+        input#area-max.form-control(type='number',placeholder='1000',ng-model='model.search.search_attrs.sqfeet_max',float)
         span.input-group-addon sq ft
