@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('search.services')
-.factory 'SearchWizardModel', ($rootScope, $timeout, Restangular) ->
+.factory 'SearchWizardModel', ($rootScope, $timeout, Restangular, Lodash) ->
     search = {}
-    amenities  = {}
+    amenities = {}
 
     initFired = false
 
@@ -26,7 +26,7 @@ angular.module('search.services')
             parseSearch(response)
 
         Restangular.all('amenity').getList().then (response) ->
-            amenities = response
+          amenities = response
 
     broadcastCurrentStep = ->
       $rootScope.$broadcast "currentStep:changed:#{currentStep}"
@@ -70,6 +70,13 @@ angular.module('search.services')
       search = response
       search.search_attrs = angular.fromJson response.search_attrs
 
+    toggleAmenity = (amenityId) ->
+      search.search_attrs.amenities ||= []
+      if amenityId in search.search_attrs.amenities
+        Lodash.remove(search.search_attrs.amenities, amenityId)
+      else
+        search.search_attrs.amenities.push amenityId
+
     retVal =
       steps: steps
       init: init
@@ -78,6 +85,7 @@ angular.module('search.services')
       retreat: retreat
       isLastStep: isLastStep
       parseSearch: parseSearch
+      toggleAmenity: toggleAmenity
 
     # defining a getter property here because the search is constantly replaced by the restangular responses
     # using angular.extend was causing problems with re-writing the object.

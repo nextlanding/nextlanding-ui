@@ -9,6 +9,6 @@ section.parent-form#general-details-step(ng-show="isCurrentStep('amenityDetailsS
             input(
             type='checkbox', value="{{amenity.name}}"
             ng-checked="model.search.search_attrs.amenities.indexOf(amenity.id) > -1"
-            ng-click="toggleAmenity(amenity.id)"
+            ng-click="model.toggleAmenity(amenity.id)"
             )
             | {{amenity.name}}
