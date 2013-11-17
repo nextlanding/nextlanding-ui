@@ -80,8 +80,13 @@ angular.module('search.services')
     processPayment = (token) ->
       search.token = token
       paymentPending = true
-      Restangular.all('potential_search_complete').post(search).then ->
+      Restangular.all('potential_search_complete').post(search).then (->
         paymentPending = false
+        alert ('thanks!')
+      ), ->
+        paymentPending = false
+        alert ('error processing your payment')
+
 
     retVal =
       steps: steps

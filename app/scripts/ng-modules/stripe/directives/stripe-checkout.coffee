@@ -8,15 +8,19 @@ angular.module('stripe.directives')
       amount: '@'
       description: '@'
       image: '@'
+      email: '@'
       paymentCallback: '&'
     link: (scope, elem, attrs) ->
+      amountInCents = parseInt(scope.amount * 100)
+
       elem.on 'click', ->
         elem.attr 'disabled', 'disabled'
         StripeCheckout.open
           key: AppConfig.STRIPE_PUBLIC_KEY
-          amount: scope.amount
+          amount: amountInCents
           currency: 'usd'
           name: 'Nextlanding'
+          email: scope.email
           description: scope.description
           image: scope.image
           closed: ->

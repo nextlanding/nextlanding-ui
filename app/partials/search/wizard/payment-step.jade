@@ -7,9 +7,10 @@ section.parent-form#payment-step(ng-show="isCurrentStep('paymentStep')", ng-form
     label.col-md-2.col-md-offset-2.control-label(for='input-description') Payment
     .col-md-8
       button.stripe-button.btn.btn-primary.btn-sm(stripe-checkout
-      amount='3500'
+      amount='{{SEARCH_PRICE}}'
       description='Nextlanding Search ({{searchPrice | currency}})'
       image='https://stripe.com/img/documentation/checkout/marketplace.png'
+      email='{{model.search.search_attrs.email_address}}'
       payment-callback='model.processPayment(token)'
       ) Pay with card
       span(ng-show='model.paymentPending')
