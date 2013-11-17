@@ -4,7 +4,7 @@ angular.module('search.services')
 .factory 'SearchWizardModel', ($rootScope, $timeout, Restangular, Lodash) ->
     search = {}
     amenities = {}
-
+    paymentPending = false
     initFired = false
 
     steps = [
@@ -77,6 +77,12 @@ angular.module('search.services')
       else
         search.search_attrs.amenities.push amenityId
 
+    processPayment = (token) ->
+      search.token = token
+      paymentPending = true
+      Restangular.all('potential_search_complete').post(search).then ->
+        paymentPending = false
+
     retVal =
       steps: steps
       init: init
@@ -86,6 +92,7 @@ angular.module('search.services')
       isLastStep: isLastStep
       parseSearch: parseSearch
       toggleAmenity: toggleAmenity
+      processPayment: processPayment
 
     # defining a getter property here because the search is constantly replaced by the restangular responses
     # using angular.extend was causing problems with re-writing the object.
@@ -98,5 +105,9 @@ angular.module('search.services')
     Object.defineProperty retVal, 'amenities',
       get: ->
         amenities
+
+    Object.defineProperty retVal, 'paymentPending',
+      get: ->
+        paymentPending
 
     retVal

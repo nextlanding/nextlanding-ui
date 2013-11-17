@@ -10,8 +10,11 @@ section.parent-form#payment-step(ng-show="isCurrentStep('paymentStep')", ng-form
       amount='3500'
       description='Nextlanding Search ({{searchPrice | currency}})'
       image='https://stripe.com/img/documentation/checkout/marketplace.png'
-      payment-callback='paymentCallback(token)'
+      payment-callback='model.processPayment(token)'
       ) Pay with card
+      span(ng-show='model.paymentPending')
+        i.fa.fa-spinner.fa-2x(ng-class="{'fa-spin':model.paymentPending}")
+        | processing payment...
   .row
     .col-md-8.col-md-offset-4
       p

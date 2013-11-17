@@ -20,6 +20,9 @@ angular.module('stripe.directives')
           description: scope.description
           image: scope.image
           closed: ->
-            scope.$apply(-> elem.removeAttr 'disabled')
+            (scope.$apply ->
+              elem.removeAttr 'disabled') unless scope.paid?
           token: (token) ->
-            scope.$apply(-> scope.paymentCallback token: token)
+            scope.$apply ->
+              scope.paid = true
+              scope.paymentCallback token: token
