@@ -2,12 +2,13 @@ section.parent-form#general-details-step(ng-show="isCurrentStep('amenityDetailsS
   .page-header
     h1.text-center Step Four: What do you want included?
   .row
-    .col-md-4.col-md-offset-3
-      .checkbox(ng-repeat="amenity in model.amenities")
-        label
-          input(
-          type='checkbox', value="{{amenity.name}}"
-          ng-checked="model.search.search_attrs.amenities.indexOf(amenity.id) > -1"
-          ng-click="toggleAmenity(amenity.id)"
-          )
-          | {{amenity.name}}
+    .col-md-8.col-md-offset-3
+      .col-md-6(ng-repeat="amenity in model.amenities")
+        .checkbox
+          label
+            input(
+            type='checkbox', value="{{amenity.name}}"
+            ng-checked="model.search.search_attrs.amenities.indexOf(amenity.id) > -1"
+            ng-click="toggleAmenity(amenity.id)"
+            )
+            | {{amenity.name}}
