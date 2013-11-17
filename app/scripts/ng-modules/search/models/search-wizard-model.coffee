@@ -3,6 +3,7 @@
 angular.module('search.services')
 .factory 'SearchWizardModel', ($rootScope, $timeout, Restangular) ->
     search = {}
+    amenities  = {}
 
     initFired = false
 
@@ -23,6 +24,9 @@ angular.module('search.services')
         Restangular.all('potential_search_init').getList().then (response) ->
           if response
             parseSearch(response)
+
+        Restangular.all('amenity').getList().then (response) ->
+            amenities = response
 
     broadcastCurrentStep = ->
       $rootScope.$broadcast "currentStep:changed:#{currentStep}"
@@ -82,5 +86,9 @@ angular.module('search.services')
     Object.defineProperty retVal, 'search',
       get: ->
         search
+
+    Object.defineProperty retVal, 'amenities',
+      get: ->
+        amenities
 
     retVal

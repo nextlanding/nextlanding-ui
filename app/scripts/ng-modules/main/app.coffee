@@ -14,6 +14,7 @@ App = angular.module('app', [
   'ui.router'
   'ui.bootstrap'
   'ui.utils'
+  'lodash'
 ])
 
 App.config ($stateProvider, $urlRouterProvider) ->
