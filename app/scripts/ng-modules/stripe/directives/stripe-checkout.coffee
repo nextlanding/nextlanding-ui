@@ -27,6 +27,8 @@ angular.module('stripe.directives')
             (scope.$apply ->
               elem.removeAttr 'disabled') unless scope.paid?
           token: (token) ->
-            scope.$apply ->
-              scope.paid = true
-              scope.paymentCallback token: token
+            #there is a bug with stripe checkout where it will fire multiple `token` callbacks
+            unless scope.paid
+              scope.$apply ->
+                scope.paid = true
+                scope.paymentCallback token: token
