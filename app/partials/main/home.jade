@@ -85,3 +85,11 @@
             img#nyt-best-stuff.img-responsive(src='/images/best-stuff-nyt.png')
           li.col-md-2
             img#lifehacker-best-stuff.img-responsive(src='/images/best-stuff-lifehacker.png')
+        .row
+          .call-to-action
+            form.form-inline(role='form',ng-submit='startSearch()')
+              .form-group.col-md-10
+                label.sr-only(for='search-location') Search Location
+                input#search-location.form-control(type='text',ng-model='model.search.search_attrs.specified_location', placeholder='Where do you want to live?')
+              .col-md-2
+                button.btn.btn-primary(type='submit') Search

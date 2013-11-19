@@ -165,6 +165,18 @@
           top: 8px;
         }
       }
+
+      .call-to-action {
+        @include make-md-column(6);
+        margin: 0 auto;
+        margin-top: 50px;
+
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          //- This overrides the float:left from bootstrapm w/ responsive
+          float: none;
+        }
+      }
     }
   }
 }
