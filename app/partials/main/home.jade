@@ -1,18 +1,31 @@
 #home-container(ng-controller='HomeCtrl')
   .jumbotron
     .container
-      h1
-        span.br-md Save Dozens of Hours
-        span  on Your Apartment Search
+      h1.text-center Track Which Ad Sources Actually Make Sales
+      h3.text-center Real estate analytics so you know which ad sources truly work.
       .row
-        form.form-inline(role='form',ng-submit='startSearch()')
-          .form-group.col-md-4.input-group-lg
-            label.sr-only(for='search-location') Search Location
-            input#search-location.form-control(type='text',ng-model='model.search.search_attrs.specified_location', placeholder='Where do you want to live?')
-          .col-md-2
-            button.btn.btn-primary.btn-lg(type='submit') Search
-
-      h3 Guaranteed results for <span class='price'>${{searchPrice}}</span> or your money back.
+        .col-md-7
+          .row
+            #signup-form.form-horizontal(role='form')
+              .form-group
+                label.col-md-2.control-label(for='price-min') First
+                .input-group.col-md-4
+                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
+                label.col-md-2.control-label(for='price-min') Last
+                .input-group.col-md-4
+                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
+              .form-group
+                label.col-md-2.control-label(for='price-min') Phone
+                .input-group.col-md-4
+                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
+                label.col-md-2.control-label(for='price-min') Email
+                .input-group.col-md-4
+                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
+          .row
+            #signup-button-container.col-md-12
+              button.btn.btn-primary.pull-right(type='submit') View Demo
+        .col-md-4.col-md-offset-1
+          img.img-responsive(src='/images/ad-mobile.png')
 
   section.alt-section
     .container
