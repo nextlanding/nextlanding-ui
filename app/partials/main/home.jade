@@ -4,9 +4,9 @@
       h1.text-center Track Which Ad Sources Actually Make Sales
       h3.text-center Real estate analytics so you know which ad sources truly work.
       .row
-        .col-md-7
+        form.col-md-7(name='signupForm',ng-submit='startSearch()')
           .row
-            form#signup-form.parent-form.form-horizontal(name='signupForm', role='form')
+            #signup-form.parent-form.form-horizontal(role='form')
               .form-group
                 label.col-md-2.control-label(for='price-min') First
                 .input-group.col-md-4

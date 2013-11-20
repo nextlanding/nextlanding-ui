@@ -8,3 +8,4 @@ angular.module('app.services')
     STRIPE_PUBLIC_KEY: $PROCESS_ENV_STRIPE_PUBLIC_KEY or 'pk_fh9X711IWVbkR61YZXexN5WwdpNm5'
     SEARCH_PRICE: 35.00
     CONTACT_EMAIL_ADDRESS: 'info@nextlanding.com'
+    PRODUCT_NAME: 'SquareSpectrum'
