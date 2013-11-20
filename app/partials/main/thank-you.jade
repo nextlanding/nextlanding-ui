@@ -1,7 +1,8 @@
 #thank-you-container
-  #thank-you-section.container.rounded-light-container
+  #thank-you-section.container.rounded-light-container.text-center
     h1 Thank you for creating your search!
     h4 Right now we are finding all possible listings and verifying them for accuracy.
     h4 You will get your verified results within 24 hours.
-    br
-    h4 Email us at <a href="info@nextlanding.com"> info@nextlanding.com</a> with any questions, comments, or concerns.
+    h4#email-us Email us at&nbsp;
+      a(href="mailto:{{contactEmailAddress}}") {{contactEmailAddress}}&nbsp;
+      | with any questions, comments, or concerns.

@@ -5,10 +5,17 @@
     margin-top: 70px;
     margin-bottom: 20px;
     padding-bottom: 20px;
-    text-align: center;
 
     a:link {
     	color: $calm-lime;
+    }
+
+    h1{
+      margin-bottom: 40px;
+    }
+
+    #email-us{
+      margin-top: 40px;
     }
   }
 }
