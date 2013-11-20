@@ -29,6 +29,12 @@ App.config ($stateProvider, $urlRouterProvider) ->
   .state "styles",
       url: "/styles"
       templateUrl: "/_public/js/main/partial1.html"
+  .state "contact",
+    url: "/contact"
+    templateUrl: "/_public/js/main/thank-you.html"
+    data:
+      style:
+        webAppStyle: true
   .state "search",
     url: "/search"
     templateUrl: "/_public/js/search/wizard/start.html"

@@ -1,7 +1,7 @@
 nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      a.navbar-brand(href='../') Nextlanding
+      a.navbar-brand(href='../') Home
       button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
         span.icon-bar
         span.icon-bar
@@ -9,15 +9,15 @@ nav.navbar.navbar-default.navbar-fixed-top
     #navbar-main.navbar-collapse.collapse
       ul.nav.navbar-nav
         li
-          a(href='../help/') How it Works
+          a(ui-sref="contact") How it Works
         li
-          a(href='http://news.bootswatch.com') Blog
+          a(ui-sref="contact") Blog
         li(ng-class="getClass('/todo')")
-          a(ng-href='/todo') Neighborhoods
+          a(ui-sref="contact") Neighborhoods
         li(ng-class="getClass('/view1')")
-          a(ng-href='/styles') Pricing
+          a(ui-sref="contact") Pricing
       ul.nav.navbar-nav.navbar-right
         li
-          a(href='http://builtwithbootstrap.com/', target='_blank') Get Started
+          a(ui-sref="contact") Get Started
         li
-          a(href='https://wrapbootstrap.com/?ref=bsw', target='_blank') Login
+          a(ui-sref="contact") Login

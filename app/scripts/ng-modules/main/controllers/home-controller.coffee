@@ -5,8 +5,8 @@ angular.module('app.controllers')
     $scope.model = {}
 
     $scope.startSearch = ->
-      mixpanel.name_tag $scope.model.email 
-      
+      mixpanel.name_tag $scope.model.email
+
       mixpanel.people.set
         $email: $scope.model.email
         $created: new Date()

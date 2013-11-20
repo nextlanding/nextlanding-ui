@@ -6,24 +6,24 @@
       .row
         .col-md-7
           .row
-            #signup-form.form-horizontal(role='form')
+            form#signup-form.parent-form.form-horizontal(name='signupForm', role='form')
               .form-group
                 label.col-md-2.control-label(for='price-min') First
                 .input-group.col-md-4
-                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
+                  input#price-min.form-control(type='text',required,ng-model='model.firstName')
                 label.col-md-2.control-label(for='price-min') Last
                 .input-group.col-md-4
-                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
+                  input#price-min.form-control(type='text',required,ng-model='model.lastName')
               .form-group
-                label.col-md-2.control-label(for='price-min') Phone
-                .input-group.col-md-4
-                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
                 label.col-md-2.control-label(for='price-min') Email
                 .input-group.col-md-4
-                  input#price-min.form-control(type='text',placeholder='1000', required,ng-model='model.search.search_attrs.price_min',integer)
+                  input#price-min.form-control(type='email',required,ng-model='model.emailAddress')
+                label.col-md-2.control-label(for='price-min') Phone
+                .input-group.col-md-4
+                  input#price-min.form-control(type='text',ng-model='model.phoneNumber')
           .row
             #signup-button-container.col-md-12
-              button.btn.btn-primary.pull-right(type='submit') View Demo
+              button.btn.btn-primary.pull-right(type='submit', ng-disabled='signupForm.$invalid') Continue
         .col-md-4.col-md-offset-1
           img.img-responsive(src='/images/ad-mobile.png')
 
@@ -100,9 +100,3 @@
             img#lifehacker-best-stuff.img-responsive(src='/images/best-stuff-lifehacker.png')
         .row
           .call-to-action
-            form.form-inline(role='form',ng-submit='startSearch()')
-              .form-group.col-md-10
-                label.sr-only(for='search-location') Search Location
-                input#search-location.form-control(type='text',ng-model='model.search.search_attrs.specified_location', placeholder='Where do you want to live?')
-              .col-md-2
-                button.btn.btn-primary(type='submit') Search
