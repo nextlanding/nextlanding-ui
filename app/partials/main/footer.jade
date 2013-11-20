@@ -4,27 +4,27 @@ footer#main-footer(ng-class="{'navbar navbar-default navbar-fixed-bottom':state.
       .col-md-6
         ul.footer-menu.list-unstyled.list-inline
           li
-            a(href='#') Privacy Policy
+            a(ui-sref="contact") Privacy Policy
           li
-            a(href='#') Terms of Service
+            a(ui-sref="contact") Terms of Service
           li
-            a(href='#') Contact Us
+            a(ui-sref="contact") Contact Us
         .copyright
           | {{currentDate | date:'yyyy'}} © {{productName}}. All rights reserved.
       .col-md-6
         ul.footer-social.list-unstyled.list-inline.pull-right
           li
-            a(href='#')
+            a(ui-sref="contact")
               i.fa.fa-facebook
           li
-            a(href='#')
+            a(ui-sref="contact")
               i.fa.fa-twitter
           li
-            a(href='#')
+            a(ui-sref="contact")
               i.fa.fa-dribbble
           li
-            a(href='#')
+            a(ui-sref="contact")
               i.fa.fa-linkedin
           li
-            a(href='#')
+            a(ui-sref="contact")
               i.fa.fa-google-plus
