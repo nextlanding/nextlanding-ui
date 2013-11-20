@@ -18,8 +18,6 @@ angular.module('app.controllers')
         $last_name: $scope.model.lastName
         $phone_number: $scope.model.phoneNumber
 
-      mixpanel.track "$signup", User: $scope.model.emailAddress
-
-      mixpanel.track('Experiment Brokerage Ad Analytics: Signup')
+      mixpanel.track "Experiment Brokerage Ad Analytics: Signup", User: $scope.model.emailAddress
 
       $state.go('contact')
