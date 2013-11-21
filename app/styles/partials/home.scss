@@ -57,19 +57,28 @@
 
     //- Value proposition
     &#value-props-section {
-      @include img-responsive-center(35px);
+      margin-top: 80px;
+      padding-bottom: 0;
+      margin-bottom: 0;
 
       h2 {
         color: $nl-medium-bright;
 
         //- Responsive
         @media screen and (min-width: $screen-tablet) {
-          font-size: ($font-size-base * 3.428571428571429);
+          font-size: ($font-size-base * 2);
         }
       }
 
       p {
-        font-size: ($font-size-base * 1.714285714285714);
+        font-size: ($font-size-base * 1.428571428571429);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+
+      img{
+        border-radius: $border-radius-large;
+        // Only round corners at higher resolutions if contained in a container
       }
     }
 
