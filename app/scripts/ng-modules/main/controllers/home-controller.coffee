@@ -3,7 +3,7 @@
 angular.module('app.controllers')
 .controller 'HomeCtrl', ($scope, $state) ->
     $scope.model = {}
-    mixpanel.track('Experiment Brokerage Ad Analytics: Visited Homepage')
+    mixpanel.track('Experiment Listing Database: Visited Homepage')
 
     $scope.startSearch = ->
       mixpanel.name_tag $scope.model.emailAddress
@@ -18,6 +18,6 @@ angular.module('app.controllers')
         $last_name: $scope.model.lastName
         $phone_number: $scope.model.phoneNumber
 
-      mixpanel.track "Experiment Brokerage Ad Analytics: Signup", User: $scope.model.emailAddress
+      mixpanel.track "Experiment Listing Database: Signup", User: $scope.model.emailAddress
 
       $state.go('contact')
