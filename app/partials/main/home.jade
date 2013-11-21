@@ -55,5 +55,24 @@
       #best-stuff-section.page-header
         h4.text-center We've worked with folks at:
         img.img-responsive(src='/images/best-stuff-brokerage-ad-analytics.png')
-        .row
-          .call-to-action
+        .row.call-to-action
+          form.col-md-7.col-md-offset-3.parent-form(name='signupForm',ng-submit='startSearch()')
+            .row
+              #signup-form.parent-form.form-horizontal(role='form')
+                .form-group
+                  label.col-md-2.control-label(for='price-min') First
+                  .input-group.col-md-4
+                    input#price-min.form-control(type='text',required,ng-model='model.firstName')
+                  label.col-md-2.control-label(for='price-min') Last
+                  .input-group.col-md-4
+                    input#price-min.form-control(type='text',required,ng-model='model.lastName')
+                .form-group
+                  label.col-md-2.control-label(for='price-min') Email
+                  .input-group.col-md-4
+                    input#price-min.form-control(type='email',required,ng-model='model.emailAddress')
+                  label.col-md-2.control-label(for='price-min') Phone
+                  .input-group.col-md-4
+                    input#price-min.form-control(type='text',ng-model='model.phoneNumber')
+            .row
+              #signup-button-container.col-md-12
+                button.btn.btn-primary.pull-right(type='submit', ng-disabled='signupForm.$invalid') Continue

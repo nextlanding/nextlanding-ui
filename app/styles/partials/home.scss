@@ -28,7 +28,6 @@
       color: $nl-medium-bright;
       text-shadow: 0px 2px 18px #000;
 
-
       //- Responsive
       @media screen and (min-width: $screen-tablet) {
         font-size: ($font-size-base * 2);
@@ -39,16 +38,16 @@
       color: $nl-medium-bright;
     }
 
-    #signup-form{
-      margin-top:140px;
+    #signup-form {
+      margin-top: 140px;
     }
-    .form-group{
+    .form-group {
       font-size: $font-size-base;
     }
 
-    #signup-button-container{
+    #signup-button-container {
       margin-top: 40px;
-      padding-right:0;
+      padding-right: 0;
     }
   }
 
@@ -76,7 +75,7 @@
         margin-bottom: 30px;
       }
 
-      img{
+      img {
         border-radius: $border-radius-large;
         // Only round corners at higher resolutions if contained in a container
       }
@@ -189,14 +188,9 @@
       }
 
       .call-to-action {
-        @include make-md-column(6);
-        margin: 0 auto;
-        margin-top: 50px;
-
-        //- Responsive
-        @media screen and (min-width: $screen-tablet) {
-          //- This overrides the float:left from bootstrapm w/ responsive
-          float: none;
+        margin-top: 80px;
+        #signup-button-container {
+          padding-right: 0;
         }
       }
     }
