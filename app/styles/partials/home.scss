@@ -2,9 +2,11 @@
 
 #home-container {
   .jumbotron {
-    background: $nl-very-bright url('../images/bg/bg-ad-analytics.jpg');
+    @include background-url-gradient-vertical('../images/bg/bg-listing-database.jpg',rgba(85,85,85,.4),rgba(51,51,51,.2));
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+
 
     padding-top: 100px;
     padding-bottom: 0;
@@ -13,7 +15,7 @@
 
     h1 {
       color: $nl-very-bright;
-      text-shadow: 0px 2px 6px #000;
+      text-shadow: 0 2px 6px #000;
 
       margin-bottom: 20px;
       line-height: 120%;
@@ -26,7 +28,6 @@
 
     h3 {
       color: $nl-medium-bright;
-      text-shadow: 0px 1px 5px black;
 
       //- Responsive
       @media screen and (min-width: $screen-tablet) {

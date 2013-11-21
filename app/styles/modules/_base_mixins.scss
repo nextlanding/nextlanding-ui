@@ -24,3 +24,18 @@
     margin: $margin-vertical auto;
   }
 }
+
+// Vertical gradient, from top to bottom
+//
+// Adoptd from Bootstrap SASS
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin background-url-gradient-vertical($url, $start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-gradient(linear, left $start-percent, left $end-percent, from($start-color), to($end-color)), url($url); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, $start-color, $start-percent, $end-color, $end-percent), url($url); // Safari 5.1+, Chrome 10+
+  background-image:  -moz-linear-gradient(top, $start-color $start-percent, $end-color $end-percent), url($url); // FF 3.6+
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent), url($url); // Standard, IE10
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}
