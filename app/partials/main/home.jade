@@ -60,19 +60,19 @@
             .row
               #signup-form.parent-form.form-horizontal(role='form')
                 .form-group
-                  label.col-md-2.control-label(for='price-min') First
+                  label.col-md-2.control-label(for='first2') First
                   .input-group.col-md-4
-                    input#price-min.form-control(type='text',required,ng-model='model.firstName')
-                  label.col-md-2.control-label(for='price-min') Last
+                    input#first2.form-control(type='text',required,ng-model='model.firstName')
+                  label.col-md-2.control-label(for='last2') Last
                   .input-group.col-md-4
-                    input#price-min.form-control(type='text',required,ng-model='model.lastName')
+                    input#last2.form-control(type='text',required,ng-model='model.lastName')
                 .form-group
-                  label.col-md-2.control-label(for='price-min') Email
+                  label.col-md-2.control-label(for='email2') Email
                   .input-group.col-md-4
-                    input#price-min.form-control(type='email',required,ng-model='model.emailAddress')
-                  label.col-md-2.control-label(for='price-min') Phone
+                    input#email2.form-control(type='email',required,ng-model='model.emailAddress')
+                  label.col-md-2.control-label(for='phone2') Phone
                   .input-group.col-md-4
-                    input#price-min.form-control(type='text',ng-model='model.phoneNumber')
+                    input#phone2.form-control(type='text',ng-model='model.phoneNumber')
             .row
               #signup-button-container.col-md-12
                 button.btn.btn-primary.pull-right(type='submit', ng-disabled='signupForm.$invalid') Continue
