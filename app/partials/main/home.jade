@@ -1,31 +1,31 @@
 #home-container(ng-controller='HomeCtrl')
   .jumbotron
     .container
-      h1 Gain Access to All Open Listings
-      h3 The most comprehensive collection of rental listings in real-time.
-      .row
-        form.col-md-7(name='signupForm',ng-submit='startSearch()')
-          .row
-            #signup-form.parent-form.form-horizontal(role='form')
-              .form-group
-                label.col-md-2.control-label(for='first') First
-                .input-group.col-md-4
-                  input#first.form-control(type='text',required,ng-model='model.firstName')
-                label.col-md-2.control-label(for='last') Last
-                .input-group.col-md-4
-                  input#last.form-control(type='text',required,ng-model='model.lastName')
-              .form-group
-                label.col-md-2.control-label(for='email') Email
-                .input-group.col-md-4
-                  input#email.form-control(type='email',required,ng-model='model.emailAddress')
-                label.col-md-2.control-label(for='phone') Phone
-                .input-group.col-md-4
-                  input#phone.form-control(type='text',ng-model='model.phoneNumber')
-          .row
-            #signup-button-container.col-md-12
-              button.btn.btn-primary.pull-right(type='submit', ng-disabled='signupForm.$invalid') Continue
-        .col-md-4.col-md-offset-1
-          img.img-responsive(src='/images/ad-mobile.png')
+      .heading-text.rounded-light-container
+        .text-center
+          h1 All Available Listings. One Click Away.
+          h3 The most comprehensive set of verified rental listings in real-time.
+        .row
+          form.col-md-7.col-md-offset-3(name='signupForm',ng-submit='startSearch()')
+            .row
+              #signup-form.parent-form.form-horizontal(role='form')
+                .form-group
+                  label.col-md-2.control-label(for='first') First
+                  .input-group.col-md-4
+                    input#first.form-control(type='text',required,ng-model='model.firstName')
+                  label.col-md-2.control-label(for='last') Last
+                  .input-group.col-md-4
+                    input#last.form-control(type='text',required,ng-model='model.lastName')
+                .form-group
+                  label.col-md-2.control-label(for='email') Email
+                  .input-group.col-md-4
+                    input#email.form-control(type='email',required,ng-model='model.emailAddress')
+                  label.col-md-2.control-label(for='phone') Phone
+                  .input-group.col-md-4
+                    input#phone.form-control(type='text',ng-model='model.phoneNumber')
+            .row
+              #signup-button-container.col-md-12
+                button.btn.btn-primary.pull-right(type='submit', ng-disabled='signupForm.$invalid') Continue
 
   section.alt-section
     .container
@@ -49,7 +49,7 @@
                   | {{productName}} constantly monitors the market and notifies you when relevent changes occur. Get updates about new listings, closes, expirations, price changes, and more.
 
           .col-md-5.col-md-offset-1
-            img.img-responsive(src='/images/sq-features-graph.png')
+            img.img-responsive(src='/images/listing-database-ui.png')
   section.section
     .container
       #best-stuff-section.page-header

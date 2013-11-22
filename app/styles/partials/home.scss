@@ -2,7 +2,7 @@
 
 #home-container {
   .jumbotron {
-    @include background-url-gradient-vertical('../images/bg/bg-listing-database.jpg',rgba(85,85,85,.4),rgba(51,51,51,.2));
+    background-image: url('../images/bg/bg-listing-database.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,8 +14,9 @@
     margin-bottom: 0;
 
     h1 {
-      color: $nl-very-bright;
-      text-shadow: 0 2px 6px #000;
+      color: $nl-less-dark;
+      //- Taken directly from bootstrap nav css
+      text-shadow: 0 -1px 0 rgba(0,0,0,.15);
 
       margin-bottom: 20px;
       line-height: 120%;
@@ -27,7 +28,7 @@
     }
 
     h3 {
-      color: $nl-medium-bright;
+      color: $nl-very-dark;
 
       //- Responsive
       @media screen and (min-width: $screen-tablet) {
@@ -39,8 +40,14 @@
       color: $nl-medium-bright;
     }
 
+    .heading-text{
+      padding-top: 20px;
+      background: rgba(255,255,255,.82);
+      margin-bottom: 20px;
+    }
+
     #signup-form {
-      margin-top: 140px;
+      margin-top: 100px;
     }
     .form-group {
       font-size: $font-size-base;
@@ -49,6 +56,8 @@
     #signup-button-container {
       margin-top: 40px;
       padding-right: 0;
+      margin-bottom:20px;
+      @include clearfix();
     }
   }
 
@@ -57,7 +66,7 @@
 
     //- Value proposition
     &#value-props-section {
-      margin-top: 80px;
+      margin-top: 50px;
       padding-bottom: 0;
       margin-bottom: 0;
 
