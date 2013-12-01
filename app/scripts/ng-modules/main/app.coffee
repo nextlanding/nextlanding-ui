@@ -30,17 +30,20 @@ App.config ($stateProvider, $urlRouterProvider) ->
       url: "/styles"
       templateUrl: "/_public/js/main/partial1.html"
   .state "search",
-    url: "/search"
-    templateUrl: "/_public/js/search/wizard/start.html"
-    data:
-      style:
-        webAppStyle:true
+      url: "/search"
+      templateUrl: "/_public/js/search/wizard/start.html"
+      data:
+        style:
+          webAppStyle: true
   .state "admin",
       url: "/admin"
       templateUrl: "/_public/js/admin/admin.html"
       data:
         style:
           webAppStyle: true
+  .state "admin.emailer",
+      url: "/emailer"
+      templateUrl: "/_public/js/admin/emailer.html"
 
 
 App.config(($locationProvider) ->
@@ -52,7 +55,6 @@ App.config((RestangularProvider, AppConfig) ->
   RestangularProvider.setBaseUrl AppConfig.API_ENDPOINT
   RestangularProvider.setDefaultHttpFields
     withCredentials: true
-
 
 
   # This function is used to map the JSON data to something Restangular expects
