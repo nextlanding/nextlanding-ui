@@ -35,6 +35,12 @@ App.config ($stateProvider, $urlRouterProvider) ->
     data:
       style:
         webAppStyle:true
+  .state "admin",
+      url: "/admin"
+      templateUrl: "/_public/js/admin/admin.html"
+      data:
+        style:
+          webAppStyle: true
 
 
 App.config(($locationProvider) ->
