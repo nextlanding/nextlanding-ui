@@ -8,6 +8,9 @@ angular.module('app.controllers')
     $scope.startSearch = ->
       mixpanel.name_tag $scope.model.emailAddress
 
+      #this func should come before identify
+      mixpanel.alias $scope.model.emailAddress
+
       mixpanel.identify $scope.model.emailAddress
 
       mixpanel.people.set
