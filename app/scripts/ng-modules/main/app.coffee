@@ -3,6 +3,7 @@
 App = angular.module('app', [
   'apartment'
   'search'
+  'admin'
   'googleMaps'
   'app.controllers'
   'app.directives'
@@ -41,9 +42,9 @@ App.config ($stateProvider, $urlRouterProvider) ->
       data:
         style:
           webAppStyle: true
-  .state "admin.emailer",
-      url: "/emailer"
-      templateUrl: "/_public/js/admin/emailer.html"
+  .state "admin.emailerSender",
+      url: "/emailer/sender/:searchId"
+      templateUrl: "/_public/js/admin/emailer-sender.html"
 
 
 App.config(($locationProvider) ->
