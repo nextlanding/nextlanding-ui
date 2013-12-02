@@ -7,3 +7,4 @@ angular.module('admin.controllers')
     Restangular.one('emailer_sender', $scope.model.searchId).get().then (response) ->
       $scope.model.subject = response.subject
       $scope.model.body = response.body
+      $scope.model.search_description = response.search_description
