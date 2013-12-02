@@ -5,8 +5,7 @@ angular.module('admin.controllers')
     $scope.settings =
       emailsPending: false
 
-    Restangular.one('emailer_sender', $state.params.searchId).get().then (response) ->
-      debugger
+    Restangular.one('search', $state.params.searchId).one('emailer_sender').get().then (response) ->
       $scope.model = response
 
     $scope.settings.sendEmails = ->
