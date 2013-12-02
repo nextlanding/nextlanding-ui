@@ -18,7 +18,7 @@
               textarea#body.form-control(name='body', required, ng-model="model.body")
           .form-group
             .col-md-9.col-md-offset-3
-              button.btn.btn-primary(ng-click='model.proceed()',type='submit',ng-disabled='emailerSenderForm.$invalid') Send
+              button.btn.btn-primary(ng-click='settings.sendEmails()',type='button',ng-disabled='emailerSenderForm.$invalid || settings.emailsPending') Send
       .col-md-6
         .well
           p(ng-bind="model.search_description")
