@@ -6,16 +6,13 @@
     margin-bottom: 20px;
     padding-bottom: 20px;
 
-    a:link {
-      color: $calm-lime;
-    }
-
-    h1{
-      margin-bottom: 40px;
-    }
-
-    #email-us{
-      margin-top: 40px;
+    #emailer-sender-section {
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        #body {
+          min-height: 230px;
+        }
+      }
     }
   }
 }

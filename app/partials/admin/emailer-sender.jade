@@ -1,3 +1,19 @@
-#emailer-container
-  #emailer-section(ng-controller='AdminEmailerSenderCtrl')
-    h1 emialer
+#emailer-sender-section(ng-controller='AdminEmailerSenderCtrl')
+  form(name='emailerSenderForm', novalidate).form-horizontal
+    fieldset
+      legend Emailer Sender
+      .form-group
+        label.col-md-4.control-label(for='from-name') From name
+        .col-md-4
+          input#from-name.form-control.input-md(name='from-name', type='text', placeholder='', required='', ng-model="model.from_name")
+      .form-group
+        label.col-md-4.control-label(for='subject') Subject
+        .col-md-4
+          input#subject.form-control.input-md(name='subject', type='text', placeholder='', required='', ng-model="model.subject")
+      .form-group
+        label.col-md-4.control-label(for='body') body
+        .col-md-6
+          textarea#body.form-control(name='body', required, ng-model="model.body")
+      .form-group
+        .col-md-4.col-md-offset-4
+          button.btn.btn-primary(ng-click='model.proceed()',type='submit',ng-disabled='emailerSenderForm.$invalid') Send
