@@ -14,6 +14,7 @@ angular.module('app.controllers')
     )
 
     $scope.searchPrice = AppConfig.SEARCH_PRICE
+    $scope.contactEmailAddress = AppConfig.CONTACT_EMAIL_ADDRESS
     $scope.currentDate = Date.now()
 
     # getClass compares the current url with the id.

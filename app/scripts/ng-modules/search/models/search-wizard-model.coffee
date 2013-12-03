@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('search.services')
-.factory 'SearchWizardModel', ($rootScope, $timeout, Restangular, Lodash) ->
+.factory 'SearchWizardModel', ($rootScope, $timeout, $state, $location, Restangular, Lodash) ->
     search = {}
     amenities = {}
     paymentPending = false
@@ -82,7 +82,9 @@ angular.module('search.services')
       paymentPending = true
       Restangular.all('potential_search_complete').post(search).then (->
         paymentPending = false
-        alert ('thanks!')
+        $state.go 'thankYou'
+        #find a way to remove the back button - simulate post redirect get
+        $location.replace()
       ), ->
         paymentPending = false
         alert ('error processing your payment')
