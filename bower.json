@@ -20,7 +20,7 @@
     "angular-ui-map": "0.0.2",
     "angular-ui-router": "0.2.0",
     "lodash": "2.3.0",
-    "sass-bootstrap": "~3.0.0"
+    "sass-bootstrap": "3.0.0"
   },
   "overrides": {
     "angular-mocks": {
