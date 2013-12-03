@@ -30,6 +30,12 @@ App.config ($stateProvider, $urlRouterProvider) ->
   .state "styles",
       url: "/styles"
       templateUrl: "/_public/js/main/partial1.html"
+  .state "thankYou",
+    url: "/thank-you"
+    templateUrl: "/_public/js/main/thank-you.html"
+    data:
+      style:
+        webAppStyle: true
   .state "search",
       url: "/search"
       templateUrl: "/_public/js/search/wizard/start.html"
@@ -45,6 +51,24 @@ App.config ($stateProvider, $urlRouterProvider) ->
   .state "admin.emailerSender",
       url: "/emailer/sender/:searchId"
       templateUrl: "/_public/js/admin/emailer-sender.html"
+  .state "aboutus",
+    url: "/about-us"
+    templateUrl: "/_public/js/main/about-us.html"
+    data:
+      style:
+        webAppStyle: true
+  .state "tos",
+    url: "/tos"
+    templateUrl: "/_public/js/main/tos.html"
+    data:
+      style:
+        webAppStyle: true
+  .state "howitworks",
+    url: "/how-it-works"
+    templateUrl: "/_public/js/main/how-it-works.html"
+    data:
+      style:
+        webAppStyle: true
   .state "admin.addApartments",
       url: "/add-apartments/:searchId"
       templateUrl: "/_public/js/admin/add-apartments.html"

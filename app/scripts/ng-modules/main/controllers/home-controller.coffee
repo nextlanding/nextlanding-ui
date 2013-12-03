@@ -5,4 +5,4 @@ angular.module('app.controllers')
     $scope.model = SearchWizardModel
 
     $scope.startSearch = ->
-      $state.go('search')
+      $state.go 'search'
