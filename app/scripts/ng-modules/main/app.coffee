@@ -60,15 +60,9 @@ App.config ($stateProvider, $urlRouterProvider) ->
   .state "tos",
     url: "/tos"
     templateUrl: "/_public/js/main/tos.html"
-    data:
-      style:
-        webAppStyle: true
   .state "howitworks",
     url: "/how-it-works"
     templateUrl: "/_public/js/main/how-it-works.html"
-    data:
-      style:
-        webAppStyle: true
   .state "admin.addApartments",
       url: "/add-apartments/:searchId"
       templateUrl: "/_public/js/admin/add-apartments.html"
