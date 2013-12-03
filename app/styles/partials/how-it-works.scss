@@ -1,0 +1,159 @@
+@import "../base";
+
+#hiw-container {
+  #hiw-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+
+    .header-container {
+    	width: 1000px;
+    	margin-left: 16%;
+    }
+
+    .steps-container {
+		position: relative;
+		width: 100%;
+		min-width: 1280px;
+		max-width: 1800px;
+
+		#steps {
+			position: absolute;
+			top: -210px;
+			z-index: 1;
+			width: 100%;
+			margin: 0 auto;
+	
+			.inner {
+				width: 1000px;
+				margin: 0 auto;
+
+				.connection1 {
+					border: 3px dashed #BBBBBB;
+					width: 0;
+					position: relative;
+					left: -15px;
+				}
+
+				.circle {
+					border-radius: 30px;
+					width: 60px;
+					height: 60px;
+					background-color: #C6E269;
+					color: #1B334E;
+					left: -42px;
+					position: relative;
+					text-align: center;
+					padding-top: 12px;
+					font-size: 24px;
+				}					
+			}
+		}
+	}
+
+    #rows {
+    	position: relative;
+
+    	.row-grey {
+    		padding: 60px;
+
+			.content {
+				width: 880px;
+				margin: 0 auto;
+				overflow: auto;
+
+				p.tip {
+					margin: 40px 0;
+					font-size: 14px;
+					color: #fff;
+					background: #227D7E;
+					padding: 5px;
+					border-radius: 10px;
+				}
+
+				.right {
+					float: right;
+					width: 30%;
+					vertical-align: middle;
+				}
+
+				.left {
+					float: left;
+					width: 60%;
+					vertical-align: middle;
+				}
+			}
+    	}
+
+    	.row-white {
+    		padding: 60px;
+			background-color: #fff;
+			border-bottom: 1px solid #e7f0f4;
+
+			.content {
+				width: 880px;
+				margin: 0 auto;
+				overflow: auto;
+
+				.right-bottom {
+					float: right;
+					width: 60%;
+					vertical-align: middle;
+				}
+
+				.left-bottom {
+					float: left;
+					width: 30%;
+					vertical-align: middle;
+				}
+
+				p.tip {
+					margin: 40px 0;
+					font-size: 14px;
+					color: #fff;
+					background: #227D7E;
+					padding: 5px;
+					border-radius: 10px;
+				}
+
+				.right {
+					float: right;
+					width: 30%;
+					vertical-align: middle;
+				}
+
+				.left {
+					float: left;
+					width: 60%;
+					vertical-align: middle;
+				}
+			}
+    	}
+    }
+
+    a:link {
+    	color: $calm-lime;
+    }
+
+    h2 {
+    	color: #F2F2F2;
+    	text-shadow: black 0.1em 0.1em 0.2em;
+    	font-size: 40px;
+    }
+
+    .jumbotron {
+    	background: $nl-very-bright url('../images/bg/brooklyn-brownstones.jpg');
+    	background-position: center;
+    	background-size: cover;
+    	background-repeat: no-repeat;
+	
+    	padding-top: 168px;
+    	padding-bottom: 168px;
+	
+    	margin-bottom: 0;
+    	height: 500px;
+    	max-width: 1800px;
+    	min-width: 1200px;
+    }
+  }
+}

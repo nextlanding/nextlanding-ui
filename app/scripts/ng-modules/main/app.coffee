@@ -53,6 +53,12 @@ App.config ($stateProvider, $urlRouterProvider) ->
     data:
       style:
         webAppStyle: true
+  .state "howitworks",
+    url: "/how-it-works"
+    templateUrl: "/_public/js/main/how-it-works.html"
+    data:
+      style:
+        webAppStyle: true
 
 App.config(($locationProvider) ->
   # Without server side support html5 must be disabled.
