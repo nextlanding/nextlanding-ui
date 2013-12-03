@@ -1,0 +1,60 @@
+#add-apartments-section(ng-controller='AdminAddApartmentsCtrl').rounded-light-container
+  .container
+    .page-header
+      h3.text-center Add Apartments
+      form(name='addApartmentsConfigForm', novalidate).form-horizontal
+        .row
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='days-back') Days Back
+            .col-md-6
+              input#days-back.form-control.input-sm(name='days-back', type='number', required,integer, ng-model="model.config.days_back")
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='distance') Distance
+            .col-md-6
+              input#distance.form-control.input-sm(name='distance', type='number', required,integer, ng-model="model.config.distance")
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='fees-allowed') Fees Allowed
+            .col-md-6.checkbox
+              input#fees-allowed(name='fees-allowed', type='checkbox', ng-model="model.config.fees_allowed")
+        .row
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='cats-required') Cats Required
+            .col-md-6.checkbox
+              input#cats-required(name='cats-required', type='checkbox', ng-model="model.config.cats_required")
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='dogs-required') Dogs Required
+            .col-md-6.checkbox
+              input#dogs-required(name='dogs-required', type='checkbox', ng-model="model.config.dogs_required")
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='price-min') Price Min
+            .col-md-6
+              input#price-min.form-control.input-sm(name='price-min', type='number', required,integer, ng-model="model.config.price_min")
+        .row
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='price-max') Price Max
+            .col-md-6
+              input#price-max.form-control.input-sm(name='price-max', type='number', required,integer, ng-model="model.config.price_max")
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='bedroom-min') Bedroom Min
+            .col-md-6
+              input#bedroom-min.form-control.input-sm(name='bedroom-min', type='number', required,integer, ng-model="model.config.bedroom_min")
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='bedroom-max') Bedroom Max
+            .col-md-6
+              input#bedroom-max.form-control.input-sm(name='bedroom-max', type='number', required,integer, ng-model="model.config.bedroom_max")
+        .row
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='bathroom-min') Bathroom Min
+            .col-md-6
+              input#bathroom-min.form-control.input-sm(name='bathroom-min', type='number', required,integer, ng-model="model.config.bathroom_min")
+          .form-group.col-md-3
+            label.col-md-6.control-label(for='bathroom-max') Bathroom Max
+            .col-md-6
+              input#bathroom-max.form-control.input-sm(name='bathroom-max', type='number', required,integer, ng-model="model.config.bathroom_max")
+          .form-group.col-md-3
+              button.btn.btn-primary(ng-click='settings.sendEmails()',type='submit',ng-disabled='addApartmentsConfigForm.$invalid') Search
+  .row
+    .col-md-4
+    .col-md-8
+      .well
+        p(ng-bind="model.search_description")

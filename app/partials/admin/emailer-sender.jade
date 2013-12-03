@@ -1,4 +1,4 @@
-#emailer-sender-section(ng-controller='AdminEmailerSenderCtrl')
+#emailer-sender-section(ng-controller='AdminEmailerSenderCtrl').container.rounded-light-container
   fieldset
     legend Emailer Sender
     .row
@@ -7,11 +7,11 @@
           .form-group
             label.col-md-3.control-label(for='from-name') From name
             .col-md-9
-              input#from-name.form-control.input-md(name='from-name', type='text', placeholder='', required='', ng-model="model.from_name")
+              input#from-name.form-control(name='from-name', type='text', placeholder='', required='', ng-model="model.from_name")
           .form-group
             label.col-md-3.control-label(for='subject') Subject
             .col-md-9
-              input#subject.form-control.input-md(name='subject', type='text', placeholder='', required='', ng-model="model.subject")
+              input#subject.form-control(name='subject', type='text', placeholder='', required='', ng-model="model.subject")
           .form-group
             label.col-md-3.control-label(for='body') body
             .col-md-9

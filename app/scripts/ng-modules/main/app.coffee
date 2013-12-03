@@ -45,7 +45,9 @@ App.config ($stateProvider, $urlRouterProvider) ->
   .state "admin.emailerSender",
       url: "/emailer/sender/:searchId"
       templateUrl: "/_public/js/admin/emailer-sender.html"
-
+  .state "admin.addApartments",
+      url: "/add-apartments/:searchId"
+      templateUrl: "/_public/js/admin/add-apartments.html"
 
 App.config(($locationProvider) ->
   # Without server side support html5 must be disabled.
