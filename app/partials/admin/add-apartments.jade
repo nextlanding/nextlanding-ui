@@ -52,7 +52,10 @@
             .col-md-6
               input#bathroom-max.form-control.input-sm(name='bathroom-max', type='number', required,integer, ng-model="model.config.bathroom_max")
           .form-group.col-md-3
-              button.btn.btn-primary(ng-click='settings.sendEmails()',type='submit',ng-disabled='addApartmentsConfigForm.$invalid') Search
+              button.btn.btn-primary(ng-click='settings.sendEmails()',type='submit',ng-disabled='addApartmentsConfigForm.$invalid || settings.searching') Search
+              span(ng-show='settings.searching')
+                i.fa.fa-spinner.fa-2x(ng-class="{'fa-spin':settings.searching}") &nbsp;
+                | thinking...
   .row
     .col-md-4
     .col-md-8

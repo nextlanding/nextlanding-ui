@@ -21,7 +21,7 @@ angular.module('search.services')
         initFired = true
         #get the initial response
         #we're doing a get to return just 1 item - this is unconventional and requires a .customPUT call later in the model
-        Restangular.all('potential_search_init').getList().then (response) ->
+        Restangular.one('search').all('potential_search_init').getList().then (response) ->
           if response
             parseSearch(response)
 
@@ -42,7 +42,7 @@ angular.module('search.services')
         #this is a hack to prevent restangular from attachin an id to the path
         response = search.customPUT(angular.extend(search, id: null))
       else
-        response = Restangular.all('potential_search_init').post(search)
+        response = Restangular.one('search').all('potential_search_init').post(search)
 
       response.then (response) ->
         parseSearch(response)
@@ -80,7 +80,7 @@ angular.module('search.services')
     processPayment = (token) ->
       search.token = token
       paymentPending = true
-      Restangular.all('potential_search_complete').post(search).then (->
+      Restangular.one('search').all('potential_search_complete').post(search).then (->
         paymentPending = false
         $state.go 'thankYou'
         #find a way to remove the back button - simulate post redirect get
