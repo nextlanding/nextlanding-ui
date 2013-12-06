@@ -1,0 +1,44 @@
+@import "../base";
+
+#results-container {
+  #results-section {
+  }
+}
+
+#result-apartment-list-section {
+  .apartment-details {
+
+    .detail {
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        border-right: black 1px solid;
+        padding: 0;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        p {
+          font-family: $nl-font-family-heading;
+          color: $nl-less-dark;
+          text-align: center;
+
+          //- Responsive
+          @media screen and (min-width: $screen-tablet) {
+            font-size: ($font-size-base * 1.071428571428571);
+          }
+
+          &.help-block {
+            text-transform: uppercase;
+            color: $nl-less-bright;
+
+            //- Responsive
+            @media screen and (min-width: $screen-tablet) {
+              font-size: ($font-size-base * 0.8571428571428571);
+            }
+          }
+        }
+      }
+    }
+  }
+}

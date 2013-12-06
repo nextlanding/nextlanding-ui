@@ -27,6 +27,7 @@ exports.config =
           'app/scripts/ng-modules/google-maps/google-maps.coffee'
           'app/scripts/ng-modules/stripe/stripe.coffee'
           'app/scripts/ng-modules/admin/admin.coffee'
+          'app/scripts/ng-modules/result/result.coffee'
         ]
     stylesheets:
       joinTo:

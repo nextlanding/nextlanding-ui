@@ -1,0 +1,22 @@
+#result-apartment-list-section(ng-controller='ResultApartmentListCtrl').container
+  .row
+    .col-md-4
+      .row.apartment-overview
+        h5.col-md-7 2nd Ave & 54th Street
+      .row.apartment-details
+        .col-md-2.col-md-offset-1.detail
+          p $2300
+          p.help-block price
+        .col-md-2.detail
+          p Studio
+          p.help-block bed
+        .col-md-2.detail
+          p 1ba
+          p.help-block bath
+        .col-md-3.detail
+          p 1000 sqft.
+          p.help-block area
+    .col-md-8
+      .well
+        p(ng-bind="model.search_description")
+

@@ -4,6 +4,7 @@ App = angular.module('app', [
   'apartment'
   'search'
   'admin'
+  'result'
   'googleMaps'
   'app.controllers'
   'app.directives'
