@@ -17,6 +17,7 @@ App = angular.module('app', [
   'ui.bootstrap'
   'ui.utils'
   'lodash'
+  'momentjs'
 ])
 
 App.config ($stateProvider, $urlRouterProvider) ->
