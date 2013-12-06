@@ -6,6 +6,14 @@
 }
 
 #result-apartment-list-section {
+  #apartment-list{
+    //- Responsive
+    @media screen and (min-width: $screen-tablet) {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
   .apartment-details {
 
     .detail {

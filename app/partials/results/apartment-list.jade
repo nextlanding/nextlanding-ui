@@ -1,6 +1,6 @@
 #result-apartment-list-section(ng-controller='ResultApartmentListCtrl').container
   .row
-    .col-md-4
+    #apartment-list.col-md-4
       .row.page-header(ng-repeat="apartment in model.apartmentList")
         .row.apartment-overview
           h5.col-md-8 {{apartment.address}}
@@ -19,13 +19,13 @@
             p.help-block area
         .row.apartment-context
           .col-md-4
-            .badge {{apartment.changed_date | fromNow}}
+            .badge {{apartment.last_updated_date | fromNow}}
           .col-md-4
             .badge 100% Match
           .col-md-4
-            .badge No Fee
+            .badge {{apartment.broker_fee ? 'Fee' : 'No Fee'}}
 
-    .col-md-8
+    #map-list.col-md-8
       .well
         p(ng-bind="model.search_description")
 
