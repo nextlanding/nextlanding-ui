@@ -1,6 +1,6 @@
 #result-apartment-list-section(ng-controller='ResultApartmentListCtrl').container
   .row
-    .col-md-4
+    .col-md-4.page-header
       .row.apartment-overview
         h5.col-md-7 2nd Ave & 54th Street
       .row.apartment-details
@@ -16,6 +16,14 @@
         .col-md-3.detail
           p 1000 sqft.
           p.help-block area
+      .row.apartment-context
+        .col-md-4
+          .badge 1 Day Old
+        .col-md-4
+          .badge 100% Match
+        .col-md-4
+          .badge No Fee
+
     .col-md-8
       .well
         p(ng-bind="model.search_description")
