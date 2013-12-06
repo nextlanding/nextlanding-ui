@@ -14,3 +14,4 @@ angular.module('admin.controllers')
       $scope.settings.searching = true
       Restangular.one('search', $state.params.searchId).all('apartments').getList($scope.model.config).then (response) ->
         $scope.settings.searching = false
+        $scope.model.apartmentList = response

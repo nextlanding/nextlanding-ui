@@ -1,28 +1,29 @@
 #result-apartment-list-section(ng-controller='ResultApartmentListCtrl').container
   .row
-    .col-md-4.page-header
-      .row.apartment-overview
-        h5.col-md-7 2nd Ave & 54th Street
-      .row.apartment-details
-        .col-md-2.col-md-offset-1.detail
-          p $2300
-          p.help-block price
-        .col-md-2.detail
-          p Studio
-          p.help-block bed
-        .col-md-2.detail
-          p 1ba
-          p.help-block bath
-        .col-md-3.detail
-          p 1000 sqft.
-          p.help-block area
-      .row.apartment-context
-        .col-md-4
-          .badge 1 Day Old
-        .col-md-4
-          .badge 100% Match
-        .col-md-4
-          .badge No Fee
+    .col-md-4
+      .row.page-header(ng-repeat="apartment in model.apartmentList")
+        .row.apartment-overview
+          h5.col-md-8 {{apartment.address}}
+        .row.apartment-details
+          .col-md-2.col-md-offset-1.detail
+            p ${{apartment.price}}
+            p.help-block price
+          .col-md-2.detail
+            p {{apartment.bedroom_count ? apartment.bedroom_count + ' br' : 'Studio'}}
+            p.help-block bed
+          .col-md-2.detail
+            p {{apartment.bathroom_count}} ba
+            p.help-block bath
+          .col-md-3.detail(ng-show="apartment.sqfeet")
+            p {{apartment.sqfeet}} sqft.
+            p.help-block area
+        .row.apartment-context
+          .col-md-4
+            .badge 1 Day Old
+          .col-md-4
+            .badge 100% Match
+          .col-md-4
+            .badge No Fee
 
     .col-md-8
       .well
