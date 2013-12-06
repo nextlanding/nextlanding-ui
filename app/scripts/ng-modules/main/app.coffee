@@ -16,6 +16,7 @@ App = angular.module('app', [
   'ui.bootstrap'
   'ui.utils'
   'lodash'
+  'analytics'
 ])
 
 App.config ($stateProvider, $urlRouterProvider) ->
@@ -95,6 +96,12 @@ App.config((RestangularProvider, AppConfig) ->
     else
       response
 )
+
+App.run ($rootScope, mixpanel) ->
+  $rootScope.$on "$stateChangeSuccess", (event, toState) ->
+    mixpanel.track "Page Viewed",
+      "page name": toState.name
+      url: toState.url
 
 # Declare app level module which depends on filters, and services
 angular.module('app.controllers', [])
