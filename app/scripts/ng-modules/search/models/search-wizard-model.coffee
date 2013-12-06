@@ -29,6 +29,7 @@ angular.module('search.services')
           amenities = response
 
     broadcastCurrentStep = ->
+      mixpanel.track "Step: #{currentStep}"
       $rootScope.$broadcast "currentStep:changed:#{currentStep}"
 
     currentStep = steps[0]
