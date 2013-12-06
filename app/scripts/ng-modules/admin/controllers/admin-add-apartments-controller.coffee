@@ -9,6 +9,9 @@ angular.module('admin.controllers')
     Restangular.one('search', $state.params.searchId).one('add_apartments_config').get().then (response) ->
       $scope.model.config = response
       $scope.model.searchAddApartments()
+      $scope.$broadcast('map:location:searched', address: $scope.model.config.address)
+      $scope.$broadcast("map:data:retrieved", $scope.model.config.geo_boundary_points)
+
 
     $scope.model.searchAddApartments = ->
       $scope.settings.searching = true

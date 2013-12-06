@@ -30,8 +30,12 @@
 // Map Container Styles
 // --------------------------------------------------
 .map-canvas {
-  height: 300px;
   width: 100%;
   margin: 0;
-  padding: 0
+  padding: 0;
+
+  //- Responsive
+  @media screen and (min-width: $screen-tablet) {
+    height: 300px;
+  }
 }

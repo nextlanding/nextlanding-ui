@@ -6,60 +6,71 @@
 }
 
 #result-apartment-list-section {
-  #apartment-list{
+  $result-list-height: 600px;
+
+  #apartment-list {
     //- Responsive
     @media screen and (min-width: $screen-tablet) {
-      max-height: 600px;
+      max-height: $result-list-height;
       overflow-y: auto;
       overflow-x: hidden;
     }
-  }
-  .apartment-details {
+    .apartment-details {
 
-    .detail {
-      //- Responsive
-      @media screen and (min-width: $screen-tablet) {
-        border-right: black 1px solid;
-        padding: 0;
-
-        &:last-child {
-          border-right: none;
-        }
-      }
-
-      p {
-        font-family: $nl-font-family-heading;
-        color: $nl-less-dark;
-        text-align: center;
-
+      .detail {
         //- Responsive
         @media screen and (min-width: $screen-tablet) {
-          font-size: ($font-size-base * 1.071428571428571);
+          border-right: black 1px solid;
+          padding: 0;
+
+          &:last-child {
+            border-right: none;
+          }
         }
 
-        &.help-block {
-          text-transform: uppercase;
-          color: $nl-less-bright;
+        p {
+          font-family: $nl-font-family-heading;
+          color: $nl-less-dark;
+          text-align: center;
 
           //- Responsive
           @media screen and (min-width: $screen-tablet) {
-            font-size: ($font-size-base * 0.8571428571428571);
+            font-size: ($font-size-base * 1.071428571428571);
+          }
+
+          &.help-block {
+            text-transform: uppercase;
+            color: $nl-less-bright;
+
+            //- Responsive
+            @media screen and (min-width: $screen-tablet) {
+              font-size: ($font-size-base * 0.8571428571428571);
+            }
           }
         }
       }
     }
+
+    .apartment-context {
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        margin-top: 10px;
+      }
+
+      .badge {
+        background-color: $nl-less-bright;
+        width: 100%;
+        padding: 4px 10px;
+      }
+    }
   }
 
-  .apartment-context {
-    //- Responsive
-    @media screen and (min-width: $screen-tablet) {
-      margin-top: 10px;
-    }
-
-    .badge {
-      background-color: $nl-less-bright;
-      width: 100%;
-      padding: 4px 10px;
+  #map-list{
+    .map-canvas{
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        height: $result-list-height;
+      }
     }
   }
 }

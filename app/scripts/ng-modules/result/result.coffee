@@ -8,7 +8,7 @@ angular.module('result', [
   'result.services'
 ])
 
-angular.module('result.controllers', [])
+angular.module('result.controllers', ['googleMaps'])
 angular.module('result.directives', [])
 angular.module('result.filters', [])
 angular.module('result.services', [])

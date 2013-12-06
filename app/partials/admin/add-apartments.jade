@@ -56,4 +56,7 @@
               span(ng-show='settings.searching')
                 i.fa.fa-spinner.fa-2x(ng-class="{'fa-spin':settings.searching}") &nbsp;
                 | thinking...
+        .row
+          .well
+            p(ng-bind="model.config.description")
   ng-include(src="'/_public/js/results/apartment-list.html'")

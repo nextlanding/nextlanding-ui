@@ -26,6 +26,9 @@
             .badge {{apartment.broker_fee ? 'Fee' : 'No Fee'}}
 
     #map-list.col-md-8
-      .well
-        p(ng-bind="model.search_description")
-
+      .map-canvas(
+      ui-map='searchMap',
+      ui-options='mapOptions',
+      google-maps-read-only-map,google-maps-searchable-map,
+      ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)','map-click': 'removeDesiredHomeArea($event, $params)'}"
+      )
