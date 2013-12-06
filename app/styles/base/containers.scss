@@ -18,6 +18,10 @@
   padding-bottom: 90px;
 }
 
+.admin-body{
+  padding-bottom: 0;
+}
+
 .rounded-light-container{
   background-color: $body-bg;
   border-radius: $border-radius-large; // Only round corners at higher resolutions if contained in a container

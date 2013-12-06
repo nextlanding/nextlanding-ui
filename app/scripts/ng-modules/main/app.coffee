@@ -50,6 +50,7 @@ App.config ($stateProvider, $urlRouterProvider) ->
       data:
         style:
           webAppStyle: true
+          AdminStyle: true
   .state "admin.emailerSender",
       url: "/emailer/sender/:searchId"
       templateUrl: "/_public/js/admin/emailer-sender.html"
