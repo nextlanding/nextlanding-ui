@@ -3,7 +3,9 @@ ng-include(src="'/_public/js/result/apartment-map-info-box.html'")
   .row
     #apartment-list.col-md-4
       .row(ng-repeat="apartment in model.apartmentList")
-        .page-header(ui-event="{mouseover : 'highlightApartment(apartment)',mouseout : 'unhighlightApartment(apartment)' }")
+        .page-header(
+        ui-event="{mouseover : 'highlightApartment(apartment)',mouseout : 'unhighlightApartment(apartment)',click : 'displayApartment(apartment)'}"
+        )
           .row.apartment-overview
             h5.col-md-8 {{apartment.address}}
           .row.apartment-details

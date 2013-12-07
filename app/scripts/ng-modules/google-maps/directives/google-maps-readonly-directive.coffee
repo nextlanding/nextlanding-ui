@@ -59,6 +59,8 @@ angular.module('googleMaps.directives')
             highlightItem this
           GoogleMaps.event.addListener marker, "mouseout", (event) ->
             unhighlightItem this
+          GoogleMaps.event.addListener marker, "click", (event) ->
+            scope.$broadcast("map:markers:displayhighlight", this.dataItem)
 
       scope.$on "map:markers:highlight", (event, args)->
         marker = Lodash.find(markerList, { 'dataItem': args });

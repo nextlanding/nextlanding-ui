@@ -16,4 +16,10 @@ angular.module('result.controllers')
       $scope.$broadcast("map:markers:highlight", apartment)
     $scope.unhighlightApartment = (apartment) ->
       $scope.$broadcast("map:markers:unhighlight", apartment)
+
+    $scope.$on "map:markers:displayhighlight", (event, args)->
+      $scope.displayApartment(args)
+
+    $scope.displayApartment = (apartment) ->
+      alert 'hi'
   )
