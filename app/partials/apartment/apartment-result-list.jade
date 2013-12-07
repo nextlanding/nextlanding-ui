@@ -10,13 +10,13 @@ ng-include(src="'/_public/js/result/apartment-map-info-box.html'")
             p ${{apartment.price}}
             p.help-block price
           .col-md-2.detail
-            p {{apartment.bedroom_count ? apartment.bedroom_count + ' br' : 'Studio'}}
+            p {{apartment.bedroom_count}}
             p.help-block bed
           .col-md-2.detail
-            p {{apartment.bathroom_count}} ba
+            p {{apartment.bathroom_count}}
             p.help-block bath
           .col-md-3.detail(ng-show="apartment.sqfeet")
-            p {{apartment.sqfeet}} sqft.
+            p {{apartment.sqfeet}}
             p.help-block area
         .row.apartment-context
           .col-md-4
@@ -24,7 +24,7 @@ ng-include(src="'/_public/js/result/apartment-map-info-box.html'")
           .col-md-4
             .badge 100% Match
           .col-md-4
-            .badge {{apartment.broker_fee ? 'Fee' : 'No Fee'}}
+            .badge {{apartment.broker_fee}}
 
     #map-list.col-md-8
       .map-canvas(
@@ -32,5 +32,5 @@ ng-include(src="'/_public/js/result/apartment-map-info-box.html'")
       ui-options='mapOptions',
       google-maps-read-only-map,google-maps-searchable-map,
       ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)','map-click': 'removeDesiredHomeArea($event, $params)'}"
-      template-url="/_public/js/result/apartment-map-info-box.html"
+      template-url="/_public/js/apartment/apartment-map-info-box.html"
       )

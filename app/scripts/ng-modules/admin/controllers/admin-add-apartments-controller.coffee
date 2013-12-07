@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('admin.controllers')
-.controller 'AdminAddApartmentsCtrl', ($scope, $state, Restangular) ->
+.controller 'AdminAddApartmentsCtrl', ($scope, $state, Restangular,ApartmentDisplayService) ->
     $scope.model = {}
     $scope.settings =
       searching: false
@@ -18,4 +18,6 @@ angular.module('admin.controllers')
       Restangular.one('search', $state.params.searchId).all('apartments').getList($scope.model.config).then (response) ->
         $scope.settings.searching = false
         $scope.model.apartmentList = response
+        angular.forEach $scope.model.apartmentList, (value, key) -> ApartmentDisplayService.formatApartmentDetails(value)
+
         $scope.$broadcast("map:markers:retrieved", $scope.model.apartmentList)

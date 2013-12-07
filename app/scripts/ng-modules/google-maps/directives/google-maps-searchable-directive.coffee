@@ -14,10 +14,13 @@ angular.module('googleMaps.directives')
 
       scope.$on "map:location:searched", (event, args)->
         address = args.address
-        geocoder.geocode
-          address: address,
-          (results, status) ->
-            if status is google.maps.GeocoderStatus.OK
-              map.setCenter results[0].geometry.location
-            else
-              alert "Geocode was not successful for the following reason: " + status
+        if address.lat? and address.lng?
+          map.setCenter new GoogleMaps.LatLng(address.lat, address.lng)
+        else
+          geocoder.geocode
+            address: address,
+            (results, status) ->
+              if status is google.maps.GeocoderStatus.OK
+                map.setCenter results[0].geometry.location
+              else
+                alert "Geocode was not successful for the following reason: " + status

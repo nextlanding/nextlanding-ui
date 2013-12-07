@@ -54,15 +54,16 @@ angular.module('googleMaps.directives')
 
             markerList.push marker
 
-            content = infoBoxTemplate(marker.dataItem)
-            debugger
-
             #display the 'remove' label when we hover over the polygon
             GoogleMaps.event.addListener marker, "mouseover", (mouseOverEvent) ->
+              tempScope = scope.$new()
+              angular.extend(tempScope,this.dataItem)
+              content = infoBoxTemplate(tempScope)[0]
+
               tooltip = new InfoBox
                 alignBottom: true
                 closeBoxURL: ''
-                content: content[0]
+                content: content
                 isHidden: false
                 pixelOffset: new google.maps.Size(-120, -34)
 
