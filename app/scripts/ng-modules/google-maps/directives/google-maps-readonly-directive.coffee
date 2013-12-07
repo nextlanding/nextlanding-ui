@@ -1,11 +1,12 @@
 'use strict'
 
 angular.module('googleMaps.directives')
-.directive "googleMapsReadOnlyMap", (GoogleMaps, GoogleMapsService) ->
+.directive "googleMapsReadOnlyMap", (GoogleMaps, GoogleMapsService, $templateCache) ->
     restrict: "A"
+    scope:
+      templateUrl: "@"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
-      #ui-map.js uses the same attr so we can avoid isolated scope
       map = scope[attrs.uiMap]
 
       polygonOptions =
@@ -37,3 +38,33 @@ angular.module('googleMaps.directives')
 
           #we only want to be notified the first time we've gotten map data
           offDataRetrieved()
+
+      markerList = []
+      tooltip = null
+      offMarkersRetrieved =
+        scope.$on "map:markers:retrieved", (event, args)->
+          marker.setMap null for marker in markerList
+
+          markerList = []
+
+          angular.forEach args, (value, key) ->
+            marker = new GoogleMaps.Marker
+              position: new google.maps.LatLng(value.lat, value.lng)
+              map: map
+              dataItem: value
+
+            markerList.push marker
+
+            #display the 'remove' label when we hover over the polygon
+            GoogleMaps.event.addListener marker, "mouseover", (mouseOverEvent) ->
+              tooltip = new InfoBox
+                alignBottom: true
+                boxClass: 'location-tooltip-infobox'
+                closeBoxURL: ''
+                content: 'hey'
+                isHidden: false
+                pixelOffset: new google.maps.Size(-120, -34)
+
+              tooltip.open map, this
+            GoogleMaps.event.addListener marker, "mouseout", (event) ->
+              tooltip.setVisible false
