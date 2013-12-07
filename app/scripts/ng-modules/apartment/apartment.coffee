@@ -8,7 +8,7 @@ angular.module('apartment', [
   'apartment.services'
 ])
 
-angular.module('apartment.controllers', [])
+angular.module('apartment.controllers', ['ui.bootstrap'])
 angular.module('apartment.directives', [])
 angular.module('apartment.filters', [])
 angular.module('apartment.services', [])

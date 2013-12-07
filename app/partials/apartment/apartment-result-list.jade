@@ -1,5 +1,4 @@
-ng-include(src="'/_public/js/result/apartment-map-info-box.html'")
-#apartment-result-list-section(ng-controller='ResultApartmentListCtrl').container
+#apartment-result-list-section(ng-controller='ApartmentResultListCtrl').container
   .row
     #apartment-list.col-md-4
       .row(ng-repeat="apartment in model.apartmentList")
@@ -35,5 +34,5 @@ ng-include(src="'/_public/js/result/apartment-map-info-box.html'")
       ui-options='mapOptions',
       google-maps-read-only-map,google-maps-searchable-map,
       ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)','map-click': 'removeDesiredHomeArea($event, $params)'}"
-      template-url="/_public/js/apartment/apartment-map-info-box.html"
+      template-url="/_public/js/apartment/apartment-result-map-info-box.html"
       )
