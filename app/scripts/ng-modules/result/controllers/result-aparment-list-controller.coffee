@@ -11,4 +11,9 @@ angular.module('result.controllers')
       panControl: false
       center: new GoogleMaps.LatLng(40.714224, -73.961452)
       zoom: 12
+
+    $scope.highlightApartment = (apartment) ->
+      $scope.$broadcast("map:markers:highlight", apartment)
+    $scope.unhighlightApartment = (apartment) ->
+      $scope.$broadcast("map:markers:unhighlight", apartment)
   )

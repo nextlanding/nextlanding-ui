@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('admin.controllers')
-.controller 'AdminEmailerSenderCtrl', ($scope, $state, AdminEmailerSenderModel, Restangular) ->
+.controller 'AdminEmailerSenderCtrl', ($scope, $state, Restangular) ->
     $scope.settings =
       emailsPending: false
 

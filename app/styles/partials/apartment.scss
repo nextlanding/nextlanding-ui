@@ -5,7 +5,7 @@
   }
 }
 
-#result-apartment-list-section {
+#apartment-result-list-section {
   $result-list-height: 600px;
 
   #apartment-list {
@@ -14,6 +14,14 @@
       max-height: $result-list-height;
       overflow-y: auto;
       overflow-x: hidden;
+    }
+    .page-header {
+      margin: 0;
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        background-color: rgba($nl-medium-bright, .1);
+      }
     }
     .apartment-details {
 
@@ -75,7 +83,7 @@
   }
 }
 
-#result-apartment-map-info-box-section {
+#apartment-result-map-info-box-section {
   @include box-shadow(0 0 8px #000);
 
   border-radius: 2px;

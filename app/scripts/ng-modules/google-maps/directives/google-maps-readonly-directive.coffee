@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('googleMaps.directives')
-.directive "googleMapsReadOnlyMap", (GoogleMaps, GoogleMapsService, $templateCache, $compile) ->
+.directive "googleMapsReadOnlyMap", (GoogleMaps, GoogleMapsService, $templateCache, $compile, Lodash) ->
     restrict: "A"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
@@ -40,33 +40,47 @@ angular.module('googleMaps.directives')
 
       markerList = []
       tooltip = null
-      offMarkersRetrieved =
-        scope.$on "map:markers:retrieved", (event, args)->
-          marker.setMap null for marker in markerList
 
-          markerList = []
+      scope.$on "map:markers:retrieved", (event, args)->
+        marker.setMap null for marker in markerList
 
-          angular.forEach args, (value, key) ->
-            marker = new GoogleMaps.Marker
-              position: new google.maps.LatLng(value.lat, value.lng)
-              map: map
-              dataItem: value
+        markerList = []
 
-            markerList.push marker
+        angular.forEach args, (value, key) ->
+          marker = new GoogleMaps.Marker
+            position: new google.maps.LatLng(value.lat, value.lng)
+            map: map
+            dataItem: value
 
-            #display the 'remove' label when we hover over the polygon
-            GoogleMaps.event.addListener marker, "mouseover", (mouseOverEvent) ->
-              tempScope = scope.$new()
-              angular.extend(tempScope,this.dataItem)
-              content = infoBoxTemplate(tempScope)[0]
+          markerList.push marker
 
-              tooltip = new InfoBox
-                alignBottom: true
-                closeBoxURL: ''
-                content: content
-                isHidden: false
-                pixelOffset: new google.maps.Size(-120, -34)
+          #display the 'remove' label when we hover over the polygon
+          GoogleMaps.event.addListener marker, "mouseover", (mouseOverEvent) ->
+            highlightItem this
+          GoogleMaps.event.addListener marker, "mouseout", (event) ->
+            unhighlightItem this
 
-              tooltip.open map, this
-            GoogleMaps.event.addListener marker, "mouseout", (event) ->
-              tooltip.setVisible false
+      scope.$on "map:markers:highlight", (event, args)->
+        marker = Lodash.find(markerList, { 'dataItem': args });
+        highlightItem(marker)
+
+      scope.$on "map:markers:unhighlight", (event, args)->
+        unhighlightItem()
+
+
+      highlightItem = (item) ->
+        tempScope = scope.$new()
+        angular.extend(tempScope, item.dataItem)
+        content = infoBoxTemplate(tempScope)[0]
+
+        tooltip = new InfoBox
+          alignBottom: true
+          closeBoxURL: ''
+          content: content
+          isHidden: false
+          pixelOffset: new google.maps.Size(-120, -34)
+
+        tooltip.open map, item
+
+      unhighlightItem = ->
+        tooltip.setVisible false
