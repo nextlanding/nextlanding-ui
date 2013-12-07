@@ -1,13 +1,12 @@
 'use strict'
 
 angular.module('googleMaps.directives')
-.directive "googleMapsReadOnlyMap", (GoogleMaps, GoogleMapsService, $templateCache) ->
+.directive "googleMapsReadOnlyMap", (GoogleMaps, GoogleMapsService, $templateCache, $compile) ->
     restrict: "A"
-    scope:
-      templateUrl: "@"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
       map = scope[attrs.uiMap]
+      infoBoxTemplate = $compile($templateCache.get(attrs.templateUrl))
 
       polygonOptions =
         fillColor: "#0076BF"
@@ -55,13 +54,15 @@ angular.module('googleMaps.directives')
 
             markerList.push marker
 
+            content = infoBoxTemplate(marker.dataItem)
+            debugger
+
             #display the 'remove' label when we hover over the polygon
             GoogleMaps.event.addListener marker, "mouseover", (mouseOverEvent) ->
               tooltip = new InfoBox
                 alignBottom: true
-                boxClass: 'location-tooltip-infobox'
                 closeBoxURL: ''
-                content: 'hey'
+                content: content[0]
                 isHidden: false
                 pixelOffset: new google.maps.Size(-120, -34)
 

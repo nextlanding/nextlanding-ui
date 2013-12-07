@@ -65,11 +65,70 @@
     }
   }
 
-  #map-list{
-    .map-canvas{
+  #map-list {
+    .map-canvas {
       //- Responsive
       @media screen and (min-width: $screen-tablet) {
         height: $result-list-height;
+      }
+    }
+  }
+}
+
+#result-apartment-map-info-box-section {
+  @include box-shadow(0 0 8px #000);
+
+  border-radius: 2px;
+
+  border: 1px solid rgba(0, 0, 0, 0.6);
+
+  background-color: rgba(255, 255, 255, 0.9);
+
+  //- Responsive
+  @media screen and (min-width: $screen-tablet) {
+    width: 232px;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: $nl-very-bright;
+    background-color: $nl-very-dark;
+    padding: 4px;
+    font-weight: bold;
+
+    //- Responsive
+    @media screen and (min-width: $screen-tablet) {
+      font-size: $font-size-base * 0.7857142857142857;
+    }
+  }
+
+  table {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    .help-block {
+      text-transform: uppercase;
+      color: $nl-less-bright;
+      margin-bottom: 0;
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        font-size: $font-size-base * 0.6428571428571429;
+      }
+    }
+
+    tr:first-child {
+      td {
+        border-top: 0;
+      }
+    }
+
+    td {
+      border-left: 1px solid rgba(0, 0, 0, 0.2);
+      width: 50%;
+      &:first-child {
+        border-left: 0;
       }
     }
   }
