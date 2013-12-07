@@ -1,10 +1,22 @@
-.modal-dialog
+#apartment-result-popup-section.modal-dialog
   .modal-content
     .modal-header
       button.close(type='button', ng-click='close()', aria-hidden='true') ×
-      h4.modal-title Modal title
+      h4.modal-title {{model.address}}
     .modal-body
-      p One fine body…
+      .row.apartment-details
+        .col-md-2.col-md-offset-2.detail
+          p ${{model.price}}
+          p.help-block price
+        .col-md-2.detail
+          p {{model.bedroom_count}}
+          p.help-block bed
+        .col-md-2.detail
+          p {{model.bathroom_count}}
+          p.help-block bath
+        .col-md-3.detail()
+          p {{model.sqfeet}}
+          p.help-block area
     .modal-footer
       button.btn.btn-default(type='button', ng-click='close()') Close
       button.btn.btn-primary(type='button', ng-click='close()') Save changes
