@@ -99,6 +99,18 @@ App.config((RestangularProvider, AppConfig) ->
       response
 )
 
+App.run ($templateCache) ->
+  strVar = ""
+  strVar += "<div class=\"modal fade {{ windowClass }}\" ng-class=\"{in: animate}\" ng-style=\"{'z-index': 1050 + index*10, display: 'block'}\" ng-click=\"close($event)\">"
+  strVar += "    <div class=\"modal-dialog\"><div class=\"modal-content\" ng-transclude></div></div>"
+  strVar += "</div>"
+#  $templateCache.put "template/modal/window.html", strVar
+
+  strVar = ""
+  strVar += "<div class=\"modal-backdrop fade {{modal.backdropClass}}\" ng-class=\"{in: animate}\" ng-style=\"{'z-index': 1040 + index*10}\"></div>"
+#  $templateCache.put "template/modal/backdrop.html", strVar
+
+
 # Declare app level module which depends on filters, and services
 angular.module('app.controllers', [])
 angular.module('app.directives', ['app.services'])

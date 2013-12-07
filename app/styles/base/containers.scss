@@ -31,6 +31,14 @@
   background-color: rgba(255, 255, 255, 0.9);
 }
 
+//- There is a bit of a hack with this. See http://stackoverflow.com/a/18548682/173957.
+//- This is because bootstrap 3 isn't compatible w/ angular ui modal yet.
+.modal {
+  display: block;
+  height: 0;
+  overflow: visible;
+}
+
 // Map Container Styles
 // --------------------------------------------------
 .map-canvas {
