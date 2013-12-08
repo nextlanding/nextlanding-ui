@@ -140,8 +140,42 @@
 }
 
 #apartment-result-popup-section {
+  //- Responsive
+  @media screen and (min-width: $screen-tablet) {
+    width: 800px;
+  }
+
   .detail {
     @include apartment-detail();
+  }
+
+  .page-header {
+    margin-top: 0;
+  }
+
+  #apartment-full-information {
+    h6 {
+      font-size: $font-size-base;
+    }
+    i {
+      color: $nl-less-bright;
+    }
+
+    #apartment-description {
+      overflow: auto;
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        max-height: 300px;
+      }
+    }
+
+    #apartment-verification {
+      overflow: auto;
+      //- Responsive
+      @media screen and (min-width: $screen-tablet) {
+        max-height: 300px;
+      }
+    }
   }
 }
 

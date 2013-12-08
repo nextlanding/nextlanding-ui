@@ -7,3 +7,8 @@ p {
   color: $nl-gray;
   font-family: $nl-font-family-content;
 }
+
+.generated-info{
+  white-space: pre-wrap;
+  line-height: 18px;
+}
