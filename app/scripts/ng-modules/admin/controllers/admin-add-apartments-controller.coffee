@@ -27,9 +27,11 @@ angular.module('admin.controllers')
       #don't show the popup
       $event.stopPropagation()
 
-      $scope.model.apartmentList = $scope.model.apartmentList.filter (apartmentToKeep) ->
-        apartmentToKeep isnt apartment
+      Restangular.one('search', $state.params.searchId).all('apartments').post(apartment).then (->
 
-      $scope.$broadcast("map:markers:removed", apartment)
+        $scope.model.apartmentList = $scope.model.apartmentList.filter (apartmentToKeep) ->
+          apartmentToKeep isnt apartment
 
-      alert apartment
+        $scope.$broadcast("map:markers:removed", apartment)
+      ), ->
+        alert ('error adding apartment')
