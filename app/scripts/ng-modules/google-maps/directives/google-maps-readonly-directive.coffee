@@ -66,9 +66,12 @@ angular.module('googleMaps.directives')
         marker = Lodash.find(markerList, { 'dataItem': args });
         highlightItem(marker)
 
+      scope.$on "map:markers:removed", (event, args)->
+        marker = Lodash.find(markerList, { 'dataItem': args });
+        marker.setMap null
+
       scope.$on "map:markers:unhighlight", (event, args)->
         unhighlightItem()
-
 
       highlightItem = (item) ->
         tempScope = scope.$new()

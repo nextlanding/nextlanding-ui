@@ -27,4 +27,9 @@ angular.module('admin.controllers')
       #don't show the popup
       $event.stopPropagation()
 
+      $scope.model.apartmentList = $scope.model.apartmentList.filter (apartmentToKeep) ->
+        apartmentToKeep isnt apartment
+
+      $scope.$broadcast("map:markers:removed", apartment)
+
       alert apartment
