@@ -20,13 +20,23 @@
             .col-md-3.detail
               p {{apartment.sqfeet}}
               p.help-block area
-          .row.apartment-context
-            .col-md-4
-              .badge {{apartment.last_updated_date | fromNow}}
-            .col-md-4
-              .badge 100% Match
-            .col-md-4
-              .badge {{apartment.broker_fee}}
+          ng-switch(on='state.current.data.style.AdminStyle')
+            ng-switch(ng-switch-when='true')
+              .row.apartment-context
+                .col-md-4
+                  .badge {{apartment.last_updated_date | fromNow}}
+                .col-md-4
+                  .badge {{apartment.broker_fee}}
+                .col-md-4
+                  button.btn.btn-primary.btn-xs(ng-click='addApartment($event, apartment)',type='button') Add
+            ng-switch(ng-switch-default)
+              .row.apartment-context
+                .col-md-4
+                  .badge {{apartment.last_updated_date | fromNow}}
+                .col-md-4
+                  .badge 100% Match
+                .col-md-4
+                  .badge {{apartment.broker_fee}}
 
     #map-list.col-md-8
       .map-canvas(

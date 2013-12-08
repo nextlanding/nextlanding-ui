@@ -7,3 +7,7 @@ angular.module('result.controllers')
     $scope.model = apartment
     $scope.close = ->
       $modalInstance.close()
+
+    $scope.sendAddApartment = ($event, apartment) ->
+      $scope.close()
+      $scope.addApartment($event, apartment)

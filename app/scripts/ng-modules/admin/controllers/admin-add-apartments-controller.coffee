@@ -22,3 +22,9 @@ angular.module('admin.controllers')
         angular.forEach $scope.model.apartmentList, (value, key) -> ApartmentDataService.prepareApartmentData(value)
 
         $scope.$broadcast("map:markers:retrieved", $scope.model.apartmentList)
+
+    $scope.addApartment = ($event, apartment)->
+      #don't show the popup
+      $event.stopPropagation()
+
+      alert apartment

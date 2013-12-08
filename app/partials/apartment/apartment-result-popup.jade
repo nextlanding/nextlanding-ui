@@ -25,7 +25,7 @@
                 .panel-heading
                   h6.panel-title Nextlanding Verified Information
                 .panel-body
-                  p#apartment-verification.generated-info ’s an obvious statement: The Lawrence Arms are a tentpole band in this little section of the punk scene. If you’re reading this, chances are good you either have a Lawrence Arms tattoo, have considered getting one or know someone who has one. They’re an important, influential band to a lot of people, and what’s happened as a result of said importance and influence is that in the nearly eight years since their last LP Oh! Calcutta!, too many bands have taken to blatantly and imprudently aping their sound
+                  p#apartment-verification.generated-info {{model.verification}}
           .row
             .col-md-12
               h5 Contact Info: {{model.contact_name}}
@@ -53,4 +53,4 @@
                   a(href="{{listingUrl}}",target="_blank") {{listingUrl}}
     .modal-footer
       button.btn.btn-default(type='button', ng-click='close()') Close
-      button.btn.btn-primary(type='button', ng-click='close()') Save changes
+      button.btn.btn-primary(type='button', ng-click='sendAddApartment($event, model)',ng-if='state.current.data.style.AdminStyle') Add

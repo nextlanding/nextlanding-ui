@@ -3,7 +3,7 @@
 ### Controllers ###
 
 angular.module('result.controllers')
-  .controller('ApartmentResultListCtrl', ($scope, GoogleMaps, $modal) ->
+.controller 'ApartmentResultListCtrl', ($scope, GoogleMaps, $modal) ->
     # FYI - I don't really know why the UI guys decided to have the controller be responsible for the map settings
     # as this seems like more of a directive concern...
     $scope.mapOptions =
@@ -22,8 +22,9 @@ angular.module('result.controllers')
 
     $scope.displayApartment = (apartment) ->
       $modal.open
-        templateUrl:"/_public/js/apartment/apartment-result-popup.html"
+        templateUrl: "/_public/js/apartment/apartment-result-popup.html"
         controller: 'ApartmentResultPopupCtrl'
+        scope: $scope
         resolve:
-          apartment: -> apartment
-  )
+          apartment: ->
+            apartment
