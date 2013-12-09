@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('admin.controllers')
-.controller 'AdminSearchCrawlCtrl', ($scope, $state, Restangular) ->
+.controller 'AdminCreateCrawlCtrl', ($scope, $state, Restangular) ->
     $scope.settings =
       crawlerPending: false
 
@@ -13,7 +13,7 @@ angular.module('admin.controllers')
 
       crawl_urls_split = $scope.model.crawl_urls.split ('\n')
 
-      Restangular.one('search', $state.params.searchId).all('search_crawler').post(crawl_urls_split ).then (->
+      Restangular.all('crawl').post(crawl_urls:crawl_urls_split).then (->
         alert ('Sent')
       ), ->
         $scope.settings.crawlerPending = false

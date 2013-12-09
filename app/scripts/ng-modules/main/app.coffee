@@ -62,8 +62,8 @@ App.config ($stateProvider, $urlRouterProvider) ->
       url: "/emailer/sender/:searchId"
       templateUrl: "/_public/js/admin/emailer-sender.html"
   .state "admin.startCrawl",
-      url: "/crawl/:searchId"
-      templateUrl: "/_public/js/admin/search-crawl.html"
+      url: "/crawl"
+      templateUrl: "/_public/js/admin/create-crawl.html"
   .state "admin.addApartments",
       url: "/add-apartments/:searchId"
       templateUrl: "/_public/js/admin/add-apartments.html"
