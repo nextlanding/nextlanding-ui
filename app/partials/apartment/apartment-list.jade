@@ -15,6 +15,8 @@
                   .badge.available Verified Available
                 ng-switch(ng-switch-when='unavailable')
                   .badge.unavailable Verified Unavailable
+                ng-switch(ng-switch-when='different_user_notified_unavailable')
+                  .badge.unavailable Verified Unavailable
           .row.apartment-details
             .col-md-2.col-md-offset-1.detail
               p ${{apartment.price}}
