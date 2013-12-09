@@ -47,6 +47,7 @@ angular.module('search.services')
 
       response.then (response) ->
         parseSearch(response)
+        updateUserIdentification(response)
 
       nextStep = steps.indexOf(currentStep) + 1
 
@@ -70,6 +71,13 @@ angular.module('search.services')
     parseSearch = (response) ->
       search = response
       search.search_attrs = angular.fromJson response.search_attrs
+
+    updateUserIdentification = (response) ->
+      #if we have identifying info
+      if search.search_attrs.email_address
+        if mixpanel.cookie.props.mp_name_tag? and mixpanel.cookie.props.mp_name_tag is not search.search_attrs.email_address
+          mixpanel.name_tag search.search_attrs.email_address
+          mixpanel.alias search.search_attrs.email_address
 
     toggleAmenity = (amenityId) ->
       search.search_attrs.amenities ||= []

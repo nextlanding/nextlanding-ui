@@ -97,11 +97,12 @@ App.config((RestangularProvider, AppConfig) ->
       response
 )
 
-App.run ($rootScope, mixpanel) ->
+App.run ($rootScope, mixpanel, ga) ->
   $rootScope.$on "$stateChangeSuccess", (event, toState) ->
     mixpanel.track "Page Viewed",
       "page name": toState.name
       url: toState.url
+    ga 'send', 'pageview', toState.url
 
 # Declare app level module which depends on filters, and services
 angular.module('app.controllers', [])

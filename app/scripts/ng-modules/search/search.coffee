@@ -7,9 +7,10 @@ search = angular.module('search', [
   'search.filters'
   'search.services'
   'restangular'
+  'analytics'
 ])
 
 angular.module('search.controllers', ['googleMaps'])
 angular.module('search.directives', [])
 angular.module('search.filters', [])
-angular.module('search.services', ['restangular'])
+angular.module('search.services', ['restangular', 'analytics'])
