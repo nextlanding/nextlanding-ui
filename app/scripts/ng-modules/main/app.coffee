@@ -44,6 +44,13 @@ App.config ($stateProvider, $urlRouterProvider) ->
       data:
         style:
           webAppStyle: true
+  .state "results",
+      url: "/results/:searchId"
+      templateUrl: "/_public/js/result/list-apartments.html"
+      data:
+        style:
+          webAppStyle: true
+
   .state "admin",
       url: "/admin"
       templateUrl: "/_public/js/admin/admin.html"
@@ -54,6 +61,10 @@ App.config ($stateProvider, $urlRouterProvider) ->
   .state "admin.emailerSender",
       url: "/emailer/sender/:searchId"
       templateUrl: "/_public/js/admin/emailer-sender.html"
+  .state "admin.addApartments",
+      url: "/add-apartments/:searchId"
+      templateUrl: "/_public/js/admin/add-apartments.html"
+
   .state "aboutus",
     url: "/about-us"
     templateUrl: "/_public/js/main/about-us.html"
@@ -66,9 +77,6 @@ App.config ($stateProvider, $urlRouterProvider) ->
   .state "howitworks",
     url: "/how-it-works"
     templateUrl: "/_public/js/main/how-it-works.html"
-  .state "admin.addApartments",
-      url: "/add-apartments/:searchId"
-      templateUrl: "/_public/js/admin/add-apartments.html"
 
 App.config(($locationProvider) ->
   # Without server side support html5 must be disabled.
@@ -97,6 +105,17 @@ App.config((RestangularProvider, AppConfig) ->
       newResponse
     else
       response
+
+  #https://github.com/mgonto/restangular#how-can-i-access-the-unrestangularized-element-as-well-as-the-restangularized-one
+  RestangularProvider.setResponseExtractor (response) ->
+    newResponse = response
+    if angular.isArray(response)
+      newResponse.originalElement ||= {}
+      angular.forEach newResponse, (value, key) ->
+        newResponse.originalElement[key] = angular.copy(value)
+    else
+      newResponse.originalElement = angular.copy(response)
+    newResponse
 )
 
 # Declare app level module which depends on filters, and services

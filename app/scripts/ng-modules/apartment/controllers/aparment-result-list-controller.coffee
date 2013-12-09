@@ -22,7 +22,7 @@ angular.module('result.controllers')
 
     $scope.displayApartment = (apartment) ->
       $modal.open
-        templateUrl: "/_public/js/apartment/apartment-result-popup.html"
+        templateUrl: "/_public/js/apartment/apartment-popup.html"
         controller: 'ApartmentResultPopupCtrl'
         scope: $scope
         resolve:
