@@ -55,6 +55,7 @@ def reference_fingerprinted_files(env):
 
     #check if path exists - it might just be an inline style or script
     if path and not (path.startswith('http') or path.startswith('//')):
+      path = path.lstrip('/')
       fingerprint_path = env.manifest.files[path]
 
       asset[path_type] = fingerprint_path
