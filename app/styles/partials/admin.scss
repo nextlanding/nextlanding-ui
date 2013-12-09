@@ -24,5 +24,14 @@
         }
       }
     }
+
+    #search-crawl-section {
+      #crawl-urls {
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          height:300px;
+        }
+      }
+    }
   }
 }
