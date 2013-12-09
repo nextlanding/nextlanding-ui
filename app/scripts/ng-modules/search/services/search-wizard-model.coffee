@@ -16,6 +16,7 @@ angular.module('search.services')
       'paymentStep'
     ]
 
+    #if the same controller consumes this model many times, we only want to initialize one time
     init = ->
       unless initFired
         initFired = true
@@ -67,6 +68,7 @@ angular.module('search.services')
       getCurrentStep() == steps[steps.length - 1]
 
     parseSearch = (response) ->
+      response.route = "search/potential_search_init"
       search = response
       search.search_attrs = angular.fromJson response.search_attrs
 
