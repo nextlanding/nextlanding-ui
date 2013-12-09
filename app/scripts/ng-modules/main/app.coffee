@@ -17,6 +17,7 @@ App = angular.module('app', [
   'ui.bootstrap'
   'ui.utils'
   'lodash'
+  'analytics'
   'momentjs'
 ])
 
@@ -33,11 +34,11 @@ App.config ($stateProvider, $urlRouterProvider) ->
       url: "/styles"
       templateUrl: "/_public/js/main/partial1.html"
   .state "thankYou",
-    url: "/thank-you"
-    templateUrl: "/_public/js/main/thank-you.html"
-    data:
-      style:
-        webAppStyle: true
+      url: "/thank-you"
+      templateUrl: "/_public/js/main/thank-you.html"
+      data:
+        style:
+          webAppStyle: true
   .state "search",
       url: "/search"
       templateUrl: "/_public/js/search/wizard/start.html"
@@ -69,17 +70,17 @@ App.config ($stateProvider, $urlRouterProvider) ->
       templateUrl: "/_public/js/admin/add-apartments.html"
 
   .state "aboutus",
-    url: "/about-us"
-    templateUrl: "/_public/js/main/about-us.html"
-    data:
-      style:
-        webAppStyle: true
+      url: "/about-us"
+      templateUrl: "/_public/js/main/about-us.html"
+      data:
+        style:
+          webAppStyle: true
   .state "tos",
-    url: "/tos"
-    templateUrl: "/_public/js/main/tos.html"
+      url: "/tos"
+      templateUrl: "/_public/js/main/tos.html"
   .state "howitworks",
-    url: "/how-it-works"
-    templateUrl: "/_public/js/main/how-it-works.html"
+      url: "/how-it-works"
+      templateUrl: "/_public/js/main/how-it-works.html"
 
 App.config(($locationProvider) ->
   # Without server side support html5 must be disabled.
@@ -120,6 +121,22 @@ App.config((RestangularProvider, AppConfig) ->
       newResponse.originalElement = angular.copy(response)
     newResponse
 )
+
+App.run ($rootScope, $location, Analytics, AppConfig) ->
+
+  Analytics.init mixpanel: AppConfig.MIXPANEL_ID, googleAnalytics: AppConfig.GOOGLE_ANALYTICS_ID
+
+  $rootScope.$on "$stateChangeSuccess", (event, toState) ->
+    Analytics.trackPageView toState.name, $location.path()
+
+  $rootScope.$on "tracking:user:email", (event, email) ->
+    Analytics.nameTag email
+
+  $rootScope.$on "tracking:user:signup", (event, userProps) ->
+    Analytics.userSignup userProps
+
+  $rootScope.$on "tracking:user:purchase", (event, amount) ->
+    Analytics.trackCharge amount
 
 # Declare app level module which depends on filters, and services
 angular.module('app.controllers', [])

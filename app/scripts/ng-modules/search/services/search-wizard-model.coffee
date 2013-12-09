@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('search.services')
-.factory 'SearchWizardModel', ($rootScope, $timeout, $state, $location, Restangular, Lodash) ->
+.factory 'SearchWizardModel', ($rootScope, $timeout, $state, $location, Restangular, Lodash, Analytics, AppConfig) ->
     search = {}
     amenities = {}
     paymentPending = false
@@ -30,6 +30,7 @@ angular.module('search.services')
           amenities = response
 
     broadcastCurrentStep = ->
+      Analytics.trackEvent "Started: #{currentStep} Step"
       $rootScope.$broadcast "currentStep:changed:#{currentStep}"
 
     currentStep = steps[0]
@@ -45,8 +46,11 @@ angular.module('search.services')
       else
         response = Restangular.one('search').all('potential_search_init').post(search)
 
-      response.then (response) ->
-        parseSearch(response)
+      do (currentStep) ->
+        #put this in a closure as they may advance steps very quickly
+        response.then (response) ->
+          parseSearch(response)
+          trackUser(response, currentStep)
 
       nextStep = steps.indexOf(currentStep) + 1
 
@@ -72,6 +76,10 @@ angular.module('search.services')
       search = response
       search.search_attrs = angular.fromJson response.search_attrs
 
+    trackUser = (response, currentStep) ->
+      if currentStep is 'contactStep'
+        $rootScope.$broadcast "tracking:user:email", search.search_attrs.email_address
+
     toggleAmenity = (amenityId) ->
       search.search_attrs.amenities ||= []
       if amenityId in search.search_attrs.amenities
@@ -84,6 +92,8 @@ angular.module('search.services')
       paymentPending = true
       Restangular.one('search').all('potential_search_complete').post(search).then (->
         paymentPending = false
+        $rootScope.$broadcast "tracking:user:signup", emailAddress: search.search_attrs.email_address
+        $rootScope.$broadcast "tracking:user:purchase", AppConfig.SEARCH_PRICE
         $state.go 'thankYou'
         #find a way to remove the back button - simulate post redirect get
         $location.replace()
