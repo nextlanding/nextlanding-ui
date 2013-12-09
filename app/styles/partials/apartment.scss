@@ -51,6 +51,25 @@
         background-color: rgba($nl-medium-bright, .1);
       }
     }
+
+    .apartment-overview {
+      .badge {
+        //- Responsive
+        @media screen and (min-width: $screen-tablet) {
+          margin-top: 10px;
+        }
+        &.unkown {
+          background-color: $brand-info;
+        }
+        &.available {
+          background-color: $nl-less-bright;
+        }
+        &.unavailable {
+          background-color: $brand-warning;
+        }
+      }
+    }
+
     .apartment-details {
 
       .detail {

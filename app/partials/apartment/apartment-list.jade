@@ -6,7 +6,15 @@
         ui-event="{mouseover : 'highlightApartment(apartment)',mouseout : 'unhighlightApartment(apartment)',click : 'displayApartment(apartment)'}"
         )
           .row.apartment-overview
-            h5.col-md-8 {{apartment.address}}
+            h5.col-md-7 {{apartment.address}}
+            .col-md-5
+              ng-switch(on='apartment.availability_system_name')
+                ng-switch(ng-switch-when='unknown_availability')
+                  .badge.unknown Availability Unknown
+                ng-switch(ng-switch-when='available')
+                  .badge.available Verified Available
+                ng-switch(ng-switch-when='unavailable')
+                  .badge.unavailable Verified Unavailable
           .row.apartment-details
             .col-md-2.col-md-offset-1.detail
               p ${{apartment.price}}
@@ -34,7 +42,7 @@
                 .col-md-4
                   .badge {{apartment.last_updated_date | fromNow}}
                 .col-md-4
-                  .badge 100% Match
+                  .badge {{apartment.compliance_score}}% Match
                 .col-md-4
                   .badge {{apartment.broker_fee}}
 
