@@ -19,6 +19,9 @@ angular.module('search.services')
     #if the same controller consumes this model many times, we only want to initialize one time
     init = ->
       unless initFired
+        #this needs to be done in the next digest becuase our subscribers won't be registered until then
+        $timeout(broadcastCurrentStep)
+
         initFired = true
         #get the initial response
         #we're doing a get to return just 1 item - this is unconventional and requires a .customPUT call later in the model
@@ -34,9 +37,6 @@ angular.module('search.services')
       $rootScope.$broadcast "currentStep:changed:#{currentStep}"
 
     currentStep = steps[0]
-
-    #this needs to be done in the next digest becuase our subscribers won't be registered until then
-    $timeout(broadcastCurrentStep)
 
     proceed = ->
       if search.id
