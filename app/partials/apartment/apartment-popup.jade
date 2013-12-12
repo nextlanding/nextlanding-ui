@@ -1,56 +1,57 @@
-#apartment-popup-section.modal-dialog
-  .modal-content
-    .modal-header
-      button.close(type='button', ng-click='close()', aria-hidden='true') ×
-      h4.modal-title {{model.address}}
-    .modal-body
-      .row.apartment-details.page-header
-        .col-md-2.col-md-offset-2.detail
-          p ${{model.price}}
-          p.help-block price
-        .col-md-2.detail
-          p {{model.bedroom_count}}
-          p.help-block bed
-        .col-md-2.detail
-          p {{model.bathroom_count}}
-          p.help-block bath
-        .col-md-3.detail()
-          p {{model.sqfeet}}
-          p.help-block area
-      #apartment-full-information.row
-        .col-md-6
-          .row
-            .col-md-12
-              .panel.panel-info
-                .panel-heading
-                  h6.panel-title Nextlanding Verified Information
-                .panel-body
-                  p#apartment-verification.generated-info {{model.availability_contact_response}}
-          .row
-            .col-md-12
-              h5 Contact Info: {{model.contact_name}}
-              ul
-                li(ng-show="model.contact_phone_number") {{model.contact_phone_number}}
-                li(ng-show="model.contact_email_address") {{model.contact_email_address}}
-        .col-md-6
-          .row
-            .col-md-12
-              h5 Amenities
-              ul.list-unstyled
-                li(ng-repeat="(amenityName,data) in model.amenities")
-                  span
-                    i.fa.fa-check-circle &nbsp;
-                    | {{amenityName}}
-          .row
-            .col-md-12
-              h5 Description
-                p#apartment-description.generated-info {{model.description}}
-          .row
-            .col-md-12
-              h5 More Information
-              ul
-                li(ng-repeat="listingUrl in model.listing_urls")
-                  a(href="{{listingUrl}}",target="_blank") {{listingUrl}}
-    .modal-footer
-      button.btn.btn-default(type='button', ng-click='close()') Close
-      button.btn.btn-primary(type='button', ng-click='sendAddApartment($event, model)',ng-if='state.current.data.style.AdminStyle') Add
+#apartment-popup-container(ng-click='close()')
+  #apartment-popup-section.modal-dialog(ng-click='$event.stopPropagation()()')
+    .modal-content
+      .modal-header
+        button.close(type='button', ng-click='close()', aria-hidden='true') ×
+        h4.modal-title {{model.address}}
+      .modal-body
+        .row.apartment-details.page-header
+          .col-md-2.col-md-offset-2.detail
+            p ${{model.price}}
+            p.help-block price
+          .col-md-2.detail
+            p {{model.bedroom_count}}
+            p.help-block bed
+          .col-md-2.detail
+            p {{model.bathroom_count}}
+            p.help-block bath
+          .col-md-3.detail()
+            p {{model.sqfeet}}
+            p.help-block area
+        #apartment-full-information.row
+          .col-md-6
+            .row
+              .col-md-12
+                .panel.panel-info
+                  .panel-heading
+                    h6.panel-title Nextlanding Verified Information
+                  .panel-body
+                    p#apartment-verification.generated-info {{model.availability_contact_response}}
+            .row
+              .col-md-12
+                h5 Contact Info: {{model.contact_name}}
+                ul
+                  li(ng-show="model.contact_phone_number") {{model.contact_phone_number}}
+                  li(ng-show="model.contact_email_address") {{model.contact_email_address}}
+          .col-md-6
+            .row
+              .col-md-12
+                h5 Amenities
+                ul.list-unstyled
+                  li(ng-repeat="(amenityName,data) in model.amenities")
+                    span
+                      i.fa.fa-check-circle &nbsp;
+                      | {{amenityName}}
+            .row
+              .col-md-12
+                h5 Description
+                  p#apartment-description.generated-info {{model.description}}
+            .row
+              .col-md-12
+                h5 More Information
+                ul
+                  li(ng-repeat="listingUrl in model.listing_urls")
+                    a(href="{{listingUrl}}",target="_blank") {{listingUrl}}
+      .modal-footer
+        button.btn.btn-default(type='button', ng-click='close()') Close
+        button.btn.btn-primary(type='button', ng-click='sendAddApartment($event, model)',ng-if='state.current.data.style.AdminStyle') Add
