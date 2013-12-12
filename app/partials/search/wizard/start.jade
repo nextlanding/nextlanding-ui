@@ -9,7 +9,7 @@
         ng-include(src="'/_public/js/search/wizard/contact-step.html'")
         ng-include(src="'/_public/js/search/wizard/payment-step.html'")
       #progress-buttons.row
-        .col-md-1.col-md-offset-9
+        .col-md-1.col-md-offset-7
           button.btn.btn-info(ng-click='model.retreat()',type='button',ng-show='model.getCurrentStep() != model.steps[0]') Prev
         .col-md-1
           button.btn.btn-primary(ng-click='model.proceed()',type='submit',ng-disabled='currentStep.form.$invalid')

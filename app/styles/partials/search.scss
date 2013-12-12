@@ -15,15 +15,12 @@
       border-bottom: 0;
     }
 
-    #search-step-section{
-      //- Responsive
-      @media screen and (min-width: $screen-tablet) {
-        min-height: 560px;
-      }
-    }
-
     #progress-buttons {
       margin-top: 25px
+    }
+
+    .required {
+      color: red;
     }
 
     //- Location screen
