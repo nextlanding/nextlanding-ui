@@ -51,7 +51,7 @@
                 h5 More Information
                 ul
                   li(ng-repeat="listingUrl in model.listing_urls")
-                    a(href="{{listingUrl}}",target="_blank") {{listingUrl}}
+                    a.listing-link(href="{{listingUrl}}",target="_blank") {{listingUrl}}
       .modal-footer
         button.btn.btn-default(type='button', ng-click='close()') Close
         button.btn.btn-primary(type='button', ng-click='sendAddApartment($event, model)',ng-if='state.current.data.style.AdminStyle') Add

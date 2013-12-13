@@ -12,10 +12,10 @@ angular.module('result.controllers')
       $scope.model.apartmentList = response.search_results
 
       angular.forEach $scope.model.apartmentList, (value, key) ->
-        ApartmentDisplayService.formatApartmentDetails(value)
+        ApartmentDataService.prepareApartmentData(value)
 
       angular.forEach $scope.model.apartmentList, (value, key) ->
-        ApartmentDataService.prepareApartmentData(value)
+        ApartmentDisplayService.formatApartmentDetails(value)
 
       $scope.$broadcast('map:location:searched', address: $scope.model.config.address)
       $scope.$broadcast("map:data:retrieved", $scope.model.config.geo_boundary_points)
