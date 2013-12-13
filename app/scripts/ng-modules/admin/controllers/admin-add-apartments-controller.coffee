@@ -18,8 +18,8 @@ angular.module('admin.controllers')
       Restangular.one('search', $state.params.searchId).all('apartments').getList($scope.model.config).then (response) ->
         $scope.settings.searching = false
         $scope.model.apartmentList = response
-        angular.forEach $scope.model.apartmentList, (value, key) -> ApartmentDisplayService.formatApartmentDetails(value)
         angular.forEach $scope.model.apartmentList, (value, key) -> ApartmentDataService.prepareApartmentData(value)
+        angular.forEach $scope.model.apartmentList, (value, key) -> ApartmentDisplayService.formatApartmentDetails(value)
 
         $scope.$broadcast("map:markers:retrieved", $scope.model.apartmentList)
 

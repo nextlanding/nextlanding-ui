@@ -181,6 +181,9 @@
       i {
         color: $nl-less-bright;
       }
+      .listing-link{
+        @include hyphens();
+      }
 
       #apartment-description {
         overflow: auto;
