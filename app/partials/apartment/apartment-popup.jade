@@ -50,6 +50,7 @@
               .col-md-12
                 h5 More Information
                 ul
+                  li Listing last updated {{model.last_updated_date | fromNow}}
                   li(ng-repeat="listingUrl in model.listing_urls")
                     a(href="{{listingUrl}}",target="_blank") {{listingUrl}}
       .modal-footer
