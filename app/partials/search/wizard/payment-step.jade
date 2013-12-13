@@ -5,6 +5,7 @@ section.parent-form#payment-step(ng-show="isCurrentStep('paymentStep')", ng-form
     p#search-info-message We'll notify you within 24 hours and provide a unique link to your apartment listings. If you’re not 100% satisfied with the results, we’ll refund your <strong>${{searchPrice}}. </strong>
   .form-group
     label.col-md-2.col-md-offset-2.control-label(for='input-description') Payment
+      span.required*
     .col-md-8
       button.stripe-button.btn.btn-primary.btn-sm(stripe-checkout
       amount='{{SEARCH_PRICE}}'
