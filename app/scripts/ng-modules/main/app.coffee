@@ -127,7 +127,10 @@ App.run ($rootScope, $location, Analytics, AppConfig) ->
   Analytics.init mixpanel: AppConfig.MIXPANEL_ID, googleAnalytics: AppConfig.GOOGLE_ANALYTICS_ID
 
   $rootScope.$on "$stateChangeSuccess", (event, toState) ->
-    Analytics.trackPageView toState.name, $location.path()
+    debugger
+
+    unless /admin/.test(toState.name)
+      Analytics.trackPageView toState.name, $location.path()
 
   $rootScope.$on "tracking:user:email", (event, email) ->
     Analytics.nameTag email
