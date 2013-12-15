@@ -8,6 +8,7 @@ section.parent-form#location-step(ng-show="isCurrentStep('locationStep')", ng-fo
       popover-trigger="mouseenter") Read more.
   .form-group
     label.col-lg-4.control-label(for='input-location') Where are you moving?
+      span.required*
     .col-lg-4
       .input-group
         input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='model.search.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup($event)'}")

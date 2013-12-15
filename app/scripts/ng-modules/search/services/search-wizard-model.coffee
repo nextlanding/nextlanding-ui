@@ -27,6 +27,8 @@ angular.module('search.services')
         #we're doing a get to return just 1 item - this is unconventional and requires a .customPUT call later in the model
         Restangular.one('search').all('potential_search_init').getList().then (response) ->
           if response
+            #this is a hack to ensure post/puts go to same resource depending if the user comes back or not
+            response.route = "search/potential_search_init"
             parseSearch(response)
 
         Restangular.all('amenity').getList().then (response) ->
@@ -42,6 +44,7 @@ angular.module('search.services')
       if search.id
         #use customput because restangular expects a getList to return multiple items
         #this is a hack to prevent restangular from attachin an id to the path
+        debugger
         response = search.customPUT(angular.extend(search, id: null))
       else
         response = Restangular.one('search').all('potential_search_init').post(search)
@@ -72,7 +75,6 @@ angular.module('search.services')
       getCurrentStep() == steps[steps.length - 1]
 
     parseSearch = (response) ->
-      response.route = "search/potential_search_init"
       search = response
       search.search_attrs = angular.fromJson response.search_attrs
 

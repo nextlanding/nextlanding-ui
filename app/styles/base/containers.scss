@@ -15,7 +15,6 @@
 
 .web-app-body{
   border-bottom: none;
-  padding-bottom: 90px;
 }
 
 .admin-body{
@@ -35,8 +34,10 @@
 //- This is because bootstrap 3 isn't compatible w/ angular ui modal yet.
 .modal {
   display: block;
-  height: 0;
-  overflow: visible;
+}
+
+.modal-open {
+  overflow: hidden;
 }
 
 .web-app-padding{

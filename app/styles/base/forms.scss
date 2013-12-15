@@ -18,3 +18,7 @@
     @include box-shadow($shadow);
   }
 }
+
+.required {
+  color: red;
+}
