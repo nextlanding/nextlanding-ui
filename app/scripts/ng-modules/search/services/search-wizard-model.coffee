@@ -7,14 +7,15 @@ angular.module('search.services')
     paymentPending = false
     initFired = false
 
-    steps = [
-      'locationStep'
-      'descriptionStep'
-      'generalDetailsStep'
-      'amenityDetailsStep'
-      'contactStep'
-      'paymentStep'
-    ]
+    step_keywords =
+    'locationStep': 'Location'
+    'descriptionStep': 'Description'
+    'generalDetailsStep': 'General Details'
+    'amenityDetailsStep': 'Amenity Details'
+    'contactStep': 'Contact'
+    'paymentStep'    : 'Payment'
+
+    steps = Object.keys(step_keywords)
 
     #if the same controller consumes this model many times, we only want to initialize one time
     init = ->
@@ -35,7 +36,7 @@ angular.module('search.services')
           amenities = response
 
     broadcastCurrentStep = ->
-      Analytics.trackEvent "Started: #{currentStep} Step"
+      Analytics.trackEvent "Started #{step_keywords[currentStep]} Step"
       $rootScope.$broadcast "currentStep:changed:#{currentStep}"
 
     currentStep = steps[0]

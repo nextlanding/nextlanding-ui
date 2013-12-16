@@ -138,6 +138,7 @@ App.run ($rootScope, $location, Analytics, AppConfig) ->
 
   $rootScope.$on "tracking:user:purchase", (event, amount) ->
     Analytics.trackCharge amount
+    Analytics.trackEvent "Purchased"
 
 # Declare app level module which depends on filters, and services
 angular.module('app.controllers', [])
