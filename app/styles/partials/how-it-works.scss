@@ -54,7 +54,7 @@
     #rows {
     	position: relative;
 
-    	.row-grey {
+    	.alt-section {
     		padding: 60px;
 
 			.content {
@@ -85,10 +85,8 @@
 			}
     	}
 
-    	.row-white {
+    	.section {
     		padding: 60px;
-			background-color: #fff;
-			border-bottom: 1px solid #e7f0f4;
 
 			.content {
 				width: 880px;
@@ -142,7 +140,7 @@
     }
 
     .jumbotron {
-    	background: $nl-very-bright url('../images/bg/brooklyn-brownstones.jpg');
+    	background: $nl-very-bright url('../images/bg/hiw-top-bg.jpg');
     	background-position: center;
     	background-size: cover;
     	background-repeat: no-repeat;
