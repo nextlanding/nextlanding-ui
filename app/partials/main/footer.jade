@@ -4,27 +4,19 @@ footer#main-footer(ng-class="{'navbar hidden':state.current.data.style.webAppSty
       .col-md-6
         ul.footer-menu.list-unstyled.list-inline
           li
-            a(href='#') Privacy Policy
+            a(ui-sref="tos") Terms of Service
           li
-            a(href='#') Terms of Service
-          li
-            a(href='#') Contact Us
+            a(href="mailto:{{contactEmailAddress}}") Contact Us
         .copyright
           | {{currentDate | date:'yyyy'}} © Nextlanding. All rights reserved.
       .col-md-6
         ul.footer-social.list-unstyled.list-inline.pull-right
           li
-            a(href='#')
+            a(href='https://www.facebook.com/nextlanding')
               i.fa.fa-facebook
           li
-            a(href='#')
+            a(href='https://twitter.com/nextlanding')
               i.fa.fa-twitter
           li
-            a(href='#')
-              i.fa.fa-dribbble
-          li
-            a(href='#')
+            a(href='http://www.linkedin.com/company/nextlanding')
               i.fa.fa-linkedin
-          li
-            a(href='#')
-              i.fa.fa-google-plus
