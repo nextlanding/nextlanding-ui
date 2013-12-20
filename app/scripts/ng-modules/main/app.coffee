@@ -130,9 +130,6 @@ App.run ($rootScope, $location, Analytics, AppConfig) ->
     unless /admin/.test(toState.name)
       Analytics.trackPageView toState.name, $location.path()
 
-  $rootScope.$on "tracking:user:email", (event, email) ->
-    Analytics.nameTag email
-
   $rootScope.$on "tracking:user:signup", (event, userProps) ->
     Analytics.userSignup userProps
 

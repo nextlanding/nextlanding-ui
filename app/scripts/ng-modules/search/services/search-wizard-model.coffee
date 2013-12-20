@@ -45,7 +45,6 @@ angular.module('search.services')
       if search.id
         #use customput because restangular expects a getList to return multiple items
         #this is a hack to prevent restangular from attachin an id to the path
-        debugger
         response = search.customPUT(angular.extend(search, id: null))
       else
         response = Restangular.one('search').all('potential_search_init').post(search)
@@ -80,8 +79,8 @@ angular.module('search.services')
       search.search_attrs = angular.fromJson response.search_attrs
 
     trackUser = (response, currentStep) ->
-      if currentStep is 'contactStep'
-        $rootScope.$broadcast "tracking:user:email", search.search_attrs.email_address
+      if currentStep is 'contactStep' and not Analytics.isSignedUp()
+        $rootScope.$broadcast "tracking:user:signup", emailAddress: search.search_attrs.email_address
 
     toggleAmenity = (amenityId) ->
       search.search_attrs.amenities ||= []
@@ -95,7 +94,6 @@ angular.module('search.services')
       paymentPending = true
       Restangular.one('search').all('potential_search_complete').post(search).then (->
         paymentPending = false
-        $rootScope.$broadcast "tracking:user:signup", emailAddress: search.search_attrs.email_address
         $rootScope.$broadcast "tracking:user:purchase", AppConfig.SEARCH_PRICE
         $state.go 'thankYou'
         #find a way to remove the back button - simulate post redirect get

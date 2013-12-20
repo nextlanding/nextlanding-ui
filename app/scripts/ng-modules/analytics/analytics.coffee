@@ -42,10 +42,12 @@ angular.module('analytics', [])
     trackCharge: (amount) ->
       window.mixpanel.people.track_charge amount
 
-    nameTag: (nameTag) ->
-      window.mixpanel.name_tag nameTag
+    isSignedUp: ->
+      window.mixpanel.cookie.props.mp_name_tag?
 
     userSignup: (userProps) ->
+      window.mixpanel.name_tag userProps.emailAddress
+
       window.mixpanel.alias userProps.emailAddress
 
       #ensure that nameTag is called before the following events to show proper info in the stream
