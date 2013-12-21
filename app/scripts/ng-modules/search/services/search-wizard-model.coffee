@@ -94,7 +94,8 @@ angular.module('search.services')
       paymentPending = true
       Restangular.one('search').all('potential_search_complete').post(search).then (->
         paymentPending = false
-        $rootScope.$broadcast "tracking:user:purchase", AppConfig.SEARCH_PRICE
+        $rootScope.$broadcast "tracking:user:purchase", AppConfig.SEARCH_PRICE, "Nextlanding Search"
+        Analytics.trackLogin(emailAddress: search.search_attrs.email_address)
         $state.go 'thankYou'
         #find a way to remove the back button - simulate post redirect get
         $location.replace()

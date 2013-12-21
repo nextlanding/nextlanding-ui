@@ -123,7 +123,6 @@ App.config((RestangularProvider, AppConfig) ->
 )
 
 App.run ($rootScope, $location, Analytics, AppConfig) ->
-
   Analytics.init mixpanel: AppConfig.MIXPANEL_ID, googleAnalytics: AppConfig.GOOGLE_ANALYTICS_ID
 
   $rootScope.$on "$stateChangeSuccess", (event, toState) ->
@@ -133,9 +132,9 @@ App.run ($rootScope, $location, Analytics, AppConfig) ->
   $rootScope.$on "tracking:user:signup", (event, userProps) ->
     Analytics.userSignup userProps
 
-  $rootScope.$on "tracking:user:purchase", (event, amount) ->
-    Analytics.trackCharge amount
-    Analytics.trackEvent "Purchased"
+  $rootScope.$on "tracking:user:purchase", (event, amount, product) ->
+    Analytics.trackCharge amount, product
+    Analytics.trackEvent "Purchased", {Amount: amount, Product: product}
 
 # Declare app level module which depends on filters, and services
 angular.module('app.controllers', [])

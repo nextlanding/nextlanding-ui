@@ -39,8 +39,9 @@ angular.module('analytics', [])
       #only track events w/ mixpanel
       window.mixpanel.track eventName, props
 
-    trackCharge: (amount) ->
+    trackCharge: (amount, product) ->
       window.mixpanel.people.track_charge amount
+      mixpanel.people.increment("Purchase: #{product}")
 
     isSignedUp: ->
       window.mixpanel.cookie.props.mp_name_tag?
