@@ -30,16 +30,6 @@
         margin-top: 50px;
         @include transition-delay(1s);
       }
-
-      .map-marker-label {
-        color: $nl-very-bright;
-        background-color: $nl-gray;
-        font-size: 12px;
-        text-align: center;
-        width: 200px;
-        padding:5px;
-        font-family: $nl-font-family-heading;
-      }
     }
 
     //- Description screen
