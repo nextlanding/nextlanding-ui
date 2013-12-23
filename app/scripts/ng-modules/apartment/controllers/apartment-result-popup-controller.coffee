@@ -2,7 +2,7 @@
 
 ### Controllers ###
 
-angular.module('result.controllers')
+angular.module('apartment.controllers')
   .controller 'ApartmentResultPopupCtrl', ($scope, $state, $modalInstance, apartment) ->
     $state.current.data.modal ||= true
     $scope.model = apartment
