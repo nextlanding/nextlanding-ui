@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('admin.controllers')
-.controller 'AdminAddApartmentsCtrl', ($scope, $state, Restangular,ApartmentDisplayService,ApartmentDataService) ->
+.controller 'AdminAddApartmentsCtrl', ($scope, $state, Restangular, ApartmentDisplayService, ApartmentDataService) ->
     $scope.model = {}
     $scope.settings =
       searching: false
@@ -10,25 +10,27 @@ angular.module('admin.controllers')
       $scope.model.config = response.originalElement
       $scope.$broadcast('map:location:searched', address: $scope.model.config.address)
       $scope.$broadcast("map:data:retrieved", $scope.model.config.geo_boundary_points)
-      if response.geo_boundary_points?
-        $scope.model.searchAddApartments()
+      $scope.model.searchAddApartments()
 
     $scope.model.searchAddApartments = ->
-      $scope.settings.searching = true
-      Restangular.one('search', $state.params.searchId).all('apartments').getList($scope.model.config).then (response) ->
-        $scope.settings.searching = false
-        $scope.model.apartmentList = response
-        angular.forEach $scope.model.apartmentList, (value, key) -> ApartmentDataService.prepareApartmentData(value)
-        angular.forEach $scope.model.apartmentList, (value, key) -> ApartmentDisplayService.formatApartmentDetails(value)
+      if $scope.model.config.geo_boundary_points?
+        $scope.settings.searching = true
+        Restangular.one('search',
+          $state.params.searchId).all('apartments').getList($scope.model.config).then (response) ->
+            $scope.settings.searching = false
+            $scope.model.apartmentList = response
+            angular.forEach $scope.model.apartmentList, (value, key) ->
+              ApartmentDataService.prepareApartmentData(value)
+            angular.forEach $scope.model.apartmentList, (value, key) ->
+              ApartmentDisplayService.formatApartmentDetails(value)
 
-        $scope.$broadcast("map:markers:retrieved", $scope.model.apartmentList)
+            $scope.$broadcast("map:markers:retrieved", $scope.model.apartmentList)
 
     $scope.addApartment = ($event, apartment)->
       #don't show the popup
       $event.stopPropagation()
 
       Restangular.one('search', $state.params.searchId).all('apartments').post(apartment).then (->
-
         $scope.model.apartmentList = $scope.model.apartmentList.filter (apartmentToKeep) ->
           apartmentToKeep isnt apartment
 
@@ -61,4 +63,5 @@ angular.module('admin.controllers')
         @[i] = b for b, i in boundList
         this
 
-      alert boundHash
+      Restangular.one('search', $state.params.searchId).all('geo').post(geo_boundary_points:boundHash).then ->
+        $scope.model.config.geo_boundary_points = boundHash
