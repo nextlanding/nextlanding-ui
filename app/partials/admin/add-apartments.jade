@@ -53,6 +53,7 @@
               input#bathroom-max.form-control.input-sm(name='bathroom-max', type='number', required,integer, ng-model="model.config.bathroom_max")
           .form-group.col-md-3
               button.btn.btn-primary(type='submit',ng-disabled='addApartmentsConfigForm.$invalid || settings.searching') Search
+              button.btn.btn-info(type='button',ng-click='model.addAllApartments()',ng-disabled='addApartmentsConfigForm.$invalid || settings.searching') Add All
               span(ng-show='settings.searching')
                 i.fa.fa-spinner.fa-2x(ng-class="{'fa-spin':settings.searching}") &nbsp;
                 | thinking...

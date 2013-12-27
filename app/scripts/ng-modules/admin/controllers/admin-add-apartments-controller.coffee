@@ -65,3 +65,9 @@ angular.module('admin.controllers')
 
       Restangular.one('search', $state.params.searchId).all('geo').post(geo_boundary_points:boundHash).then ->
         $scope.model.config.geo_boundary_points = boundHash
+
+    $scope.model.addAllApartments = ->
+      $scope.settings.searching = true
+      Restangular.one('search', $state.params.searchId).all('add_available').post($scope.model.config).then ->
+        $scope.settings.searching = false
+        $scope.model.apartmentList = []
