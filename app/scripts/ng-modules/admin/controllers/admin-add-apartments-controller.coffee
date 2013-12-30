@@ -5,7 +5,6 @@ angular.module('admin.controllers')
     $scope.model = {}
     $scope.settings =
       searching: false
-      initialLoad: true
 
     Restangular.one('search', $state.params.searchId).one('add_apartments_config').get().then (response) ->
       $scope.model.config = response.originalElement
@@ -44,10 +43,10 @@ angular.module('admin.controllers')
     $scope.addDesiredHomeArea = ($event, $params) ->
       #first get a list of boundary paths
       #any given boundary path can have several points and each point is a lat/lng
-      polygon = $params[0]
+      polygon = $params[0].polygon
       $scope.polygonList ||= []
       $scope.polygonList.push polygon
-      $scope.persistGeoBoundary()
+      $scope.persistGeoBoundary($params[0].newlyCreated)
 
     $scope.removeDesiredHomeArea = ($event, $params) ->
       polygonToRemove = $params[0]
@@ -55,20 +54,18 @@ angular.module('admin.controllers')
       $scope.polygonList = $scope.polygonList.filter (polygon) ->
         polygon isnt polygonToRemove
 
-      $scope.persistGeoBoundary()
+      $scope.persistGeoBoundary(true)
 
-    $scope.persistGeoBoundary = ->
+    $scope.persistGeoBoundary = (persistChanges) ->
       boundList = ([point.lat(), point.lng()] for point in path.getPath().getArray() for path in $scope.polygonList)
 
       boundHash = new ->
         @[i] = b for b, i in boundList
         this
 
-      unless $scope.settings.initialLoad
+      if persistChanges
         Restangular.one('search', $state.params.searchId).all('geo').post(geo_boundary_points:boundHash).then ->
           $scope.model.config.geo_boundary_points = boundHash
-      else
-        $scope.settings.initialLoad = false
 
     $scope.model.addAllApartments = ->
       $scope.settings.searching = true

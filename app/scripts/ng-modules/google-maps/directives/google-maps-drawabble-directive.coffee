@@ -50,9 +50,9 @@ angular.module('googleMaps.directives')
         #remove the drawing option
         drawingManager.setDrawingMode null
 
-        addPolygonEvents newPolygon
+        addPolygonEvents newPolygon, true
 
-      addPolygonEvents = (newPolygon)->
+      addPolygonEvents = (newPolygon, newlyCreated)->
         #when they click the polygon, it'll be deleted
         GoogleMaps.event.addListener newPolygon, 'click', ->
           newPolygon.setMap null
@@ -67,7 +67,7 @@ angular.module('googleMaps.directives')
         GoogleMaps.event.addListener newPolygon, "mouseout", (event) ->
           remove_label.setVisible false
 
-        elm.triggerHandler "map-" + eventName, newPolygon
+        elm.triggerHandler "map-" + eventName, polygon:newPolygon, newlyCreated:newlyCreated
 
         #We create an $apply if it isn't happening. we need better support for this
         #We don't want to use timeout because tons of these events fire at once,
@@ -85,7 +85,7 @@ angular.module('googleMaps.directives')
               map: map,
               polygonOptions
 
-            addPolygonEvents(newPolygon)
+            addPolygonEvents newPolygon, false
 
             polygonList.push newPolygon
 
