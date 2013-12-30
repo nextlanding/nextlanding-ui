@@ -5,6 +5,7 @@ angular.module('admin.controllers')
     $scope.model = {}
     $scope.settings =
       searching: false
+      initialLoad: true
 
     Restangular.one('search', $state.params.searchId).one('add_apartments_config').get().then (response) ->
       $scope.model.config = response.originalElement
@@ -63,8 +64,11 @@ angular.module('admin.controllers')
         @[i] = b for b, i in boundList
         this
 
-      Restangular.one('search', $state.params.searchId).all('geo').post(geo_boundary_points:boundHash).then ->
-        $scope.model.config.geo_boundary_points = boundHash
+      unless $scope.settings.initialLoad
+        Restangular.one('search', $state.params.searchId).all('geo').post(geo_boundary_points:boundHash).then ->
+          $scope.model.config.geo_boundary_points = boundHash
+      else
+        $scope.settings.initialLoad = false
 
     $scope.model.addAllApartments = ->
       $scope.settings.searching = true
