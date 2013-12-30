@@ -6,6 +6,8 @@ angular.module('search.controllers')
 
     $scope.$on "currentStep:changed:locationStep", ->
       $scope.currentStep.form = $scope.locationStepForm
+      if $scope.model.search.search_attrs?.specified_location?
+        $scope.geoLookup()
 
     # FYI - I don't really know why the UI guys decided to have the controller be responsible for the map settings
     # as this seems like more of a directive concern...
@@ -59,7 +61,7 @@ angular.module('search.controllers')
     $scope.specifiedLocationCopy = null
     $scope.geoLookup = ($event)  ->
       #we want the enter event to not trigger a form submission - just do the map lookup - do not move onto the next step
-      $event.preventDefault()
+      $event.preventDefault() if $event
 
       #even tho the button is disabled, they still might hit enter
       if $scope.locationStepForm.$valid and $scope.specifiedLocationCopy isnt $scope.model.search.search_attrs.specified_location
