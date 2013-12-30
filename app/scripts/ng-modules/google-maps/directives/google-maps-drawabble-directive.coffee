@@ -1,12 +1,13 @@
 'use strict'
 
 angular.module('googleMaps.directives')
-.directive "googleMapsDrawabbleMap", (GoogleMaps, GoogleMapsService) ->
+.directive "googleMapsDrawabbleMap", (GoogleMaps, GoogleMapsService, $templateCache, $compile, Lodash) ->
     restrict: "A"
     #doesn't work as E for unknown reason
     link: (scope, elm, attrs) ->
       #ui-map.js uses the same attr so we can avoid isolated scope
       map = scope[attrs.uiMap]
+      infoBoxTemplate = $compile($templateCache.get(attrs.templateUrl))
 
       polygonOptions =
         fillColor: "#0076BF"
@@ -28,9 +29,9 @@ angular.module('googleMaps.directives')
 
       drawingManager.setMap map
 
-      #display a marker to remove polygon
+      #display a remove_label to remove polygon
       #http://stackoverflow.com/a/10723555/173957
-      marker = new MarkerWithLabel
+      remove_label = new MarkerWithLabel
         position: new google.maps.LatLng(0, 0)
         draggable: false
         raiseOnDrag: false
@@ -61,10 +62,10 @@ angular.module('googleMaps.directives')
         GoogleMaps.event.addListener newPolygon, "mouseover", (mouseOverEvent) ->
           bounds = GoogleMapsService.getBoundsFromPolygons(newPolygon)
 
-          marker.setPosition new google.maps.LatLng(bounds.getNorthEast().lat(), bounds.getCenter().lng())
-          marker.setVisible true
+          remove_label.setPosition new google.maps.LatLng(bounds.getNorthEast().lat(), bounds.getCenter().lng())
+          remove_label.setVisible true
         GoogleMaps.event.addListener newPolygon, "mouseout", (event) ->
-          marker.setVisible false
+          remove_label.setVisible false
 
         elm.triggerHandler "map-" + eventName, newPolygon
 
@@ -98,3 +99,55 @@ angular.module('googleMaps.directives')
 
           #we only want to be notified the first time we've gotten map data
           offDataRetrieved()
+
+      markerList = []
+      tooltip = null
+
+      scope.$on "map:markers:retrieved", (event, args)->
+        marker.setMap null for marker in markerList
+
+        markerList = []
+
+        angular.forEach args, (value, key) ->
+          marker = new GoogleMaps.Marker
+            position: new google.maps.LatLng(value.lat, value.lng)
+            map: map
+            dataItem: value
+
+          markerList.push marker
+
+          #display the 'remove' label when we hover over the polygon
+          GoogleMaps.event.addListener marker, "mouseover", (mouseOverEvent) ->
+            highlightItem this
+          GoogleMaps.event.addListener marker, "mouseout", (event) ->
+            unhighlightItem this
+          GoogleMaps.event.addListener marker, "click", (event) ->
+            scope.$emit("map:markers:displayhighlight", this.dataItem)
+
+      scope.$on "map:markers:highlight", (event, args)->
+        marker = Lodash.find(markerList, { 'dataItem': args });
+        highlightItem(marker)
+
+      scope.$on "map:markers:removed", (event, args)->
+        marker = Lodash.find(markerList, { 'dataItem': args });
+        marker.setMap null
+
+      scope.$on "map:markers:unhighlight", (event, args)->
+        unhighlightItem()
+
+      highlightItem = (item) ->
+        tempScope = scope.$new()
+        angular.extend(tempScope, item.dataItem)
+        content = infoBoxTemplate(tempScope)[0]
+
+        tooltip = new InfoBox
+          alignBottom: true
+          closeBoxURL: ''
+          content: content
+          isHidden: false
+          pixelOffset: new google.maps.Size(-120, -34)
+
+        tooltip.open map, item
+
+      unhighlightItem = ->
+        tooltip.setVisible false

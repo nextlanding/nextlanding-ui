@@ -56,6 +56,7 @@
           ui-options='mapOptions',
           google-maps-drawabble-map,google-maps-searchable-map,
           ui-event="{'map-polygoncomplete': 'addDesiredHomeArea($event, $params)','map-click': 'removeDesiredHomeArea($event, $params)'}"
+          template-url="/_public/js/apartment/apartment-map-info-box.html"
           )
         ng-switch(ng-switch-default)
           .map-canvas(
