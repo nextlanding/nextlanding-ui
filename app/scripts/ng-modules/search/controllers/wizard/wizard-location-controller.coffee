@@ -6,6 +6,7 @@ angular.module('search.controllers')
 
     $scope.$on "currentStep:changed:locationStep", ->
       $scope.currentStep.form = $scope.locationStepForm
+      #if they already populated the location (from home page for example) display map immediately
       if $scope.model.search.search_attrs?.specified_location?
         $scope.geoLookup()
 

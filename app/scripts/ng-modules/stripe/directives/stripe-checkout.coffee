@@ -14,6 +14,12 @@ angular.module('stripe.directives')
       amountInCents = parseInt(scope.amount * 100)
 
       elem.on 'click', ->
+        displayCheckout()
+
+      scope.$on "payment:checkout:display", (event, args)->
+        displayCheckout()
+
+      displayCheckout =  ->
         elem.attr 'disabled', 'disabled'
         StripeCheckout.open
           key: AppConfig.STRIPE_PUBLIC_KEY
