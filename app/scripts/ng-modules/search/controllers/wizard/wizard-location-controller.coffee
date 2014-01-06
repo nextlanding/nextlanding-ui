@@ -21,7 +21,7 @@ angular.module('search.controllers')
     $scope.addDesiredHomeArea = ($event, $params) ->
       #first get a list of boundary paths
       #any given boundary path can have several points and each point is a lat/lng
-      polygon = $params[0]
+      polygon = $params[0].polygon
       $scope.polygonList ||= []
       $scope.polygonList.push polygon
       $scope.recalcBoundaryPoints()
