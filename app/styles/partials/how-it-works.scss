@@ -7,15 +7,15 @@
     padding-bottom: 20px;
 
     .header-container {
-    	width: 1000px;
-    	margin-left: 16%;
+		width: 880px;
+		margin: 0 auto;
+		overflow: auto;
     }
 
     .steps-container {
 		position: relative;
 		width: 100%;
 		min-width: 1280px;
-		max-width: 1800px;
 
 		#steps {
 			position: absolute;
@@ -150,7 +150,6 @@
 	
     	margin-bottom: 0;
     	height: 500px;
-    	max-width: 1800px;
     	min-width: 1200px;
     }
   }
