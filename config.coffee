@@ -21,6 +21,8 @@ exports.config =
         before:[
           #jquery must be loaded before angular otherwise jqLite will be used
           'bower_components/jquery/jquery.js'
+          #stripe must be loaded before other files that depend on it as we're not getting stripe via bower
+          'vendor/scripts/stripe/v2.js'
           'app/scripts/ng-modules/main/main.coffee'
           'app/scripts/ng-modules/apartment/apartment.coffee'
           'app/scripts/ng-modules/search/search.coffee'
