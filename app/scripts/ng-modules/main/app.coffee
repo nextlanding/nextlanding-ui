@@ -87,6 +87,10 @@ App.config(($locationProvider) ->
   $locationProvider.html5Mode(true)
 )
 
+App.config((StripeProvider, AppConfig) ->
+  StripeProvider.setPublishableKey(AppConfig.STRIPE_PUBLIC_KEY)
+)
+
 App.config((RestangularProvider, AppConfig) ->
   RestangularProvider.setBaseUrl AppConfig.API_ENDPOINT
   RestangularProvider.setDefaultHttpFields
