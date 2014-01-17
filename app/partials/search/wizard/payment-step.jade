@@ -1,29 +1,38 @@
-section.parent-form#payment-step(ng-show="isCurrentStep('paymentStep')", ng-form='paymentStepForm', ng-controller='SearchWizardPaymentCtrl')
+section.parent-form#payment-step(ng-show="isCurrentStep('paymentStep')", stripe-form, ng-form='paymentStepForm', ng-controller='SearchWizardPaymentCtrl')
   .page-header
     h1.text-center Step Six: Almost done
   .alert.alert-info
     div#search-info-message
       p Thanks for filling out your search. Just complete the payment form below, and then you're done!
-      p Sit back and relax: within 24 hours, you will received your curated, customized list of available and verified apartments.
+      p Sit back and relax: within 24 hours you will receive your curated, customized list of available and verified apartments.
       p If you are not 100% satisfied with your results, 
         strong.heavy-emphasis we'll refund your $35.
   .form-group
-    label.col-md-2.col-md-offset-2.control-label(for='input-description') Payment
+    label.col-md-2.col-md-offset-2.control-label(for='txt-card-number') Card number
       span.required*
-    .col-md-8
-      button.stripe-button.btn.btn-primary.btn-sm(stripe-checkout
-      amount='{{SEARCH_PRICE}}'
-      description='Nextlanding Search ({{searchPrice | currency}})'
-      image='https://stripe.com/img/documentation/checkout/marketplace.png'
-      email='{{model.search.search_attrs.email_address}}'
-      payment-callback='model.processPayment(token)'
-      ) Pay with card
-      span(ng-show='model.paymentPending')
-        i.fa.fa-spinner.fa-2x(ng-class="{'fa-spin':model.paymentPending}")
-        | processing payment...
+    .col-md-3
+      input#txt-card-number.form-control(type='text', name='number', ng-model='payment.number', payments-validate='card', payments-format='card', payments-type-model='type', ng-class='paymentStepForm.number.$card.type')
+  .form-group
+    label.col-md-2.col-md-offset-2.control-label(for='txt-expiration-date') Expiration date
+      span.required*
+    .col-md-3
+      input#txt-expiration-date.form-control(type='text', ng-model='payment.expiry', payments-validate='expiry', payments-format='expiry')
+  .form-group
+    label.col-md-2.col-md-offset-2.control-label(for='txt-name') Name on card
+      span.required*
+    .col-md-3
+      input#txt-name.form-control(type='text', ng-model='payment.name')
+  .form-group
+    label.col-md-2.col-md-offset-2.control-label(for='txt-expiration-date') CVC
+      span.required*
+    .col-md-3
+      input#txt-expiration-date.form-control(type='text', ng-model='payment.cvc', payments-validate='cvc', payments-format='cvc', payments-type-model='type')
+  span(ng-show='model.paymentPending')
+    i.fa.fa-spinner.fa-2x(ng-class="{'fa-spin':model.paymentPending}")
+    | processing payment...
   .row
     .col-md-8.col-md-offset-4
       p
         a(href='https://stripe.com', target='_blank')
-          img#payment-image(src='https://nextlanding.s3.amazonaws.com/static/img/payment/stripe.png')
+          img#payment-image(src='/images/stripe.png')
           |  Your credit card information is safe with us.
