@@ -14,8 +14,10 @@ section.parent-form#location-step(ng-show="isCurrentStep('locationStep')", ng-fo
         input#input-location.form-control(type='text', placeholder='City, zip, etc', ng-model='model.search.search_attrs.specified_location', required,ui-keypress="{enter:'geoLookup($event)'}")
         span.input-group-btn
           button.btn.btn-default(type='button', ng-click="geoLookup($event)",ng-disabled="locationStepForm.$invalid") View on map
+      p#map-help.help-block
+        strong Reminder:&nbsp;
+        | draw on the map to show us approximately where you are looking. You can draw more than one shape.
   section.animate-fade(ng-show='locationEntered')
-    p#map-help.help-block.text-center.animate-fade(ng-show='locationEntered') Draw on the map to show us approximately where you are looking. You can draw more than one shape.
     .row
       .col-md-offset-1.col-md-10
         section#search-map
