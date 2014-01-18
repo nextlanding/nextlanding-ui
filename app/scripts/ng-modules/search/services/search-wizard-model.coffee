@@ -58,7 +58,7 @@ angular.module('search.services')
       nextStep = steps.indexOf(currentStep) + 1
 
       if steps.length == nextStep
-        console.log('done')
+        completeSearch()
       else
         currentStep = steps[nextStep]
         broadcastCurrentStep()
@@ -78,6 +78,10 @@ angular.module('search.services')
       search = response
       search.search_attrs = angular.fromJson response.search_attrs
 
+    completeSearch = ->
+      paymentPending = true
+      $rootScope.$broadcast "search:complete"
+
     trackUser = (response, currentStep) ->
       if currentStep is 'contactStep' and not Analytics.isSignedUp()
         $rootScope.$broadcast "tracking:user:signup", emailAddress: search.search_attrs.email_address
@@ -89,19 +93,21 @@ angular.module('search.services')
       else
         search.search_attrs.amenities.push amenityId
 
+    cancelPayment = ->
+      paymentPending = false
+
     processPayment = (token) ->
       search.token = token
-      paymentPending = true
       Restangular.one('search').all('potential_search_complete').post(search).then (->
-        paymentPending = false
+        cancelPayment()
         $rootScope.$broadcast "tracking:user:purchase", AppConfig.SEARCH_PRICE, "Nextlanding Search"
         Analytics.trackLogin(emailAddress: search.search_attrs.email_address)
         $state.go 'thankYou'
         #find a way to remove the back button - simulate post redirect get
         $location.replace()
-      ), ->
-        paymentPending = false
-        alert ('error processing your payment')
+      ), (response)->
+        cancelPayment()
+        alert ("Error processing your payment: #{response.data}")
 
 
     retVal =
@@ -114,6 +120,7 @@ angular.module('search.services')
       parseSearch: parseSearch
       toggleAmenity: toggleAmenity
       processPayment: processPayment
+      cancelPayment: cancelPayment
 
     # defining a getter property here because the search is constantly replaced by the restangular responses
     # using angular.extend was causing problems with re-writing the object.
