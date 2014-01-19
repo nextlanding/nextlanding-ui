@@ -11,22 +11,17 @@ section.parent-form#payment-step(ng-show="isCurrentStep('paymentStep')", stripe-
     label.col-md-2.col-md-offset-2.control-label(for='txt-card-number') Card number
       span.required*
     .col-md-3
-      input#txt-card-number.form-control(type='text',required, name='number', ng-model='number', payments-validate='card', payments-format='card', payments-type-model='type', ng-class='paymentStepForm.number.$card.type')
+      input#txt-card-number.form-control(type='text',required, name='number', ng-model='number', payments-validate='card', payments-format='card', payments-type-model='type', placeholder="●●●● ●●●● ●●●● ●●●●", ng-class='paymentStepForm.number.$card.type')
   .form-group
     label.col-md-2.col-md-offset-2.control-label(for='txt-expiration-date') Expiration date
       span.required*
     .col-md-3
-      input#txt-expiration-date.form-control(type='text', required,ng-model='expiry', payments-validate='expiry', payments-format='expiry')
-  .form-group
-    label.col-md-2.col-md-offset-2.control-label(for='txt-name') Name on card
-      span.required*
-    .col-md-3
-      input#txt-name.form-control(type='text', required,ng-model='name')
+      input#txt-expiration-date.form-control(type='text', required,ng-model='expiry', payments-validate='expiry', payments-format='expiry', placeholder='MM / YY')
   .form-group
     label.col-md-2.col-md-offset-2.control-label(for='txt-expiration-date') CVC
       span.required*
     .col-md-3
-      input#txt-expiration-date.form-control(type='text', required,ng-model='cvc', payments-validate='cvc', payments-format='cvc', payments-type-model='type')
+      input#txt-expiration-date.form-control(type='text', required,ng-model='cvc', payments-validate='cvc', payments-format='cvc', payments-type-model='type', placeholder='CVC')
   .row
     .col-md-8.col-md-offset-4
       a(href='https://stripe.com', target='_blank')
