@@ -8,7 +8,7 @@
         ng-include(src="'/_public/js/search/wizard/amenity-details-step.html'")
         ng-include(src="'/_public/js/search/wizard/contact-step.html'")
         ng-include(src="'/_public/js/search/wizard/payment-step.html'")
-      #progress-buttons.row
+      fieldset#progress-buttons.row(ng-disabled='model.paymentPending')
         .col-md-1.col-md-offset-7
           button.btn.btn-info(ng-click='model.retreat()',type='button',ng-show='model.getCurrentStep() != model.steps[0]') Prev
         .col-md-1

@@ -1,13 +1,21 @@
 'use strict'
 
 angular.module('search.controllers')
-.controller "SearchWizardPaymentCtrl", ($scope, SearchWizardModel) ->
+.controller "SearchWizardPaymentCtrl", ($scope, SearchWizardModel, $element) ->
     $scope.model = SearchWizardModel
 
-    $scope.token = {value: null}
-
     $scope.$on "currentStep:changed:paymentStep", ->
-      #we never really want the submit button to be enabled
-      $scope.paymentStepForm.$setValidity 'token', false
       $scope.currentStep.form = $scope.paymentStepForm
-      $scope.$broadcast("payment:checkout:display")
+
+    $scope.$on "search:complete", ->
+      # this is bad - using the $element is bad practice in angular. The problem is the angular-payments module is bound to the
+      # 'submit' event on the form. This is bad, they should use something better - like events.
+      $element.submit()
+
+    $scope.handleStripe = (status, response) ->
+      if response.error
+        alert response
+        $scope.model.cancelPayment()
+      else
+        token = response.id
+        $scope.model.processPayment(token)
